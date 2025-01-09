@@ -2,5 +2,18 @@
   "home": {
     "title": "Bienvenido a React y react-i18next",
     "description": "Edita <code>src/App.js</code> y guarda para recargar."
+  },
+  "footer": {
+    "description": "En AxolotlCode transformamos ideas en realidades digitales. Creamos aplicaciones innovadoras, seguras y personalizadas que impulsan tu negocio hacia el éxito.",
+    "menu": {
+      "label": "Menú",
+      "home": "Inicio",
+      "about-us": "Sobre nosotros",
+      "services": "Planes y Servicios",
+      "contact": "Contacto"
+    },
+    "contact": {
+      "label": "Contacto"
+    }
   }
 }

@@ -1,0 +1,74 @@
+---
+import { t } from 'i18next';
+import { Image } from 'astro:assets';
+
+import AxolotlWhite from '@/assets/images/axolotl-white.png';
+import InstagramIcon from '@/assets/icons/instagram.svg';
+import TwitterIcon from '@/assets/icons/twitter.svg';
+
+const menu = [
+  { label: t('footer.menu.home'), link: '#' },
+  { label: t('footer.menu.about-us'), link: '#' },
+  { label: t('footer.menu.services'), link: '#' },
+  { label: t('footer.menu.contact'), link: '#' },
+];
+---
+
+<footer class="bg-[#212529]">
+  <div
+    class="max-w-7xl mx-auto p-3 flex flex-col md:flex-row justify-between md:flex-wrap xl:flex-nowrap"
+  >
+    <div class="px-5 py-[23px] md:min-w-[530px] flex-1">
+      <Image
+        src={AxolotlWhite}
+        class="w-[125px]"
+        width={284}
+        height={249}
+        alt="AxolotlCode"
+      />
+      <p class="text-white text-sm leading-6">
+        {t('footer.description')}
+      </p>
+    </div>
+    <div class="px-5 py-[23px] flex-grow">
+      <span
+        class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
+        >{t('footer.menu.label')}</span
+      >
+      <ul class="flex flex-col gap-y-[15px]">
+        {
+          menu.map((item) => (
+            <li>
+              <a href={item.link} class="text-white text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="px-5 py-[23px] flex-grow">
+      <span
+        class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
+        >{t('footer.contact.label')}</span
+      >
+      <ul class="flex flex-col gap-y-[15px] text-white mb-[15px]">
+        <li class="text-white text-sm">soporte@axolotlcode.tech</li>
+        <li class="text-white text-sm">+(55) 91 65 12 60</li>
+      </ul>
+      <ul class="flex gap-x-5">
+        <li>
+          <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
+        </li>
+        <li>
+          <Image src={TwitterIcon} width={32} height={26} alt="Instagram" />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[#DADADA]">
+    <p class="text-center text-white py-[30px]">
+      &copy; Copyright 2024. AxolotlCode.
+    </p>
+  </div>
+</footer>
