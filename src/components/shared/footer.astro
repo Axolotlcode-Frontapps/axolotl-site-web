@@ -1,4 +1,8 @@
 ---
+interface Props {
+  menu: Array<{ label: string; link: string }>;
+}
+
 import { t } from 'i18next';
 import { Image } from 'astro:assets';
 
@@ -6,12 +10,7 @@ import AxolotlWhite from '@/assets/images/axolotl-white.png';
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
 
-const menu = [
-  { label: t('footer.menu.home'), link: '#' },
-  { label: t('footer.menu.about-us'), link: '#' },
-  { label: t('footer.menu.services'), link: '#' },
-  { label: t('footer.menu.contact'), link: '#' },
-];
+const { menu } = Astro.props;
 ---
 
 <footer class="bg-[#212529]">
@@ -52,9 +51,9 @@ const menu = [
         class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
         >{t('footer.contact.label')}</span
       >
-      <ul class="flex flex-col gap-y-[15px] text-white mb-[15px]">
-        <li class="text-white text-sm">soporte@axolotlcode.tech</li>
-        <li class="text-white text-sm">+(55) 91 65 12 60</li>
+      <ul class="flex flex-col mb-[15px] gap-y-[15px] text-white text-sm">
+        <li>soporte@axolotlcode.tech</li>
+        <li>+(55) 91 65 12 60</li>
       </ul>
       <ul class="flex gap-x-5">
         <li>

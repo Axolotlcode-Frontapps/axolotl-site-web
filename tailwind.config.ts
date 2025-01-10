@@ -29,10 +29,9 @@ export default {
           800: '#2f6f70',
           900: '#245556',
         },
-        texts: {
-          dark: '#DADADA',
-          light: '#212529',
-        },
+        'dark-color': '#DADADA',
+        'light-color': '#212529',
+        'body-color': '#212529',
       },
     },
   },
