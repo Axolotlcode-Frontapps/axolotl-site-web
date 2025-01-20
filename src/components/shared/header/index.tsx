@@ -10,81 +10,115 @@ interface Props {
   menu: { label: string; link: string }[];
 }
 
-// Registrar GSAP fuera del componente
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }
 
 export const Header: React.FC<Props> = ({ menu }) => {
   const menuRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const headerContentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (!menuRef.current) return;
+    if (
+      !menuRef.current ||
+      !overlayRef.current ||
+      !contentRef.current ||
+      !headerContentRef.current
+    )
+      return;
 
-    const menuAnimation = gsap
-      .timeline({ paused: true })
-      .set(menuRef.current, {
-        bottom: -window.innerHeight,
-        display: 'block',
-      })
-      .to(menuRef.current, {
-        bottom: 0,
-        duration: 0.5,
-        ease: 'power3.out',
-      });
+    const tl = gsap.timeline({ paused: true });
+
+    tl.set([overlayRef.current, menuRef.current], {
+      bottom: -window.innerHeight,
+      display: 'block',
+    }).set([contentRef.current, headerContentRef.current], {
+      opacity: 0,
+      y: 20,
+    });
+
+    tl.to(overlayRef.current, {
+      bottom: 0,
+      duration: 0.75,
+      ease: 'power3.out',
+    })
+      .to(
+        menuRef.current,
+        {
+          bottom: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+        },
+        '-=0.2'
+      )
+      .to(
+        headerContentRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+        },
+        '-=0.4'
+      )
+      .to(
+        contentRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+        },
+        '-=0.3'
+      );
 
     if (isOpen) {
-      menuAnimation.play();
+      tl.play();
     } else {
-      gsap.to(menuRef.current, {
-        bottom: -window.innerHeight,
-        duration: 0.4,
-        ease: 'power2.in',
-        onComplete: () => {
-          if (menuRef.current) {
-            menuRef.current.style.display = 'none';
-          }
-        },
-      });
+      gsap
+        .timeline()
+        .to([contentRef.current, headerContentRef.current], {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: 'power2.in',
+        })
+        .to(menuRef.current, {
+          bottom: -window.innerHeight,
+          duration: 0.6,
+          ease: 'power2.in',
+        })
+        .to(
+          overlayRef.current,
+          {
+            bottom: -window.innerHeight,
+            duration: 0.6,
+            ease: 'power2.in',
+            onComplete: () => {
+              if (menuRef.current && overlayRef.current) {
+                menuRef.current.style.display = 'none';
+                overlayRef.current.style.display = 'none';
+              }
+            },
+          },
+          '-=0.1'
+        );
     }
 
     return () => {
-      menuAnimation.kill();
+      tl.kill();
     };
   }, [isOpen]);
 
-  const MenuButton = () => (
-    <button
-      type="button"
-      className="border border-primary-500 rounded-[5px] px-4 py-2 relative focus:outline-none"
-      onClick={() => setIsOpen(!isOpen)}
-      aria-expanded={isOpen}
-      aria-label="Toggle menu"
-    >
-      <div className="flex flex-col justify-center items-center gap-[6px] w-6 h-full">
-        <span
-          className={`w-6 h-[2px] bg-primary-500 transition-transform duration-300 ${
-            isOpen ? 'rotate-45 translate-y-2' : ''
-          }`}
-        />
-        <span
-          className={`w-6 h-[2px] bg-primary-500 transition-opacity duration-300 ${
-            isOpen ? 'opacity-0' : ''
-          }`}
-        />
-        <span
-          className={`w-6 h-[2px] bg-primary-500 transition-transform duration-300 ${
-            isOpen ? '-rotate-45 -translate-y-2' : ''
-          }`}
-        />
-      </div>
-    </button>
-  );
-
-  return (
+  const HeaderSection = () => (
     <header className="h-28 text-body-color relative">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2">
+      <div
+        ref={headerContentRef}
+        className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2"
+      >
         <a href="/" aria-label="Home">
           <img
             className="w-[112px]"
@@ -94,25 +128,74 @@ export const Header: React.FC<Props> = ({ menu }) => {
             alt="Axolotl code"
           />
         </a>
-        <MenuButton />
+        <button
+          type="button"
+          className="font-bold leading-7 text-light-color flex items-center gap-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
+            <svg
+              width="12"
+              height="11"
+              viewBox="0 0 12 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.6875 9.3125C11.0938 9.6875 11.0938 10.3438 10.6875 10.7188C10.5 10.9062 10.25 11 10 11C9.71875 11 9.46875 10.9062 9.28125 10.7188L6 7.4375L2.6875 10.7188C2.5 10.9062 2.25 11 2 11C1.71875 11 1.46875 10.9062 1.28125 10.7188C0.875 10.3438 0.875 9.6875 1.28125 9.3125L4.5625 6L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L6 4.59375L9.28125 1.3125C9.65625 0.90625 10.3125 0.90625 10.6875 1.3125C11.0938 1.6875 11.0938 2.34375 10.6875 2.71875L7.40625 6.03125L10.6875 9.3125Z"
+                fill="#212529"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="14"
+              height="12"
+              viewBox="0 0 14 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 1C0 0.46875 0.4375 0 1 0H13C13.5312 0 14 0.46875 14 1C14 1.5625 13.5312 2 13 2H1C0.4375 2 0 1.5625 0 1ZM0 6C0 5.46875 0.4375 5 1 5H13C13.5312 5 14 5.46875 14 6C14 6.5625 13.5312 7 13 7H1C0.4375 7 0 6.5625 0 6ZM13 12H1C0.4375 12 0 11.5625 0 11C0 10.4688 0.4375 10 1 10H13C13.5312 10 14 10.4688 14 11C14 11.5625 13.5312 12 13 12Z"
+                fill="#212529"
+              />
+            </svg>
+          )}
+          {isOpen ? 'Cerrar' : 'Menú'}
+        </button>
       </div>
+    </header>
+  );
 
+  return (
+    <>
+      <HeaderSection />
+      <div
+        ref={overlayRef}
+        className="fixed left-0 right-0 bottom-0 h-full hidden bg-[#EFEFEF]"
+        style={{ zIndex: 40 }}
+      />
       <div
         ref={menuRef}
-        className="fixed left-0 right-0 bottom-0 h-[90vh] hidden"
+        className="fixed left-0 right-0 bottom-0 h-full hidden"
         style={{ zIndex: 50 }}
       >
-        <div className="bg-[#F6F6F6] absolute inset-0">
-          <div className="max-w-7xl mx-auto flex h-full p-4 items-center justify-between md:justify-around divide-x divide-blue-200">
-            <nav className="flex-1">
+        <div className="bg-white absolute inset-0">
+          <HeaderSection />
+          <div
+            ref={contentRef}
+            className="h-[calc(100%-115px)] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+          >
+            <nav className="w-full sm:w-auto h-fit py-8 px-4 flex-grow">
               <ol className="flex flex-col gap-y-[30px] lg:gap-y-[70px]">
                 {menu?.map(({ label, link }, index) => (
                   <li key={label} className="flex gap-x-2 items-end">
-                    <span className="text-primary-100 text-2xl lg:text-[40px] leading-[48px]">
+                    <span className="text-primary-100 text-base md:text-xl lg:text-2xl xl:text-3xl inline-block">
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
                     <a
-                      className="text-[40px] lg:text-7xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="text-2xl md:text-3xl lg:text-4xl xl:text-7xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
                       href={link}
                     >
                       {label}
@@ -122,19 +205,21 @@ export const Header: React.FC<Props> = ({ menu }) => {
               </ol>
             </nav>
 
-            <div className="px-4 md:px-8 lg:px-16">
-              <div className="flex flex-col gap-y-[5px] mb-[68px]">
-                <span className="text-[32px] leading-9 font-bold">
+            <div className="w-full sm:w-auto py-8 px-4 sm:pl-10 lg:pl-20 flex-grow">
+              <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
+                <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
                   Ciudad de México
                 </span>
-                <span className="text-xl font-light">Area metropolitana</span>
+                <span className="text-lg lg:text-xl font-light">
+                  Area metropolitana
+                </span>
               </div>
 
-              <div className="flex flex-col gap-y-[5px] mb-[26px]">
-                <span className="text-[32px] leading-9 text-primary-500">
+              <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[26px]">
+                <span className="text-2xl lg:text-[32px] lg:leading-9 text-primary-500">
                   Contacto
                 </span>
-                <ul className="mb-[15px] text-xl leading-9 font-light">
+                <ul className="mb-[15px] text-lg lg:text-xl lg:leading-9 font-light">
                   <li>
                     <a
                       href="mailto:soporte@axolotlcode.tech"
@@ -152,7 +237,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
               </div>
 
               <div className="flex flex-col gap-y-[8px]">
-                <span className="text-[32px] leading-9 text-primary-500 mb-2">
+                <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
                   Redes sociales
                 </span>
                 <ul className="flex gap-x-[15px] text-sm">
@@ -178,6 +263,6 @@ export const Header: React.FC<Props> = ({ menu }) => {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 };
