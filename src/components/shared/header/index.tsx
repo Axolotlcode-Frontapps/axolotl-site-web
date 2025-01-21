@@ -20,33 +20,45 @@ export const Header: React.FC<Props> = ({ menu }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [buttonText, setButtonText] = useState('Menú');
 
   useEffect(() => {
-    if (
-      !menuRef.current ||
-      !overlayRef.current ||
-      !contentRef.current ||
-      !headerContentRef.current
-    )
-      return;
+    setTimeout(() => {
+      setButtonText(isOpen ? 'Cerrar' : 'Menú');
+    }, 1000);
+  }, [isOpen]);
 
-    const tl = gsap.timeline({ paused: true });
+  useEffect(() => {
+    const elements = {
+      menu: menuRef.current,
+      overlay: overlayRef.current,
+      content: contentRef.current,
+      headerContent: headerContentRef.current,
+    };
 
-    tl.set([overlayRef.current, menuRef.current], {
+    if (!Object.values(elements).every(Boolean)) return;
+
+    const initialState = {
       bottom: -window.innerHeight,
       display: 'block',
-    }).set([contentRef.current, headerContentRef.current], {
+    };
+
+    const contentInitialState = {
       opacity: 0,
       y: 20,
-    });
+    };
 
-    tl.to(overlayRef.current, {
-      bottom: 0,
-      duration: 0.75,
-      ease: 'power3.out',
-    })
+    const openAnimation = gsap
+      .timeline({ paused: true })
+      .set([elements.overlay, elements.menu], initialState)
+      .set([elements.content, elements.headerContent], contentInitialState)
+      .to(elements.overlay, {
+        bottom: 0,
+        duration: 0.75,
+        ease: 'power3.out',
+      })
       .to(
-        menuRef.current,
+        elements.menu,
         {
           bottom: 0,
           duration: 0.75,
@@ -55,7 +67,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
         '-=0.2'
       )
       .to(
-        headerContentRef.current,
+        elements.headerContent,
         {
           opacity: 1,
           y: 0,
@@ -65,7 +77,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
         '-=0.4'
       )
       .to(
-        contentRef.current,
+        elements.content,
         {
           opacity: 1,
           y: 0,
@@ -75,41 +87,53 @@ export const Header: React.FC<Props> = ({ menu }) => {
         '-=0.3'
       );
 
-    if (isOpen) {
-      tl.play();
-    } else {
-      gsap
-        .timeline()
-        .to([contentRef.current, headerContentRef.current], {
-          opacity: 0,
-          y: 20,
-          duration: 0.6,
-          ease: 'power2.in',
-        })
-        .to(menuRef.current, {
+    const closeAnimation = () => {
+      const tl = gsap.timeline();
+
+      tl.to([elements.content, elements.headerContent], {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        ease: 'power2.in',
+      })
+        .to(elements.menu, {
           bottom: -window.innerHeight,
           duration: 0.6,
           ease: 'power2.in',
         })
         .to(
-          overlayRef.current,
+          elements.overlay,
           {
             bottom: -window.innerHeight,
             duration: 0.6,
             ease: 'power2.in',
             onComplete: () => {
-              if (menuRef.current && overlayRef.current) {
-                menuRef.current.style.display = 'none';
-                overlayRef.current.style.display = 'none';
+              // Ocultar elementos al finalizar
+              if (elements.menu && elements.overlay) {
+                elements.menu.style.display = 'none';
+                elements.overlay.style.display = 'none';
               }
             },
           },
           '-=0.1'
         );
+
+      return tl;
+    };
+
+    if (isOpen) {
+      openAnimation.play();
+    } else {
+      closeAnimation();
     }
 
     return () => {
-      tl.kill();
+      gsap.killTweensOf([
+        elements.overlay,
+        elements.menu,
+        elements.content,
+        elements.headerContent,
+      ]);
     };
   }, [isOpen]);
 
@@ -162,7 +186,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
               />
             </svg>
           )}
-          {isOpen ? 'Cerrar' : 'Menú'}
+          {buttonText}
         </button>
       </div>
     </header>
