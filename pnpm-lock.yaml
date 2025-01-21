@@ -16,6 +16,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.4
         version: 5.1.4(astro@5.1.3(jiti@1.21.6)(rollup@4.27.3)(typescript@5.6.3)(yaml@2.6.0))(tailwindcss@3.4.15)
+      '@gsap/react':
+        specifier: ^2.1.2
+        version: 2.1.2(gsap@3.12.7)(react@18.3.1)
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
@@ -34,6 +37,9 @@ importers:
       formik-validator-zod:
         specifier: ^2.0.1
         version: 2.0.1(formik@2.4.6(react@18.3.1))(zod@3.23.8)
+      gsap:
+        specifier: ^3.12.7
+        version: 3.12.7
       i18next:
         specifier: ^23.16.5
         version: 23.16.5
@@ -895,6 +901,15 @@ packages:
         integrity: sha512-2b/g5hRmpbb1o4GnTZax9N9m0FXzz9OV42ZzI4rDDMDuHUqigAiQCEWChBWCY4ztAGVRjoWT19v0yMmc5/L5kA==,
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+
+  '@gsap/react@2.1.2':
+    resolution:
+      {
+        integrity: sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==,
+      }
+    peerDependencies:
+      gsap: ^3.12.5
+      react: '>=17'
 
   '@humanfs/core@0.19.1':
     resolution:
@@ -2924,6 +2939,12 @@ packages:
     resolution:
       {
         integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==,
+      }
+
+  gsap@3.12.7:
+    resolution:
+      {
+        integrity: sha512-V4GsyVamhmKefvcAKaoy0h6si0xX7ogwBoBSs2CTJwt7luW0oZzC0LhdkyuKV8PJAXr7Yaj8pMjCKD4GJ+eEMg==,
       }
 
   h3@1.13.0:
@@ -5923,6 +5944,11 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
+  '@gsap/react@2.1.2(gsap@3.12.7)(react@18.3.1)':
+    dependencies:
+      gsap: 3.12.7
+      react: 18.3.1
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -7209,6 +7235,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  gsap@3.12.7: {}
 
   h3@1.13.0:
     dependencies:

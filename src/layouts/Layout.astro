@@ -1,7 +1,8 @@
 ---
 import Footer from '@/components/shared/footer.astro';
-import Header from '@/components/shared/header.astro';
+import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
+import { menu } from '@/utils/mockups';
 
 import i18next from 'i18next';
 
@@ -23,10 +24,10 @@ const { title } = Astro.props as Props;
     <title>{title}</title>
   </head>
   <body>
-    <Header />
+    <Header menu={menu} client:load />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer menu={menu} />
   </body>
 </html>
