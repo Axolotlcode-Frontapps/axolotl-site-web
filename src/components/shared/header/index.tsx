@@ -108,7 +108,6 @@ export const Header: React.FC<Props> = ({ menu }) => {
             duration: 0.6,
             ease: 'power2.in',
             onComplete: () => {
-              // Ocultar elementos al finalizar
               if (elements.menu && elements.overlay) {
                 elements.menu.style.display = 'none';
                 elements.overlay.style.display = 'none';
@@ -209,7 +208,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
           <HeaderSection />
           <div
             ref={contentRef}
-            className="h-[calc(100%-115px)] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            className="h-[calc(100%-115px)] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
           >
             <nav className="w-full sm:w-auto h-fit py-8 px-4 flex-grow">
               <ol className="flex flex-col gap-y-[30px] lg:gap-y-[70px]">
