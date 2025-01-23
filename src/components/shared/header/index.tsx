@@ -14,10 +14,10 @@ export const Header: React.FC<Props> = ({ menu }) => {
   const headerContainer = () => (
     <div className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2">
       <img
-        className="w-[112px]"
+        className=""
         src={AxolotlPink.src}
-        width={284}
-        height={249}
+        width={180}
+        height={180}
         alt="Axolotl code"
       />
 

@@ -1,8 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { t, changeLanguage } from 'i18next';
-
-changeLanguage('es');
+import { Home } from '@/components/home';
+changeLanguage('en');
 ---
 
-<Layout title={t('home.title')}> {t('home.description')}</Layout>
+<Layout title={t('home.title')}>
+  <Home client:load client:only="react" />
+</Layout>
