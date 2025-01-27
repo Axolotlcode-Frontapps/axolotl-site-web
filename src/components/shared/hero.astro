@@ -1,0 +1,22 @@
+---
+import { processTextHighlight } from '@/utils/highlight';
+---
+
+<section class="w-full h-h-full bg-gray-400 text-white">
+  <div
+    class="max-w-7xl mx-auto w-full px-4 flex flex-col items-center text-center py-[186px] md:py-[135px] xl:py-[276px]"
+  >
+    <h1
+      class="text-5xl md:text-[64px] font-bold leading-[58px] md:leading-[76px] mb-8"
+    >
+      Sobre
+      <span set:html={processTextHighlight('nosotros', 'text-primary-200')} />
+    </h1>
+    <p class="text-base md:text-xl leading-7 font-normal md:font-light">
+      En Axolotl Code, nuestra pasión por la innovación y el desarrollo digital
+      nos impulsa a construir soluciones que transforman ideas en realidades
+      tecnológicas. Descubre quiénes somos y cómo podemos ayudarte a alcanzar
+      tus objetivos.
+    </p>
+  </div>
+</section>
