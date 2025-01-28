@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+
+import CompanyImage from '@/assets/images/aboutUs/company.png';
+import Card from './card.astro';
+
+const company = [
+  {
+    title: 'Misión',
+    description:
+      'Desarrollar soluciones tecnológicas innovadoras y personalizadas que optimicen los procesos empresariales de nuestros clientes, garantizando seguridad, eficiencia y calidad en cada proyecto, mientras promovemos el uso de tecnologías modernas para contribuir al éxito de sus negocios.',
+  },
+  {
+    title: 'Visión',
+    description:
+      'Ser líderes en el desarrollo de software en México, reconocidos por la excelencia y la innovación de nuestras soluciones tecnológicas, estableciendo relaciones de confianza con nuestros clientes y marcando un impacto significativo en la transformación digital de las empresas.',
+  },
+];
+---
+
+<section class="">
+  <div
+    class="max-w-7xl mx-auto px-3 md:px-6 xl:px-[70px] py-10 xl:py-[66px] 2xl:py-[80px] flex flex-col md:flex-row items-center gap-y-2.5 gap-x-[40px]"
+  >
+    <div class="w-full grid place-content-center">
+      <Image
+        src={CompanyImage}
+        alt="Sobre nosotros - Compañia"
+        loading="eager"
+        width={516}
+        height={516}
+      />
+    </div>
+    <div class="w-full flex flex-col gap-[50px]">
+      {
+        company.map(({ title, description }) => (
+          <Card title={title} description={description} />
+        ))
+      }
+    </div>
+  </div>
+</section>
