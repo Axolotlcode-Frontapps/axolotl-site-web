@@ -37,6 +37,9 @@ export default {
         'body-color': '#212529',
         foreground: '#F6F6F6',
       },
+      screens: {
+        xs: '475px',
+      },
     },
   },
   plugins: [],
