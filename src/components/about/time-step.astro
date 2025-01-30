@@ -1,0 +1,43 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  index: number;
+  orientation?: 'left' | 'right';
+  image: ImageMetadata;
+}
+
+const { title, description, index, orientation = 'left', image } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex flex-col items-center gap-4 max-w-[275px] text-center xl:max-w-[356px] xl:p-2',
+    orientation === 'left' ? 'self-start' : 'self-end',
+  ]}
+>
+  <div
+    class="w-[150px] h-[150px] rounded-full border border-primary-400 p-1.5 relative"
+  >
+    <Image
+      src={image}
+      alt={title}
+      class="rounded-full w-[136px] h-[136px]"
+      width={136}
+      height={136}
+    />
+    <span
+      class="inline-grid rounded-full place-content-center size-[52px] bg-primary-500 text-white text-[28px] font-bold absolute bottom-1 right-1"
+      >0{index}</span
+    >
+  </div>
+  <span class="text-base font-bold leading-5 xl:text-2xl xl:leading-7"
+    >{title}</span
+  >
+  <p class="text-sm leading-[26px] xl:text-base xl:leading-7">
+    {description}
+  </p>
+</div>
