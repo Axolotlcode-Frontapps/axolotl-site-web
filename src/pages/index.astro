@@ -2,9 +2,13 @@
 import Layout from '@/layouts/Layout.astro';
 import { t, changeLanguage } from 'i18next';
 import { Home } from '@/components/home';
+import { Offer } from '@/components/offer';
+import { Comments } from '@/components/comments';
 changeLanguage('en');
 ---
 
 <Layout title={t('home.title')}>
   <Home client:load client:only="react" />
+  <Offer client:visible />
+  <Comments client:visible />
 </Layout>

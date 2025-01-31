@@ -43,37 +43,45 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="xl:py-5 xl:px-10">
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-section w-full md:w-1/2">
+    <div className="min-h-[90vh] w-full xl:py-5 xl:px-14 sm:pt-10 md:pt-10 lg:pt-8 xl:pt-6 pt-14 flex justify-center items-center">
+      <div className=" max-w-[1200px] w-full flex flex-row justify-center items-center  px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-12">
+          <div className="text-section w-full space-y-6 md:space-y-8">
             <div className="text-center md:text-left">
-              <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-8xl">
+              <h1 className=" text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-[#212529]">
                 Desarrollo de soluciones tecnológicas a tu medida
               </h1>
-              <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+              <p className="mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl font-medium text-gray-600 leading-relaxed">
+                En{' '}
+                <span className="font-bold text-primary-500">Axolotl Code</span>{' '}
+                transformamos ideas en realidades digitales. Creamos
+                aplicaciones innovadoras, seguras y personalizadas que impulsan
+                tu negocio hacia el éxito. Con tecnologías de vanguardia y un
+                enfoque en calidad, somos tu aliado estratégico en la
+                transformación digital.
               </p>
-              <div className="mt-10 flex items-center md:justify-start justify-center gap-x-6">
+              <div className="mt-8 md:mt-10 flex flex-row items-center justify-center md:justify-start gap-4 sm:gap-x-6">
                 <a
                   href="#"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-xl bg-primary-600 px-5 py-3 text-base md:text-lg font-semibold text-white shadow-lg hover:bg-primary-500 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
                 >
-                  Get started
+                  Conocer más
                 </a>
-                <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                  Learn more <span aria-hidden="true">→</span>
+                <a
+                  href="#"
+                  className="group text-base md:text-lg font-semibold text-secondary-600 hover:text-black transition-colors duration-200 rounded-xl px-5 py-3 border border-secondary-500"
+                >
+                  Contacto
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="image-section w-full md:w-1/2">
+          <div className="image-section ">
             <img
               src={Hero.src}
               alt="Soluciones tecnológicas"
-              className="rounded-lg shadow-xl w-full h-auto"
+              className="max-w-[500px] w-[320px] h-[320px] md:w-[380px] md:h-[380px] lg:w-[432px] lg:h-[432px] xl:w-[500px] xl:h-[500px] object-contain"
             />
           </div>
         </div>
@@ -92,7 +100,7 @@ export const Home = () => {
         </div>
       </div>
       <svg
-        className="wave-top"
+        className="wave-top absolute"
         width="100%"
         height="100%"
         viewBox="0 0 800 1200"

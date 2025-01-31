@@ -4,6 +4,9 @@ export default {
   content: ['./src/**/*.{js,jsx,ts,tsx,astro}'],
   theme: {
     extend: {
+      screens: {
+        xs: '425px',
+      },
       colors: {
         primary: {
           50: '#feecf0',
