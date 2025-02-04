@@ -51,7 +51,7 @@ export const Home = () => {
               <h1 className=" text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-[#212529]">
                 Desarrollo de soluciones tecnológicas a tu medida
               </h1>
-              <p className="mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl font-medium text-gray-600 leading-relaxed">
+              <p className="mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl font-normal text-gray-600 leading-relaxed">
                 En{' '}
                 <span className="font-bold text-primary-500">Axolotl Code</span>{' '}
                 transformamos ideas en realidades digitales. Creamos

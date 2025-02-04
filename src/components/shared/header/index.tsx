@@ -12,7 +12,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const headerContainer = () => (
-    <div className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2">
+    <div className="max-w-[1400px] mx-auto flex items-center justify-between px-3 py-2">
       <img
         className=""
         src={AxolotlPink.src}

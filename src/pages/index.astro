@@ -4,6 +4,8 @@ import { t, changeLanguage } from 'i18next';
 import { Home } from '@/components/home';
 import { Offer } from '@/components/offer';
 import { Comments } from '@/components/comments';
+import { WhoIs } from '@/components/whois';
+import { ContactHome } from '@/components/contactHome';
 changeLanguage('en');
 ---
 
@@ -11,4 +13,6 @@ changeLanguage('en');
   <Home client:load client:only="react" />
   <Offer client:visible />
   <Comments client:visible />
+  <WhoIs client:visible />
+  <ContactHome client:visible />
 </Layout>
