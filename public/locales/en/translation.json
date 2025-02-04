@@ -2,5 +2,179 @@
   "home": {
     "title": "Welcome to React and react-i18next",
     "description": "Edit <code>src/App.js</code> and save to reload."
+  },
+  "about": {
+    "hero": {
+      "title": "About <span class='text-primary-200'>us</span>",
+      "description": "At Axolotl Code, our passion for innovation and digital development drives us to build solutions that transform ideas into technological realities. Discover who we are and how we can help you achieve your goals."
+    },
+    "about": {
+      "span": "About us",
+      "title": "Discover our <span class='text-secondary-500'>story</span>",
+      "text-1": "Axolotl Code was born with the mission of transforming our clients' ideas into high-impact technological solutions. Since our inception, we have prioritized innovation, quality, and security in every project, working with a committed and passionate team.",
+      "text-2": "Throughout our journey, we have helped companies across various sectors modernize their processes and achieve their goals in an ever-evolving digital world. We take pride in being strategic allies in our clients' technological transformation.",
+      "alt": "About us - Get to know us"
+    },
+    "company": {
+      "alt": "About us - Company",
+      "mision": {
+        "title": "Mission",
+        "description": "To develop innovative and customized technological solutions that optimize our clients' business processes, ensuring security, efficiency, and quality in each project, while promoting the use of modern technologies to contribute to their business success."
+      },
+      "vision": {
+        "title": "Vision",
+        "description": "To be leaders in software development in Mexico, recognized for the excellence and innovation of our technological solutions, establishing trust relationships with our clients and making a significant impact on companies' digital transformation."
+      }
+    },
+    "timeline": {
+      "span": "Our work process",
+      "title": "How do we <span class='text-secondary-500'>do it</span>?",
+      "steps": {
+        "step-1": {
+          "title": "Research and information gathering",
+          "description": "Let's discover together what you need and how we can achieve it.",
+          "alt": "About us - Research"
+        },
+        "step-2": {
+          "title": "Planning (sitemap, wireframes, etc.)",
+          "description": "We structure your ideas to bring your project to life.",
+          "alt": "About us - Planning"
+        },
+        "step-3": {
+          "title": "Website design and prototypes",
+          "description": "We create attractive mockups that reflect your vision.",
+          "alt": "About us - Design"
+        },
+        "step-4": {
+          "title": "Content creation",
+          "description": "We give voice to your site with impactful texts and images.",
+          "alt": "About us - Creation"
+        },
+        "step-5": {
+          "title": "Frontend and backend development",
+          "description": "We build your site to work perfectly and look amazing.",
+          "alt": "About us - Development"
+        },
+        "step-6": {
+          "title": "Quality testing and deployment",
+          "description": "We fine-tune the final details for a smooth launch.",
+          "alt": "About us - Quality testing"
+        },
+        "step-7": {
+          "title": "Maintenance and updates",
+          "description": "We ensure your site remains spectacular over time.",
+          "alt": "About us - Maintenance"
+        }
+      }
+    }
+  },
+  "next-level": {
+    "title": "Are you ready to take your ideas to the next level?",
+    "description": "Let's talk and discover how we can help you. Or explore our options and find the perfect solution for your business.",
+    "contact": "Contact us",
+    "plan": "Our plans"
+  },
+  "plans": {
+    "hero": {
+      "title": "Plans and <span class='text-primary-200'>services</span>",
+      "description": "Discover our solutions designed to adapt to your needs. We offer personalized services to take your projects to the next level, with flexible plans and options that adjust to each stage of your growth."
+    },
+    "services": {
+      "span": "Our services",
+      "title": "How can we <span class='text-secondary-500'>help you</span>?",
+      "items": {
+        "service-1": {
+          "title": "Software development",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Software development"
+        },
+        "service-2": {
+          "title": "Consulting",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Consulting"
+        },
+        "service-3": {
+          "title": "Professionals at your disposal",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Professionals at your disposal"
+        },
+        "service-4": {
+          "title": "Custom development",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Custom development"
+        },
+        "service-5": {
+          "title": "Technical support",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Technical support"
+        },
+        "service-6": {
+          "title": "Incubator",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Plans and services - Incubator"
+        }
+      }
+    },
+    "plans": {
+      "span": "Our plans",
+      "title": "What do we <span class='text-secondary-500'>offer</span>?",
+      "items": {
+        "plan-1": {
+          "span": "Basic plan",
+          "title": "Initial payment of $2,000 MXN",
+          "subtitle": "Monthly fee of $500 MXN",
+          "features": {
+            "feature-1": "Landing page development (one-page)",
+            "feature-2": "Hosting",
+            "feature-3": "Basic onsite SEO",
+            "feature-4": "Unlimited basic changes (information, images, etc)"
+          }
+        },
+        "plan-2": {
+          "span": "Pymes Plan",
+          "title": "Initial payment of $5,000 MXN",
+          "subtitle": "Initial payment of $5,000 MXN",
+          "feature": "Everything in the Basic Plan, plus...",
+          "features": {
+            "feature-1": "Two to three internal views page",
+            "feature-2": "Advanced onsite SEO",
+            "feature-3": "Client management",
+            "feature-4": "Advanced changes (maximum two per month, functionality changes or adding sections)"
+          }
+        },
+        "plan-3": {
+          "span": "E-commerce Plan",
+          "title": "Initial payment of $10,000 MXN",
+          "subtitle": "Monthly fee of $2,500 MXN",
+          "feature": "Everything in the SME Plan, plus...",
+          "features": {
+            "feature-1": "Website + store",
+            "feature-2": "Client management",
+            "feature-3": "Product management",
+            "feature-4": "Payment gateway integration"
+          }
+        },
+        "plan-4": {
+          "span": "Custom Plan",
+          "title": "Contact us to discuss a quote!",
+          "features": {
+            "feature-1": "Custom consulting"
+          }
+        }
+      }
+    }
+  },
+  "footer": {
+    "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
+    "menu": {
+      "label": "Menu",
+      "home": "Home",
+      "about-us": "About us",
+      "services": "Plans and Services",
+      "contact": "Contact"
+    },
+    "contact": {
+      "label": "Contact"
+    }
   }
 }

@@ -1,36 +1,54 @@
 ---
+import { t } from 'i18next';
 import Service from './service.astro';
 
-const services = [
+type LoadingType = 'lazy' | 'eager';
+
+const services: {
+  title: string;
+  description: string;
+  icon: () => Promise<typeof import('*.svg')>;
+  alt: string;
+  loading?: LoadingType;
+}[] = [
   {
-    title: 'Desarrollo de software',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-1.title'),
+    description: t('plans.services.items.service-1.description'),
     icon: () => import('@/assets/icons/services/software.svg'),
+    alt: t('plans.services.items.service-1.alt'),
+    loading: 'eager',
   },
   {
-    title: 'Consultorías',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-2.title'),
+    description: t('plans.services.items.service-2.description'),
     icon: () => import('@/assets/icons/services/consultory.svg'),
+    alt: t('plans.services.items.service-2.alt'),
+    loading: 'eager',
   },
   {
-    title: 'Profesionales a tu disposición',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-3.title'),
+    description: t('plans.services.items.service-3.description'),
     icon: () => import('@/assets/icons/services/profesional.svg'),
+    alt: t('plans.services.items.service-3.alt'),
+    loading: 'eager',
   },
   {
-    title: 'Desarrollo a la medida',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-4.title'),
+    description: t('plans.services.items.service-4.description'),
     icon: () => import('@/assets/icons/services/star.svg'),
+    alt: t('plans.services.items.service-4.alt'),
   },
   {
-    title: 'Soporte técnico',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-5.title'),
+    description: t('plans.services.items.service-5.description'),
     icon: () => import('@/assets/icons/services/support.svg'),
+    alt: t('plans.services.items.service-5.alt'),
   },
   {
-    title: 'Incubadora',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    title: t('plans.services.items.service-6.title'),
+    description: t('plans.services.items.service-6.description'),
     icon: () => import('@/assets/icons/services/incubadora.svg'),
+    alt: t('plans.services.items.service-6.alt'),
   },
 ];
 ---
@@ -38,19 +56,26 @@ const services = [
 <section class="bg-foreground">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
     <span class="text-base lg:text-2xl leading-5 lg:leading-7 text-primary-500"
-      >Nuestros servicios</span
+      >{t('plans.services.span')}</span
     >
     <h2
       class="text-[28px] lg:text-[40px] leading-8 lg:leading-[48px] font-bold mt-4 mb-10"
-    >
-      ¿Cómo podemos <span class="text-secondary-500">ayudarte</span>?
-    </h2>
+      set:html={t('plans.services.title')}
+    />
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
       {
-        services.map(async ({ title, description, icon }) => {
+        services.map(async ({ title, description, icon, alt, loading }) => {
           const { default: image } = await icon();
 
-          return <Service {title} {description} icon={image} />;
+          return (
+            <Service
+              {title}
+              {description}
+              {alt}
+              icon={image}
+              loading={loading ? loading : 'lazy'}
+            />
+          );
         })
       }
     </div>

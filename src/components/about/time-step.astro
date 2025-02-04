@@ -8,9 +8,17 @@ interface Props {
   index: number;
   orientation?: 'left' | 'right';
   image: ImageMetadata;
+  alt: string;
 }
 
-const { title, description, index, orientation = 'left', image } = Astro.props;
+const {
+  title,
+  description,
+  index,
+  orientation = 'left',
+  image,
+  alt,
+} = Astro.props;
 ---
 
 <article
@@ -24,7 +32,7 @@ const { title, description, index, orientation = 'left', image } = Astro.props;
   >
     <Image
       src={image}
-      alt={title}
+      alt={alt}
       class="rounded-full w-[136px] h-[136px]"
       width={136}
       height={136}

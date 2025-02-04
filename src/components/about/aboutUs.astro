@@ -1,4 +1,5 @@
 ---
+import { t } from 'i18next';
 import { Image } from 'astro:assets';
 import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
 ---
@@ -11,31 +12,23 @@ import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
       class="w-full flex flex-col gap-4 text-center text-sm text-light-color leading-6 md:text-left lg:text-base lg:leading-7"
     >
       <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
-        >Sobre nosotros</span
+        >{t('about.about.span')}</span
       >
       <h2
         class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
-      >
-        Conoce nuestra
-        <span class="text-secondary-500">historia</span>
-      </h2>
+        set:html={t('about.about.title')}
+      />
       <p class="mb-2">
-        Axolotl Code nació con la misión de transformar las ideas de nuestros
-        clientes en soluciones tecnológicas de alto impacto. Desde nuestros
-        inicios, hemos priorizado la innovación, la calidad y la seguridad en
-        cada proyecto, trabajando con un equipo comprometido y apasionado.
+        {t('about.about.text-1')}
       </p>
       <p>
-        A lo largo de nuestra trayectoria, hemos ayudado a empresas de diversos
-        sectores a modernizar sus procesos y alcanzar sus objetivos en un mundo
-        digital en constante evolución. Nos enorgullece ser aliados estratégicos
-        en la transformación tecnológica de nuestros clientes.
+        {t('about.about.text-2')}
       </p>
     </div>
     <div class="hidden md:block w-full">
       <Image
         src={AboutUsImage}
-        alt="Sobre nosotros - Conocenos"
+        alt={t('about.about.alt')}
         loading="eager"
         width={548}
         height={548}

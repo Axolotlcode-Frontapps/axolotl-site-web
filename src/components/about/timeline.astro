@@ -1,4 +1,5 @@
 ---
+import { t } from 'i18next';
 import First from '@/assets/icons/timestep/first.astro';
 import TimeStep from './time-step.astro';
 import Second from '@/assets/icons/timestep/second.astro';
@@ -8,41 +9,45 @@ import Fifth from '@/assets/icons/timestep/fifth.astro';
 
 const timeSteps = [
   {
-    title: 'Investigación y recopilación de información',
-    description: 'Descubramos juntos lo que necesitas y cómo podemos lograrlo.',
+    title: t('about.timeline.steps.step-1.title'),
+    description: t('about.timeline.steps.step-1.description'),
+    alt: t('about.timeline.steps.step-1.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-1.png'),
   },
   {
-    title: 'Planificación (mapa del sitio, wireframes, etc.)',
-    description: 'Estructuramos tus ideas para darle vida a tu proyecto.',
+    title: t('about.timeline.steps.step-2.title'),
+    description: t('about.timeline.steps.step-2.description'),
+    alt: t('about.timeline.steps.step-2.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-2.png'),
   },
   {
-    title: 'Diseño y prototipos del sitio web',
-    description: 'Creamos bocetos atractivos que reflejen tu visión.',
+    title: t('about.timeline.steps.step-3.title'),
+    description: t('about.timeline.steps.step-3.description'),
+    alt: t('about.timeline.steps.step-3.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-3.png'),
   },
   {
-    title: 'Creación de contenido',
-    description: 'Damos voz a tu sitio con textos e imágenes impactantes.',
+    title: t('about.timeline.steps.step-4.title'),
+    description: t('about.timeline.steps.step-4.description'),
+    alt: t('about.timeline.steps.step-4.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-4.png'),
   },
   {
-    title: 'Desarrollo frontend y backend',
-    description:
-      'Construimos tu sitio para que funcione perfecto y luzca increíble.',
+    title: t('about.timeline.steps.step-5.title'),
+    description: t('about.timeline.steps.step-5.description'),
+    alt: t('about.timeline.steps.step-5.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-5.png'),
   },
   {
-    title: 'Pruebas de calidad y despliegue',
-    description:
-      'justamos los últimos detalles para un lanzamiento sin problemas.',
+    title: t('about.timeline.steps.step-6.title'),
+    description: t('about.timeline.steps.step-6.description'),
+    alt: t('about.timeline.steps.step-6.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-6.png'),
   },
   {
-    title: 'Mantenimiento y actualizaciones',
-    description:
-      'Nos aseguramos de que tu sitio siga siendo espectacular con el tiempo.',
+    title: t('about.timeline.steps.step-7.title'),
+    description: t('about.timeline.steps.step-7.description'),
+    alt: t('about.timeline.steps.step-7.alt'),
     image: () => import('@/assets/images/aboutUs/time-step-7.png'),
   },
 ];
@@ -51,13 +56,12 @@ const timeSteps = [
 <section class="bg-foreground relative">
   <div class="max-w-7xl mx-auto px-3 py-20 text-center relative z-20">
     <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
-      >Nuestro proceso de trabajo</span
+      >{t('about.timeline.span')}</span
     >
     <h2
       class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px] mt-4"
-    >
-      ¿Cómo lo hacemos?
-    </h2>
+      set:html={t('about.timeline.title')}
+    />
 
     <div class="flex flex-col gap-4 mt-10 max-w-[596px] mx-auto relative">
       <div class="w-full h-full flex justify-center absolute top-[78px]">
@@ -93,6 +97,7 @@ const timeSteps = [
               index={index + 1}
               orientation={index % 2 === 0 ? 'left' : 'right'}
               image={image}
+              alt={step.alt}
             />
           );
         })

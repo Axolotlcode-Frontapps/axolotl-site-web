@@ -1,9 +1,12 @@
 ---
+import { t } from 'i18next';
 import GradientFirst from '@/assets/icons/next-level/first.astro';
 import GradientSecond from '@/assets/icons/next-level/second.astro';
 import GradientThird from '@/assets/icons/next-level/third.astro';
 import GradientFourth from '@/assets/icons/next-level/fourth.astro';
 import GradientFifth from '@/assets/icons/next-level/fifth.astro';
+
+const currentPathname = Astro.url.pathname;
 ---
 
 <section class="relative bg-primary-50">
@@ -15,11 +18,10 @@ import GradientFifth from '@/assets/icons/next-level/fifth.astro';
     >
       <span
         class="text-[28px] leading-8 font-bold xl:text-[40px] xl:leading-[48px]"
-        >¿Estás listo para llevar tus ideas al siguiente nivel?
+        >{t('next-level.title')}
       </span>
       <p class="text-sm leading-6 xl:text-base xl:leading-7">
-        Hablemos y descubre cómo podemos ayudarte. O explora nuestras opciones y
-        encuentra la solución perfecta para tu negocio.
+        {t('next-level.description')}
       </p>
       <div
         class="w-full flex flex-col xs:flex-row items-center justify-center gap-y-2.5 gap-x-6 text-sm xl:text-base"
@@ -28,13 +30,18 @@ import GradientFifth from '@/assets/icons/next-level/fifth.astro';
           href="/"
           class="py-1 px-2 rounded-[5px] border border-primary-500 bg-primary-500 text-primary-50"
         >
-          Contáctanos
+          {t('next-level.contact')}
         </a>
-        <a
-          href="/"
-          class="py-1 px-2 rounded-[5px] border border-primary-500 text-primary-500"
-          >Nuestros planes</a
-        >
+        {
+          currentPathname === '/plans' && (
+            <a
+              href="/"
+              class="py-1 px-2 rounded-[5px] border border-primary-500 text-primary-500"
+            >
+              {t('next-level.plan')}
+            </a>
+          )
+        }
       </div>
     </article>
   </div>

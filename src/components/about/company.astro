@@ -1,4 +1,5 @@
 ---
+import { t } from 'i18next';
 import { Image } from 'astro:assets';
 
 import CompanyImage from '@/assets/images/aboutUs/company.png';
@@ -6,14 +7,12 @@ import Card from './card.astro';
 
 const company = [
   {
-    title: 'Misión',
-    description:
-      'Desarrollar soluciones tecnológicas innovadoras y personalizadas que optimicen los procesos empresariales de nuestros clientes, garantizando seguridad, eficiencia y calidad en cada proyecto, mientras promovemos el uso de tecnologías modernas para contribuir al éxito de sus negocios.',
+    title: t('about.company.mision.title'),
+    description: t('about.company.mision.description'),
   },
   {
-    title: 'Visión',
-    description:
-      'Ser líderes en el desarrollo de software en México, reconocidos por la excelencia y la innovación de nuestras soluciones tecnológicas, estableciendo relaciones de confianza con nuestros clientes y marcando un impacto significativo en la transformación digital de las empresas.',
+    title: t('about.company.vision.title'),
+    description: t('about.company.vision.description'),
   },
 ];
 ---
@@ -25,7 +24,7 @@ const company = [
     <div class="w-full grid place-content-center">
       <Image
         src={CompanyImage}
-        alt="Sobre nosotros - Compañia"
+        alt={t('about.company.alt')}
         loading="lazy"
         width={516}
         height={516}
