@@ -13,9 +13,9 @@ interface Props {
 const { title, description, index, orientation = 'left', image } = Astro.props;
 ---
 
-<div
+<article
   class:list={[
-    'flex flex-col items-center gap-4 max-w-[275px] text-center xl:max-w-[356px] xl:p-2',
+    'flex flex-col items-center gap-4 max-w-[275px] text-center sm:max-w-[356px] lg:p-2',
     orientation === 'left' ? 'self-start' : 'self-end',
   ]}
 >
@@ -34,10 +34,10 @@ const { title, description, index, orientation = 'left', image } = Astro.props;
       >0{index}</span
     >
   </div>
-  <span class="text-base font-bold leading-5 xl:text-2xl xl:leading-7"
+  <span class="text-base font-bold leading-5 lg:text-2lg lg:leading-7"
     >{title}</span
   >
-  <p class="text-sm leading-[26px] xl:text-base xl:leading-7">
+  <p class="text-sm leading-[26px] lg:text-base lg:leading-7">
     {description}
   </p>
-</div>
+</article>
