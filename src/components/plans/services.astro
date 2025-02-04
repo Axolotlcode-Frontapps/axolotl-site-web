@@ -1,0 +1,58 @@
+---
+import Service from './service.astro';
+
+const services = [
+  {
+    title: 'Desarrollo de software',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/software.svg'),
+  },
+  {
+    title: 'Consultorías',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/consultory.svg'),
+  },
+  {
+    title: 'Profesionales a tu disposición',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/profesional.svg'),
+  },
+  {
+    title: 'Desarrollo a la medida',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/star.svg'),
+  },
+  {
+    title: 'Soporte técnico',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/support.svg'),
+  },
+  {
+    title: 'Incubadora',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    icon: () => import('@/assets/icons/services/incubadora.svg'),
+  },
+];
+---
+
+<section class="bg-foreground">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <span class="text-base lg:text-2xl leading-5 lg:leading-7 text-primary-500"
+      >Nuestros servicios</span
+    >
+    <h2
+      class="text-[28px] lg:text-[40px] leading-8 lg:leading-[48px] font-bold mt-4 mb-10"
+    >
+      ¿Cómo podemos <span class="text-secondary-500">ayudarte</span>?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      {
+        services.map(async ({ title, description, icon }) => {
+          const { default: image } = await icon();
+
+          return <Service {title} {description} icon={image} />;
+        })
+      }
+    </div>
+  </div>
+</section>
