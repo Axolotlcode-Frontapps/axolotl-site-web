@@ -1,0 +1,74 @@
+---
+import Plan from './plan.astro';
+
+const plans = [
+  {
+    span: 'Plan Básico',
+    title: 'Pago inicial de $2,000 MXN',
+    subtitle: 'Mensualidad de $500 MXN',
+    // feature: 'Todo lo del Plan Pymes, más...',
+    features: [
+      'Desarrollo de landing page (one-page)',
+      'Hosting',
+      'SEO basico onsite',
+      'Cambios básicos ilimitados (información, imágenes, etc)',
+    ],
+  },
+  {
+    span: 'Plan Pymes',
+    title: 'Pago inicial de $5,000 MXN',
+    subtitle: 'Mensualidad de $1,500 MXN',
+    feature: 'Todo lo del Plan Básico, más...',
+    features: [
+      'Pagina de dos a tres vistas internas',
+      'SEO Avanzado onsite',
+      'Control de clientes',
+      'Cambios avanzados (dos máximos al mes, cambio de funcionamiento o agregar secciones)',
+    ],
+  },
+  {
+    span: 'Plan E-commerce',
+    title: 'Pago inicial de $10,000 MXN',
+    subtitle: 'Mensualidad de $2,500 MXN',
+    feature: 'Todo lo del Plan Pymes, más...',
+    features: [
+      'Pagina web + tienda',
+      'Control de clientes',
+      'Administración de productos',
+      'Integración de pasarelas de pago',
+    ],
+  },
+  {
+    span: 'Plan Personalizado',
+    title: '¡Contáctanos para discutir un presupuesto!',
+    features: ['Consultoría personalizada'],
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-black">
+    <div class="text-center lg:text-left mb-12">
+      <span
+        class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
+      >
+        Nuestros planes
+      </span>
+      <h2
+        class="mt-4 text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] font-bold"
+      >
+        ¿Qué <span class="text-secondary-500">ofrecemos</span>?
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px]">
+      {
+        plans.map((plan, index) => (
+          <Plan
+            {...plan}
+            className={index === plans.length - 1 ? 'xl:col-span-3' : ''}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -2,12 +2,14 @@
 import { t } from 'i18next';
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/shared/hero.astro';
-import NextLevel from '@/components/shared/next-level.astro';
 import Services from '@/components/plans/services.astro';
+import PlansComponent from '@/components/plans/plans.astro';
+import NextLevel from '@/components/shared/next-level.astro';
 ---
 
 <Layout title={t('home.title')}>
   <Hero />
   <Services />
+  <PlansComponent />
   <NextLevel />
 </Layout>
