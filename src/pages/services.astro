@@ -1,0 +1,12 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { t, changeLanguage } from 'i18next';
+import { Services as ServicesComponent } from '@/components/services';
+import { Packages as PackagesComponent } from '@/components/packages';
+changeLanguage('en');
+---
+
+<Layout title={t('home.title')}>
+  <ServicesComponent client:load />
+  <PackagesComponent client:load />
+</Layout>
