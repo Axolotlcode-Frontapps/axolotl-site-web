@@ -4,12 +4,12 @@ import { Image } from 'astro:assets';
 import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
 ---
 
-<section class="bg-foreground">
+<section class="bg-foreground overflow-hidden">
   <div
     class="max-w-7xl mx-auto px-3 md:px-6 xl:px-[70px] flex flex-col md:flex-row gap-10 py-10 md:items-center md:gap-[50px] xl:py-[71px]"
   >
     <div
-      class="w-full flex flex-col gap-4 text-center text-sm text-light-color leading-6 md:text-left lg:text-base lg:leading-7"
+      class="about-info w-full flex flex-col gap-4 text-center text-sm text-light-color leading-6 md:text-left lg:text-base lg:leading-7"
     >
       <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
         >{t('about.about.span')}</span
@@ -25,7 +25,7 @@ import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
         {t('about.about.text-2')}
       </p>
     </div>
-    <div class="hidden md:block w-full">
+    <div class="about-image hidden md:block w-full">
       <Image
         src={AboutUsImage}
         alt={t('about.about.alt')}
@@ -36,3 +36,31 @@ import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const info = document.querySelector('.about-info');
+  const image = document.querySelector('.about-image');
+
+  gsap.set([image, info], {
+    opacity: 0,
+    x: (index) => (index === 0 ? 500 : -500),
+  });
+
+  ScrollTrigger.batch([info, image], {
+    onEnter: (elements) => {
+      gsap.to(elements, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+    start: 'top 60%',
+  });
+</script>

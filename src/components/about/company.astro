@@ -17,11 +17,11 @@ const company = [
 ];
 ---
 
-<section class="relative">
+<section class="relative overflow-hidden">
   <div
     class="max-w-7xl mx-auto px-3 sm:px-6 xl:px-[70px] py-10 xl:py-[66px] 2xl:py-[80px] flex flex-col sm:flex-row items-center gap-y-2.5 gap-x-[40px] relative z-20"
   >
-    <div class="w-full grid place-content-center">
+    <div class="company-image w-full grid place-content-center">
       <Image
         src={CompanyImage}
         alt={t('about.company.alt')}
@@ -30,7 +30,7 @@ const company = [
         height={516}
       />
     </div>
-    <div class="w-full flex flex-col gap-[50px]">
+    <div class="company-cards w-full flex flex-col gap-[50px]">
       {
         company.map(({ title, description }) => (
           <Card title={title} description={description} />
@@ -77,3 +77,50 @@ const company = [
     </defs>
   </svg>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const image = document.querySelector('.company-image');
+  const firstCard = document.querySelector('.company-cards > *:first-child');
+  const secondCard = document.querySelector('.company-cards > *:last-child');
+
+  const elements = [firstCard, secondCard];
+
+  gsap.set(image, {
+    opacity: 0,
+  });
+
+  gsap.set(elements, {
+    opacity: 0,
+    x: 500,
+  });
+
+  ScrollTrigger.batch(image, {
+    onEnter: (elements) => {
+      gsap.to(elements, {
+        opacity: 1,
+        duration: 2,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+    start: 'top 60%',
+  });
+
+  ScrollTrigger.batch(elements, {
+    onEnter: (elements) => {
+      gsap.to(elements, {
+        opacity: 1,
+        x: 0,
+        duration: 2,
+        stagger: 0.4,
+        ease: 'power4.out',
+      });
+    },
+    start: 'top 60%',
+  });
+</script>

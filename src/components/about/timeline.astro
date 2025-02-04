@@ -53,8 +53,8 @@ const timeSteps = [
 ];
 ---
 
-<section class="bg-foreground relative">
-  <div class="max-w-7xl mx-auto px-3 py-20 text-center relative z-20">
+<section class="bg-foreground relative overflow-hidden">
+  <div class="timeline max-w-7xl mx-auto px-3 py-20 text-center relative z-20">
     <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
       >{t('about.timeline.span')}</span
     >
@@ -64,7 +64,7 @@ const timeSteps = [
     />
 
     <div class="flex flex-col gap-4 mt-10 max-w-[596px] mx-auto relative">
-      <div class="w-full h-full flex justify-center absolute top-[78px]">
+      <div class="line w-full h-full flex justify-center absolute top-[78px]">
         <svg
           class="lg:hidden block w-[356px] lg:h-[1920px] h-[1630px]"
           viewBox="0 0 274 2238"
@@ -87,21 +87,23 @@ const timeSteps = [
             stroke-dasharray="16 16"></path>
         </svg>
       </div>
-      {
-        timeSteps.map(async (step, index) => {
-          const { default: image } = await step.image();
-          return (
-            <TimeStep
-              title={step.title}
-              description={step.description}
-              index={index + 1}
-              orientation={index % 2 === 0 ? 'left' : 'right'}
-              image={image}
-              alt={step.alt}
-            />
-          );
-        })
-      }
+      <div class="steps w-full flex flex-col gap-4">
+        {
+          timeSteps.map(async (step, index) => {
+            const { default: image } = await step.image();
+            return (
+              <TimeStep
+                title={step.title}
+                description={step.description}
+                index={index + 1}
+                orientation={index % 2 === 0 ? 'left' : 'right'}
+                image={image}
+                alt={step.alt}
+              />
+            );
+          })
+        }
+      </div>
     </div>
   </div>
   <First className="hidden lg:block absolute -top-52 right-0 " />
@@ -110,3 +112,68 @@ const timeSteps = [
   <Fourth className="hidden lg:block absolute right-0 bottom-0" />
   <Fifth className="hidden lg:block absolute -bottom-56 -left-24" />
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const span = document.querySelector('.timeline > span');
+  const title = document.querySelector('.timeline > h2');
+  const line = document.querySelector('.line');
+  const steps = document.querySelectorAll('.steps > *');
+
+  gsap.set([span, title], {
+    opacity: 0,
+  });
+
+  gsap.set(line, {
+    opacity: 0,
+  });
+
+  gsap.set(steps, {
+    opacity: 0,
+    y: 50,
+  });
+
+  ScrollTrigger.batch([span, title], {
+    onEnter: (elements) => {
+      gsap.to(elements, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+    start: 'top 80%',
+  });
+
+  ScrollTrigger.create({
+    trigger: line,
+    start: 'top bottom',
+    onEnter: () => {
+      gsap.to(line, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  steps.forEach((step) => {
+    ScrollTrigger.create({
+      trigger: step,
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to(step, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power4.out',
+        });
+      },
+    });
+  });
+</script>
