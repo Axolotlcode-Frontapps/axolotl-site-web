@@ -1,5 +1,6 @@
 ---
 import Plan from './plan.astro';
+import PlansIcon from '@/assets/icons/plans.astro';
 
 const plans = [
   {
@@ -46,8 +47,10 @@ const plans = [
 ];
 ---
 
-<section>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-black">
+<section class="relative">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-black relative z-20"
+  >
     <div class="text-center lg:text-left mb-12">
       <span
         class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
@@ -71,4 +74,5 @@ const plans = [
       }
     </div>
   </div>
+  <PlansIcon className="hidden lg:block absolute -bottom-40 -left-60 z-10" />
 </section>
