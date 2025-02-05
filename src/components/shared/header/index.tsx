@@ -3,30 +3,46 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import AxolotlPink from '@/assets/images/shared/axolotl-pink.png';
+import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
+
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
 
 interface Props {
   menu: { label: string; link: string }[];
+  pathname: string;
 }
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }
 
-export const Header: React.FC<Props> = ({ menu }) => {
+export const Header: React.FC<Props> = ({ menu, pathname }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [buttonText, setButtonText] = useState('Menú');
+  const [axolotlImage, setAxolotlImage] = useState(
+    isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
+  );
+  const [color, setColor] = useState('text-white');
+  const [fillColor, setFillColor] = useState('fill-white');
 
   useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     setTimeout(() => {
       setButtonText(isOpen ? 'Cerrar' : 'Menú');
+      setAxolotlImage(
+        isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
+      );
+      setColor(isOpen || pathname === '/' ? 'text-body-color' : 'text-white');
+      setFillColor(
+        isOpen || pathname === '/' ? 'fill-body-color' : 'fill-white'
+      );
     }, 1000);
-  }, [isOpen]);
+  }, [isOpen, pathname]);
 
   useEffect(() => {
     const elements = {
@@ -137,15 +153,15 @@ export const Header: React.FC<Props> = ({ menu }) => {
   }, [isOpen]);
 
   const HeaderSection = () => (
-    <header className="h-28 text-body-color relative">
+    <header className="h-28 text-body-color absolute top-0 left-0 right-0 z-10">
       <div
         ref={headerContentRef}
-        className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2"
+        className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2 text-white"
       >
         <a href="/" aria-label="Home">
           <img
             className="w-[112px]"
-            src={AxolotlPink.src}
+            src={axolotlImage}
             width={284}
             height={249}
             alt="Axolotl code"
@@ -153,7 +169,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
         </a>
         <button
           type="button"
-          className="font-bold leading-7 text-light-color flex items-center gap-2"
+          className={`font-bold leading-7  flex items-center gap-2 ${color}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle menu"
@@ -168,7 +184,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
             >
               <path
                 d="M10.6875 9.3125C11.0938 9.6875 11.0938 10.3438 10.6875 10.7188C10.5 10.9062 10.25 11 10 11C9.71875 11 9.46875 10.9062 9.28125 10.7188L6 7.4375L2.6875 10.7188C2.5 10.9062 2.25 11 2 11C1.71875 11 1.46875 10.9062 1.28125 10.7188C0.875 10.3438 0.875 9.6875 1.28125 9.3125L4.5625 6L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L6 4.59375L9.28125 1.3125C9.65625 0.90625 10.3125 0.90625 10.6875 1.3125C11.0938 1.6875 11.0938 2.34375 10.6875 2.71875L7.40625 6.03125L10.6875 9.3125Z"
-                fill="#212529"
+                className={fillColor}
               />
             </svg>
           ) : (
@@ -181,7 +197,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
             >
               <path
                 d="M0 1C0 0.46875 0.4375 0 1 0H13C13.5312 0 14 0.46875 14 1C14 1.5625 13.5312 2 13 2H1C0.4375 2 0 1.5625 0 1ZM0 6C0 5.46875 0.4375 5 1 5H13C13.5312 5 14 5.46875 14 6C14 6.5625 13.5312 7 13 7H1C0.4375 7 0 6.5625 0 6ZM13 12H1C0.4375 12 0 11.5625 0 11C0 10.4688 0.4375 10 1 10H13C13.5312 10 14 10.4688 14 11C14 11.5625 13.5312 12 13 12Z"
-                fill="#212529"
+                className={fillColor}
               />
             </svg>
           )}
@@ -196,7 +212,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
       <HeaderSection />
       <div
         ref={overlayRef}
-        className="fixed left-0 right-0 bottom-0 h-full hidden bg-[#EFEFEF]"
+        className="absolute left-0 right-0 bottom-0 h-full hidden bg-[#EFEFEF]"
         style={{ zIndex: 40 }}
       />
       <div
@@ -208,7 +224,7 @@ export const Header: React.FC<Props> = ({ menu }) => {
           <HeaderSection />
           <div
             ref={contentRef}
-            className="h-[calc(100%-115px)] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            className="h-[calc(100%-115px)] pt-[115px] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
           >
             <nav className="w-full sm:w-auto h-fit py-8 px-4 flex-grow">
               <ol className="flex flex-col gap-y-[30px] lg:gap-y-[70px]">
