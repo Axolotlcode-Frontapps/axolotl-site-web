@@ -3,6 +3,25 @@
     "title": "Bienvenido a React y react-i18next",
     "description": "Edita <code>src/App.js</code> y guarda para recargar."
   },
+  "header": {
+    "open": "Menú",
+    "close": "Cerrar",
+    "home": "Inicio",
+    "about-us": "Sobre nosotros",
+    "services": "Planes y Servicios",
+    "contact": "Contacto",
+    "social": {
+      "label": "Redes sociales",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "info": {
+      "city": "Ciudad de México",
+      "locality": "Área metropolitana"
+    }
+  },
   "about": {
     "hero": {
       "title": "Sobre <span class='text-primary-200'>nosotros</span>",
@@ -13,10 +32,10 @@
       "title": "Conoce nuestra <span class='text-secondary-500'>historia</span>",
       "text-1": "Axolotl Code nació con la misión de transformar las ideas de nuestros clientes en soluciones tecnológicas de alto impacto. Desde nuestros inicios, hemos priorizado la innovación, la calidad y la seguridad en cada proyecto, trabajando con un equipo comprometido y apasionado.",
       "text-2": "A lo largo de nuestra trayectoria, hemos ayudado a empresas de diversos sectores a modernizar sus procesos y alcanzar sus objetivos en un mundo digital en constante evolución. Nos enorgullece ser aliados estratégicos en la transformación tecnológica de nuestros clientes.",
-      "alt": "Sobre nosotros - Conocenos"
+      "alt": "Sobre nosotros - Conócenos"
     },
     "company": {
-      "alt": "Sobre nosotros - Compañia",
+      "alt": "Sobre nosotros - Compañía",
       "mision": {
         "title": "Misión",
         "description": "Desarrollar soluciones tecnológicas innovadoras y personalizadas que optimicen los procesos empresariales de nuestros clientes, garantizando seguridad, eficiencia y calidad en cada proyecto, mientras promovemos el uso de tecnologías modernas para contribuir al éxito de sus negocios."
@@ -57,7 +76,7 @@
         },
         "step-6": {
           "title": "Pruebas de calidad y despliegue",
-          "description": "justamos los últimos detalles para un lanzamiento sin problemas.",
+          "description": "Ajustamos los últimos detalles para un lanzamiento sin problemas.",
           "alt": "Sobre nosotros - Pruebas de calidad"
         },
         "step-7": {
@@ -69,7 +88,7 @@
     }
   },
   "next-level": {
-    "title": "¿Estás listo para llevar tus ideas al siguiente nivel? ",
+    "title": "¿Estás listo para llevar tus ideas al siguiente nivel?",
     "description": "Hablemos y descubre cómo podemos ayudarte. O explora nuestras opciones y encuentra la solución perfecta para tu negocio.",
     "contact": "Contáctanos",
     "plan": "Nuestros planes"
@@ -126,8 +145,8 @@
           "features": {
             "feature-1": "Desarrollo de landing page (one-page)",
             "feature-2": "Hosting",
-            "feature-3": "SEO basico onsite",
-            "feature-4": "Cambios básicos ilimitados (información, imágenes, etc)"
+            "feature-3": "SEO básico onsite",
+            "feature-4": "Cambios básicos ilimitados (información, imágenes, etc.)"
           }
         },
         "plan-2": {
@@ -136,7 +155,7 @@
           "subtitle": "Pago inicial de $5,000 MXN",
           "feature": "Todo lo del Plan Básico, más...",
           "features": {
-            "feature-1": "Pagina de dos a tres vistas internas",
+            "feature-1": "Página de dos a tres vistas internas",
             "feature-2": "SEO Avanzado onsite",
             "feature-3": "Control de clientes",
             "feature-4": "Cambios avanzados (dos máximos al mes, cambio de funcionamiento o agregar secciones)"
@@ -148,7 +167,7 @@
           "subtitle": "Mensualidad de $2,500 MXN",
           "feature": "Todo lo del Plan Pymes, más...",
           "features": {
-            "feature-1": "Pagina web + tienda",
+            "feature-1": "Página web + tienda",
             "feature-2": "Control de clientes",
             "feature-3": "Administración de productos",
             "feature-4": "Integración de pasarelas de pago"

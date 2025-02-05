@@ -38,9 +38,9 @@ export default {
         foreground: '#F6F6F6',
         black: '#212529',
       },
-      screens: {
-        xs: '475px',
-      },
+    },
+    screens: {
+      xs: '475px',
     },
   },
   plugins: [],

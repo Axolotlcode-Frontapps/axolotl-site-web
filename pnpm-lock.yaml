@@ -47,12 +47,18 @@ importers:
       i18next:
         specifier: ^23.16.5
         version: 23.16.8
+      i18next-browser-languagedetector:
+        specifier: ^8.0.2
+        version: 8.0.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-i18next:
+        specifier: ^15.4.0
+        version: 15.4.0(i18next@23.16.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwindcss:
         specifier: ^3.4.15
         version: 3.4.17
@@ -1720,6 +1726,9 @@ packages:
   html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
 
+  html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
 
@@ -1737,6 +1746,9 @@ packages:
 
   i18next-browser-languagedetector@7.2.2:
     resolution: {integrity: sha512-6b7r75uIJDWCcCflmbof+sJ94k9UQO4X0YR62oUfqGI/GjCLVzlCwu8TFdRZIqVLzWbzNcmkmhfqKEr4TLz4HQ==}
+
+  i18next-browser-languagedetector@8.0.2:
+    resolution: {integrity: sha512-shBvPmnIyZeD2VU5jVGIOWP7u9qNG3Lj7mpaiPFpbJ3LVfHZJvVzKR4v1Cb91wAOFpNw442N+LGPzHOHsten2g==}
 
   i18next-fs-backend@2.6.0:
     resolution: {integrity: sha512-3ZlhNoF9yxnM8pa8bWp5120/Ob6t4lVl1l/tbLmkml/ei3ud8IWySCHt2lrY5xWRlSU5D9IV2sm5bEbGuTqwTw==}
@@ -2403,6 +2415,19 @@ packages:
   react-fast-compare@2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
 
+  react-i18next@15.4.0:
+    resolution: {integrity: sha512-Py6UkX3zV08RTvL6ZANRoBh9sL/ne6rQq79XlkHEdd82cZr2H9usbWpUNVadJntIZP2pu3M2rL1CN+5rQYfYFw==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2896,6 +2921,10 @@ packages:
     peerDependenciesMeta:
       vite:
         optional: true
+
+  void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
 
   volar-service-css@0.0.62:
     resolution: {integrity: sha512-JwNyKsH3F8PuzZYuqPf+2e+4CTU8YoyUHEHVnoXNlrLe7wy9U3biomZ56llN69Ris7TTy/+DEX41yVxQpM4qvg==}
@@ -4876,6 +4905,10 @@ snapshots:
 
   html-escaper@3.0.3: {}
 
+  html-parse-stringify@3.0.1:
+    dependencies:
+      void-elements: 3.1.0
+
   html-void-elements@3.0.0: {}
 
   http-cache-semantics@4.1.1: {}
@@ -4885,6 +4918,10 @@ snapshots:
   husky@9.1.7: {}
 
   i18next-browser-languagedetector@7.2.2:
+    dependencies:
+      '@babel/runtime': 7.26.7
+
+  i18next-browser-languagedetector@8.0.2:
     dependencies:
       '@babel/runtime': 7.26.7
 
@@ -5673,6 +5710,15 @@ snapshots:
 
   react-fast-compare@2.0.4: {}
 
+  react-i18next@15.4.0(i18next@23.16.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.26.7
+      html-parse-stringify: 3.0.1
+      i18next: 23.16.8
+      react: 18.3.1
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
+
   react-is@16.13.1: {}
 
   react-refresh@0.14.2: {}
@@ -6204,6 +6250,8 @@ snapshots:
   vitefu@1.0.5(vite@6.0.11(jiti@1.21.7)(yaml@2.7.0)):
     optionalDependencies:
       vite: 6.0.11(jiti@1.21.7)(yaml@2.7.0)
+
+  void-elements@3.1.0: {}
 
   volar-service-css@0.0.62(@volar/language-service@2.4.11):
     dependencies:

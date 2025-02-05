@@ -1,3 +1,4 @@
+import i18n from '@/libs/i18n';
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -11,19 +12,22 @@ import TwitterIcon from '@/assets/icons/twitter.svg';
 interface Props {
   menu: { label: string; link: string }[];
   pathname: string;
+  language: string;
 }
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }
 
-export const Header: React.FC<Props> = ({ menu, pathname }) => {
+export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
+  i18n.changeLanguage(language);
+
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [buttonText, setButtonText] = useState('Menú');
+  const [buttonText, setButtonText] = useState(i18n.t('header.open'));
   const [axolotlImage, setAxolotlImage] = useState(
     isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
   );
@@ -33,7 +37,7 @@ export const Header: React.FC<Props> = ({ menu, pathname }) => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     setTimeout(() => {
-      setButtonText(isOpen ? 'Cerrar' : 'Menú');
+      setButtonText(isOpen ? i18n.t('header.close') : i18n.t('header.open'));
       setAxolotlImage(
         isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
       );
@@ -247,16 +251,16 @@ export const Header: React.FC<Props> = ({ menu, pathname }) => {
             <div className="w-full sm:w-auto py-8 px-4 sm:pl-10 lg:pl-20 flex-grow">
               <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
                 <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
-                  Ciudad de México
+                  {i18n.t('header.info.city')}
                 </span>
                 <span className="text-lg lg:text-xl font-light">
-                  Area metropolitana
+                  {i18n.t('header.info.locality')}
                 </span>
               </div>
 
               <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[26px]">
                 <span className="text-2xl lg:text-[32px] lg:leading-9 text-primary-500">
-                  Contacto
+                  {i18n.t('header.contact')}
                 </span>
                 <ul className="mb-[15px] text-lg lg:text-xl lg:leading-9 font-light">
                   <li>
@@ -277,7 +281,7 @@ export const Header: React.FC<Props> = ({ menu, pathname }) => {
 
               <div className="flex flex-col gap-y-[8px]">
                 <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
-                  Redes sociales
+                  {i18n.t('header.social.label')}
                 </span>
                 <ul className="flex gap-x-[15px] text-sm">
                   <li>
