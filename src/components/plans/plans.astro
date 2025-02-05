@@ -52,7 +52,7 @@ const plans = [
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-black relative z-20"
   >
-    <div class="text-center lg:text-left mb-12">
+    <div class="plan-info text-center lg:text-left mb-12">
       <span
         class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
       >
@@ -63,7 +63,9 @@ const plans = [
         set:html={t('plans.plans.title')}
       />
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px]">
+    <div
+      class="items grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px]"
+    >
       {
         plans.map((plan, index) => (
           <Plan
@@ -76,3 +78,61 @@ const plans = [
   </div>
   <PlansIcon className="hidden lg:block absolute -bottom-40 -left-60 z-10" />
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const planInfo = document.querySelector('.plan-info');
+  const planItems = document.querySelectorAll('.items > *');
+
+  gsap.set(planInfo, {
+    opacity: 0,
+    x: -500,
+  });
+
+  gsap.set(planItems, {
+    opacity: 0,
+    y: 100,
+  });
+
+  ScrollTrigger.create({
+    trigger: '.plan-info',
+    start: 'top 80%',
+
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(planInfo, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+
+      gsap.to(planItems, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(planInfo, {
+        opacity: 0,
+        x: -500,
+        duration: 1,
+        ease: 'power4.out',
+      });
+
+      gsap.to(planItems, {
+        opacity: 0,
+        y: 100,
+        duration: 0.8,
+        ease: 'power4.out',
+      });
+    },
+  });
+</script>

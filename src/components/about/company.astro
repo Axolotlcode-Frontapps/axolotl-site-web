@@ -99,28 +99,49 @@ const company = [
     x: 500,
   });
 
-  ScrollTrigger.batch(image, {
-    onEnter: (elements) => {
-      gsap.to(elements, {
+  ScrollTrigger.create({
+    trigger: image,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(image, {
         opacity: 1,
         duration: 2,
-        stagger: 0.2,
         ease: 'power4.out',
       });
     },
-    start: 'top 60%',
+    onLeaveBack: () => {
+      gsap.to(image, {
+        opacity: 0,
+        duration: 2,
+        ease: 'power4.out',
+      });
+    },
   });
 
-  ScrollTrigger.batch(elements, {
-    onEnter: (elements) => {
-      gsap.to(elements, {
-        opacity: 1,
-        x: 0,
-        duration: 2,
-        stagger: 0.4,
-        ease: 'power4.out',
-      });
-    },
-    start: 'top 60%',
+  elements.forEach((card, index) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 60%',
+      toggleActions: 'play none none reverse',
+      onEnter: () => {
+        gsap.to(card, {
+          opacity: 1,
+          x: 0,
+          duration: 2,
+          delay: index * 0.4,
+          ease: 'power4.out',
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(card, {
+          opacity: 0,
+          x: 500,
+          duration: 2,
+          ease: 'power4.out',
+        });
+      },
+    });
   });
 </script>

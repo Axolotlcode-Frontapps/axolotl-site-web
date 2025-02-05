@@ -54,7 +54,9 @@ const services: {
 ---
 
 <section class="bg-foreground">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+  <div
+    class="services max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
+  >
     <span class="text-base lg:text-2xl leading-5 lg:leading-7 text-primary-500"
       >{t('plans.services.span')}</span
     >
@@ -62,7 +64,9 @@ const services: {
       class="text-[28px] lg:text-[40px] leading-8 lg:leading-[48px] font-bold mt-4 mb-10"
       set:html={t('plans.services.title')}
     />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+    <div
+      class="items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
+    >
       {
         services.map(async ({ title, description, icon, alt, loading }) => {
           const { default: image } = await icon();
@@ -81,3 +85,64 @@ const services: {
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const span = document.querySelector('.services > span');
+  const title = document.querySelector('.services > h2');
+  const serviceItems = document.querySelectorAll('.services .items > *');
+
+  gsap.set([span, title], {
+    opacity: 0,
+    y: 50,
+    force3D: true,
+  });
+
+  gsap.set(serviceItems, {
+    opacity: 0,
+    y: 100,
+    force3D: true,
+  });
+
+  ScrollTrigger.create({
+    trigger: '.services',
+    start: 'top 80%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(span, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+
+      gsap.to(title, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+
+      gsap.to(serviceItems, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to([span, title, serviceItems], {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+    },
+  });
+</script>

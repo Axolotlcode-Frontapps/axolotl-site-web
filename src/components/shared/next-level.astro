@@ -28,7 +28,7 @@ const currentPathname = Astro.url.pathname;
       >
         <a
           href="/"
-          class="py-1 px-2 rounded-[5px] border border-primary-500 bg-primary-500 text-primary-50"
+          class="py-1 px-2 rounded-[5px] border border-primary-500 bg-primary-500 text-primary-50 hover:bg-primary-600 transition-colors"
         >
           {t('next-level.contact')}
         </a>
@@ -36,7 +36,7 @@ const currentPathname = Astro.url.pathname;
           currentPathname === '/plans' && (
             <a
               href="/"
-              class="py-1 px-2 rounded-[5px] border border-primary-500 text-primary-500"
+              class="py-1 px-2 rounded-[5px] border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors"
             >
               {t('next-level.plan')}
             </a>
@@ -59,20 +59,56 @@ const currentPathname = Astro.url.pathname;
   gsap.registerPlugin(ScrollTrigger);
 
   const article = document.querySelector('.article');
+  const articleElements = article?.querySelectorAll('span, p, div');
 
-  gsap.set(article, {
-    opacity: 0,
-  });
+  if (article && articleElements?.length) {
+    gsap.set(article, {
+      opacity: 0,
+    });
 
-  ScrollTrigger.batch(article, {
-    onEnter: (elements) => {
-      gsap.to(elements, {
+    gsap.set(articleElements, {
+      opacity: 0,
+      y: 50,
+    });
+  }
+
+  ScrollTrigger.create({
+    trigger: article,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(article, {
         opacity: 1,
         duration: 2,
-        stagger: 0.2,
         ease: 'power4.out',
       });
+
+      if (articleElements) {
+        gsap.to(articleElements, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      }
     },
-    start: 'top 60%',
+    onLeaveBack: () => {
+      gsap.to(article, {
+        opacity: 0,
+        duration: 2,
+        ease: 'power4.out',
+      });
+
+      if (articleElements) {
+        gsap.to(articleElements, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: 'power2.out',
+        });
+      }
+    },
   });
 </script>

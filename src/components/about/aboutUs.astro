@@ -51,16 +51,48 @@ import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
     x: (index) => (index === 0 ? 500 : -500),
   });
 
-  ScrollTrigger.batch([info, image], {
-    onEnter: (elements) => {
-      gsap.to(elements, {
+  ScrollTrigger.create({
+    trigger: info,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(info, {
         opacity: 1,
         x: 0,
         duration: 1,
-        stagger: 0.2,
         ease: 'power4.out',
       });
     },
+    onLeaveBack: () => {
+      gsap.to(info, {
+        opacity: 0,
+        x: -500,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: image,
     start: 'top 60%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(image, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(image, {
+        opacity: 0,
+        x: 500,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
   });
 </script>

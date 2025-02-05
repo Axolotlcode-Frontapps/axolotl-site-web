@@ -126,6 +126,7 @@ const timeSteps = [
 
   gsap.set([span, title], {
     opacity: 0,
+    y: 50,
   });
 
   gsap.set(line, {
@@ -137,9 +138,13 @@ const timeSteps = [
     y: 50,
   });
 
-  ScrollTrigger.batch([span, title], {
-    onEnter: (elements) => {
-      gsap.to(elements, {
+  ScrollTrigger.create({
+    trigger: '.timeline',
+    start: 'top 80%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to([span, title], {
         opacity: 1,
         y: 0,
         duration: 1,
@@ -147,15 +152,31 @@ const timeSteps = [
         ease: 'power4.out',
       });
     },
-    start: 'top 80%',
+    onLeaveBack: () => {
+      gsap.to([span, title], {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
   });
 
   ScrollTrigger.create({
     trigger: line,
     start: 'top bottom',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
     onEnter: () => {
       gsap.to(line, {
         opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(line, {
+        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });
@@ -166,10 +187,19 @@ const timeSteps = [
     ScrollTrigger.create({
       trigger: step,
       start: 'top 80%',
+      toggleActions: 'play none none reverse',
       onEnter: () => {
         gsap.to(step, {
           opacity: 1,
           y: 0,
+          duration: 1,
+          ease: 'power4.out',
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(step, {
+          opacity: 0,
+          y: 50,
           duration: 1,
           ease: 'power4.out',
         });
