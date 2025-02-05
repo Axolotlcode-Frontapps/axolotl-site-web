@@ -1,0 +1,58 @@
+---
+interface Props {
+  span: string;
+  title: string;
+  subtitle?: string;
+  feature?: string;
+  features: string[];
+  className?: string;
+}
+
+const { span, title, subtitle, feature, features, className } = Astro.props;
+---
+
+<article
+  class:list={[
+    'px-12 py-8 shadow-lg rounded-lg flex flex-col justify-between',
+    className,
+  ]}
+>
+  <div class="w-full">
+    <div class="mb-10">
+      <span class="text-xl leading-6 lg:text-[28px] lg:leading-8">{span}</span>
+      <div class="h-[1px] bg-black w-[110px] my-2.5"></div>
+      <h3
+        class="font-bold text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] mb-2.5"
+      >
+        {title}
+      </h3>
+      {
+        subtitle && (
+          <p class="text-base lg:text-2xl leading-5 lg:left-7">{subtitle}</p>
+        )
+      }
+    </div>
+    {
+      feature && (
+        <span class="text-primary-500 text-sm lg:text-base leading-6 lg:leading-7">
+          {feature}
+        </span>
+      )
+    }
+    <ul class="list-disc mb-20">
+      {
+        features.map((feature) => (
+          <li class="ml-5 text-sm lg:text-base leading-6 lg:leading-7">
+            {feature}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <a
+    href="/contacto"
+    class="inline-block w-full text-center border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors rounded-[5px] text-sm lg:text-base leading-6 lg:leading-7"
+  >
+    ¡Contáctanos!
+  </a>
+</article>

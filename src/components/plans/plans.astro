@@ -1,0 +1,138 @@
+---
+import { t } from 'i18next';
+import Plan from './plan.astro';
+import PlansIcon from '@/assets/icons/plans.astro';
+
+const plans = [
+  {
+    span: t('plans.plans.items.plan-1.span'),
+    title: t('plans.plans.items.plan-1.title'),
+    subtitle: t('plans.plans.items.plan-1.subtitle'),
+    // feature: t('plans.plans.items.plan-1.feature'),
+    features: [
+      t('plans.plans.items.plan-1.features.feature-1'),
+      t('plans.plans.items.plan-1.features.feature-2'),
+      t('plans.plans.items.plan-1.features.feature-3'),
+      t('plans.plans.items.plan-1.features.feature-4'),
+    ],
+  },
+  {
+    span: t('plans.plans.items.plan-2.span'),
+    title: t('plans.plans.items.plan-2.title'),
+    subtitle: t('plans.plans.items.plan-2.subtitle'),
+    feature: t('plans.plans.items.plan-2.feature'),
+    features: [
+      t('plans.plans.items.plan-2.features.feature-1'),
+      t('plans.plans.items.plan-2.features.feature-2'),
+      t('plans.plans.items.plan-2.features.feature-3'),
+      t('plans.plans.items.plan-2.features.feature-4'),
+    ],
+  },
+  {
+    span: t('plans.plans.items.plan-3.span'),
+    title: t('plans.plans.items.plan-3.title'),
+    subtitle: t('plans.plans.items.plan-3.subtitle'),
+    feature: t('plans.plans.items.plan-3.feature'),
+    features: [
+      t('plans.plans.items.plan-3.features.feature-1'),
+      t('plans.plans.items.plan-3.features.feature-2'),
+      t('plans.plans.items.plan-3.features.feature-3'),
+      t('plans.plans.items.plan-3.features.feature-4'),
+    ],
+  },
+  {
+    span: t('plans.plans.items.plan-4.span'),
+    title: t('plans.plans.items.plan-4.title'),
+    features: [t('plans.plans.items.plan-4.features.feature-1')],
+  },
+];
+---
+
+<section class="relative">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-black relative z-20"
+  >
+    <div class="plan-info text-center lg:text-left mb-12">
+      <span
+        class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
+      >
+        {t('plans.plans.span')}
+      </span>
+      <h2
+        class="mt-4 text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] font-bold"
+        set:html={t('plans.plans.title')}
+      />
+    </div>
+    <div
+      class="items grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px]"
+    >
+      {
+        plans.map((plan, index) => (
+          <Plan
+            {...plan}
+            className={index === plans.length - 1 ? 'xl:col-span-3' : ''}
+          />
+        ))
+      }
+    </div>
+  </div>
+  <PlansIcon className="hidden lg:block absolute -bottom-40 -left-60 z-10" />
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const planInfo = document.querySelector('.plan-info');
+  const planItems = document.querySelectorAll('.items > *');
+
+  gsap.set(planInfo, {
+    opacity: 0,
+    x: -500,
+  });
+
+  gsap.set(planItems, {
+    opacity: 0,
+    y: 100,
+  });
+
+  ScrollTrigger.create({
+    trigger: '.plan-info',
+    start: 'top 80%',
+
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(planInfo, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+
+      gsap.to(planItems, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(planInfo, {
+        opacity: 0,
+        x: -500,
+        duration: 1,
+        ease: 'power4.out',
+      });
+
+      gsap.to(planItems, {
+        opacity: 0,
+        y: 100,
+        duration: 0.8,
+        ease: 'power4.out',
+      });
+    },
+  });
+</script>

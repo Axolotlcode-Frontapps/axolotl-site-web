@@ -1,0 +1,45 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<svg
+  width="410"
+  height="891"
+  viewBox="0 0 410 891"
+  fill="none"
+  class:list={['w-full h-full md:w-auto', className]}
+>
+  <g filter="url(#filter0_f_4166_7607)">
+    <circle
+      cx="-35.4834"
+      cy="445.517"
+      r="244.883"
+      transform="rotate(-30 -35.4834 445.517)"
+      fill="#FEECF0"></circle>
+  </g>
+  <defs>
+    <filter
+      id="filter0_f_4166_7607"
+      x="-480.407"
+      y="0.592773"
+      width="889.848"
+      height="889.848"
+      filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB"
+    >
+      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+      <feBlend
+        mode="normal"
+        in="SourceGraphic"
+        in2="BackgroundImageFix"
+        result="shape"></feBlend>
+      <feGaussianBlur
+        stdDeviation="100"
+        result="effect1_foregroundBlur_4166_7607"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>

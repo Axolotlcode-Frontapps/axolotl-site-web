@@ -43,7 +43,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-[90vh] w-full xl:py-5 xl:px-14 sm:pt-10 md:pt-10 lg:pt-8 xl:pt-6 pt-14 flex justify-center items-center">
+    <div className="min-h-dvh w-full xl:py-5 xl:px-14 sm:pt-10 md:pt-10 lg:pt-8 xl:pt-6 pt-14 flex justify-center items-center">
       <div className=" max-w-[1200px] w-full flex flex-row justify-center items-center  px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-12">
           <div className="text-section w-full space-y-6 md:space-y-8">

@@ -1,8 +1,12 @@
-import type { AstroI18nextConfig } from 'node_modules/astro-i18next/dist/types';
-
-const config: AstroI18nextConfig = {
-  defaultLocale: 'es',
-  locales: ['es', 'en'],
+export default {
+  defaultLanguage: 'es',
+  supportedLanguages: ['es', 'en'],
+  i18next: {
+    debug: true, // Opcional
+    initImmediate: false,
+    backend: {
+      loadPath: './public/locales/{{lng}}/{{ns}}.json',
+    },
+  },
+  i18nextPlugins: { fsBackend: 'i18next-fs-backend' },
 };
-
-export default config;

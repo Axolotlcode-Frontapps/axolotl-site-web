@@ -1,0 +1,30 @@
+---
+import Background from '@/assets/icons/services/background.astro';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: ImageMetadata;
+  alt: string;
+  loading: 'lazy' | 'eager';
+}
+
+const { title, description, icon, alt, loading } = Astro.props;
+---
+
+<article class="p-8 rounded-lg shadow-lg relative w-full">
+  <div class="flex items-start gap-6 backdrop-blur-lg relative z-10">
+    <Image {loading} src={icon} alt={alt} />
+    <div>
+      <span class="text-xl xl:text-2xl leading-6 xl:leading-7 font-bold"
+        >{title}</span
+      >
+      <p class="text-sm xl:text-base leading-[26px] xl:leading-7 mt-6">
+        {description}
+      </p>
+    </div>
+  </div>
+  <Background />
+</article>

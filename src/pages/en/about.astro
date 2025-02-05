@@ -1,0 +1,26 @@
+---
+import { t, changeLanguage } from 'i18next';
+import HeroBg from '@/assets/images/about-us-hero.png';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/shared/hero.astro';
+import AboutUs from '@/components/about/aboutUs.astro';
+import Company from '@/components/about/company.astro';
+import NextLevel from '@/components/shared/next-level.astro';
+import Timeline from '@/components/about/timeline.astro';
+
+changeLanguage('en');
+
+const hero = {
+  title: t('about.hero.title'),
+  description: t('about.hero.description'),
+  image: HeroBg,
+};
+---
+
+<Layout title={t('home.title')}>
+  <Hero title={hero.title} description={hero.description} image={hero.image} />
+  <AboutUs />
+  <Company />
+  <Timeline />
+  <NextLevel />
+</Layout>

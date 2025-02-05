@@ -1,16 +1,33 @@
 ---
+import i18next, { t } from 'i18next';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
-import { menu } from '@/utils/mockups';
-
-import i18next from 'i18next';
 
 interface Props {
   title: string;
 }
 
-const { title } = Astro.props as Props;
+const { title } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const language = i18next.language;
+
+const menu = [
+  { label: t('header.home'), link: language !== 'es' ? `/${language}/` : '/' },
+  {
+    label: t('header.about-us'),
+    link: language !== 'es' ? `/${language}/about` : '/about',
+  },
+  {
+    label: t('header.services'),
+    link: language !== 'es' ? `/${language}/plans` : '/plans',
+  },
+  {
+    label: t('header.contact'),
+    link: language !== 'es' ? `/${language}/contact` : '/contact',
+  },
+];
 ---
 
 <!doctype html>
@@ -24,8 +41,8 @@ const { title } = Astro.props as Props;
     <title>{title}</title>
   </head>
   <body>
-    <Header menu={menu} client:load />
-    <main>
+    <Header menu={menu} {pathname} {language} client:load />
+    <main class="min-h-screen">
       <slot />
     </main>
     <Footer menu={menu} />
