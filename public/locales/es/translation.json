@@ -1,8 +1,88 @@
 {
   "home": {
     "title-page": "Axolotl Code - Desarrollo de software y soluciones digitales",
-    "title": "Bienvenido a React y react-i18next",
-    "description": "Edita <code>src/App.js</code> y guarda para recargar."
+    "hero": {
+      "title": "Desarrollo de soluciones tecnológicas a tu medida",
+      "description": "En Axolotl Code transformamos ideas en realidades digitales. Creamos aplicaciones innovadoras, seguras y personalizadas que impulsan tu negocio hacia el éxito. Con tecnologías de vanguardia y un enfoque en calidad, somos tu aliado estratégico en la transformación digital.",
+      "button": "Conocer más",
+      "contact": "Contacto"
+    },
+    "news": {
+      "span": "Novedades",
+      "title": "¿Qué ofrecemos?",
+      "items": {
+        "new-1": {
+          "title": "Desarrollo de software",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Desarrollo de software"
+        },
+        "new-2": {
+          "title": "Consultorías",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Consultorías"
+        },
+        "new-3": {
+          "title": "Profesionales a tu disposición",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Profesionales a tu disposición"
+        },
+        "new-4": {
+          "title": "Desarrollo a la medida",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Desarrollo de software"
+        },
+        "new-5": {
+          "title": "Soporte técnico",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Consultorías"
+        },
+        "new-6": {
+          "title": "Incubadora",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Profesionales a tu disposición"
+        }
+      }
+    },
+    "testimonials": {
+      "span": "Testimonios",
+      "title": "Los <span clas='text-secundary-500'>clientes</span> han dicho esto acerca de nosotros",
+      "description": "Estamos tan seguros de nuestros trabajo y de la calidad que tienen, que compartimos los comentarios de nuestros clientes. A continuación, verás algunos comentarios de nuestros clientes y su calificación a nuestro servicio. ¡Convencete por los comentarios de nuestros clientes!",
+      "testimonial": {
+        "name": "Mario Diaz",
+        "job": "Director de DGS",
+        "comment": "'Son un personal muy profesional, me ayudaron a crear el sistema que necesitaba, los recomiendo.'"
+      }
+    },
+    "why": {
+      "span": "¿Por qué AxolotlCode?",
+      "title": "En Axolotl Code construimos <span class='text-secundary-500'>más que software</span>",
+      "description": "Creamos soluciones que impulsan tu negocio hacia el éxito. Nuestro equipo de expertos combina innovación, calidad y compromiso para desarrollar herramientas tecnológicas personalizadas que se adaptan a tus necesidades.",
+      "dots": {
+        "dot-1": {
+          "title": "Innovación constante",
+          "description": "Utilizamos tecnologías de vanguardia"
+        },
+        "dot-2": {
+          "title": "Seguridad garantizada",
+          "description": "Protegemos tus datos y proyectos"
+        },
+        "dot-3": {
+          "title": "Resultados tangibles",
+          "description": "Diseñamos soluciones orientadas al éxito"
+        }
+      },
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "location": "Ubicación",
+      "city": "Ciudad de México",
+      "locality": "Área metropolitana"
+    },
+    "contact": {
+      "span": "Contáctanos",
+      "title": "¿Tienes algún <span class='text-secundary-500'>proyecto</span> en mente?",
+      "description": "¡Nosotros podemos ayudarte! Abarcamos gran parte de la Ciudad de México y alrededores.",
+      "button": "Envíar mensaje"
+    }
   },
   "header": {
     "open": "Menú",
@@ -183,6 +263,57 @@
             "feature-1": "Consultoría personalizada"
           }
         }
+      }
+    }
+  },
+  "contact": {
+    "title-page": "Contacto - Axolotl Code",
+    "hero": {
+      "title": "Contacto y Preguntas Frecuentes",
+      "description": "Tienes dudas o necesitas más información sobre nuestros servicios? Contáctanos o consulta nuestra sección de preguntas frecuentes. Estamos comprometidos en brindarte respuestas claras y rápidas para que tengas la mejor experiencia con nosotros."
+    },
+    "faqs": {
+      "span": "Dudas de nuestros usuarios",
+      "title": "Preguntas más <span class='text-secondary-500'>frecuentes</span>",
+      "who-us": {
+        "title": "¿Quiénes somos?",
+        "description": "Somos Axolotl Code, una empresa de desarrollo de software y soluciones digitales. Nuestro equipo de expertos combina innovación, calidad y compromiso para desarrollar herramientas tecnológicas personalizadas que se adaptan a tus necesidades."
+      },
+      "questions": {
+        "question-1": {
+          "title": "¿Cuál es tu propuesta empresarial?",
+          "description": "Respuesta"
+        },
+        "question-2": {
+          "title": "¿Que diferencia tu producto o servicio a la competencia?",
+          "description": "Respuesta"
+        },
+        "question-3": {
+          "title": "¿Qué compromiso tienes para hacer lo que hay que hacer?",
+          "description": "Respuesta"
+        },
+        "question-4": {
+          "title": "¿Qué poder tienen tus clientes?",
+          "description": "Respuesta"
+        }
+      }
+    },
+    "contact": {
+      "span": "Contáctanos",
+      "title": "¿Tienes algún <span class='text-secondary-500'>proyecto</span> en mente?",
+      "description": "¡Nosotros podemos ayudarte! Abarcamos gran parte de la Ciudad de México y alrededores.",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "location": "Ubicación",
+      "city": "Ciudad de México",
+      "locality": "Área metropolitana",
+      "form": {
+        "name": "Nombres",
+        "lastname": "Apellidos",
+        "email": "Correo electrónico",
+        "phone": "Número de teléfono",
+        "message": "Mensaje",
+        "button": "Enviar mensaje"
       }
     }
   },

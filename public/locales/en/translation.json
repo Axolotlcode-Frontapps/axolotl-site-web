@@ -1,7 +1,82 @@
 {
   "home": {
     "title": "Welcome to React and react-i18next",
-    "description": "Edit <code>src/App.js</code> and save to reload."
+    "description": "Edit <code>src/App.js</code> and save to reload.",
+    "title-page": "Axolotl Code - Software Development and Digital Solutions",
+    "hero": {
+      "title": "Custom Technology Solutions Development",
+      "description": "At Axolotl Code, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success. With cutting-edge technologies and a focus on quality, we are your strategic partner in digital transformation.",
+      "button": "Learn More",
+      "contact": "Contact"
+    },
+    "news": {
+      "span": "News",
+      "title": "What do we offer?",
+      "items": {
+        "new-1": {
+          "title": "Software Development",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Software Development"
+        },
+        "new-2": {
+          "title": "Consulting",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Consulting"
+        },
+        "new-3": {
+          "title": "Professionals at Your Disposal",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Professionals at Your Disposal"
+        },
+        "new-4": {
+          "title": "Custom Development",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Software Development"
+        },
+        "new-5": {
+          "title": "Technical Support",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Consulting"
+        },
+        "new-6": {
+          "title": "Incubator",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "alt": "Professionals at Your Disposal"
+        }
+      }
+    },
+    "testimonials": {
+      "span": "Testimonials",
+      "title": "What our <span class='text-secundary-500'>clients</span> say about us",
+      "description": "We are so confident in our work and its quality that we share our clients' feedback. Below, you'll see some comments from our clients and their rating of our service. Let our clients' comments convince you!",
+      "testimonial": {
+        "name": "Mario Diaz",
+        "job": "DGS Director",
+        "comment": "'They are very professional staff, they helped me create the system I needed, I recommend them.'"
+      }
+    },
+    "why": {
+      "span": "Why AxolotlCode?",
+      "title": "At Axolotl Code we build <span class='text-secundary-500'>more than software</span>",
+      "description": "We create solutions that drive your business toward success. Our expert team combines innovation, quality, and commitment to develop customized technological tools that adapt to your needs.",
+      "dots": {
+        "dot-1": {
+          "title": "Constant Innovation",
+          "description": "We use cutting-edge technologies"
+        },
+        "dot-2": {
+          "title": "Guaranteed Security",
+          "description": "We protect your data and projects"
+        },
+        "dot-3": {
+          "title": "Tangible Results",
+          "description": "We design success-oriented solutions"
+        }
+      },
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    }
   },
   "header": {
     "open": "Menu",
@@ -194,6 +269,57 @@
     },
     "contact": {
       "label": "Contact"
+    }
+  },
+  "contact": {
+    "title-page": "Contact - Axolotl Code",
+    "hero": {
+      "title": "Contact and Frequently Asked Questions",
+      "description": "Do you have questions or need more information about our services? Contact us or check our FAQ section. We are committed to providing clear and quick answers to ensure you have the best experience with us."
+    },
+    "faqs": {
+      "span": "User Questions",
+      "title": "Most <span class='text-secondary-500'>Frequent</span> Questions",
+      "who-us": {
+        "title": "Who are we?",
+        "description": "We are Axolotl Code, a software development and digital solutions company. Our expert team combines innovation, quality, and commitment to develop customized technological tools that adapt to your needs."
+      },
+      "questions": {
+        "question-1": {
+          "title": "What is your business proposal?",
+          "description": "Answer"
+        },
+        "question-2": {
+          "title": "What differentiates your product or service from the competition?",
+          "description": "Answer"
+        },
+        "question-3": {
+          "title": "What is your commitment to doing what needs to be done?",
+          "description": "Answer"
+        },
+        "question-4": {
+          "title": "What power do your clients have?",
+          "description": "Answer"
+        }
+      }
+    },
+    "contact": {
+      "span": "Contact Us",
+      "title": "Do you have a <span class='text-secondary-500'>project</span> in mind?",
+      "description": "We can help you! We cover much of Mexico City and surrounding areas.",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "city": "Mexico City",
+      "locality": "Metropolitan Area",
+      "form": {
+        "name": "First Name",
+        "lastname": "Last Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "message": "Message",
+        "button": "Send Message"
+      }
     }
   }
 }
