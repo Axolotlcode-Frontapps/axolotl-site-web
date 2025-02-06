@@ -75,7 +75,15 @@
       },
       "email": "Email",
       "phone": "Phone",
-      "location": "Location"
+      "location": "Location",
+      "city": "Mexico City",
+      "locality": "Metropolitan Area"
+    },
+    "contact": {
+      "span": "Contact Us",
+      "title": "Do you have a <span class='text-secondary-500'>project</span> in mind?",
+      "description": "We can help you! We cover much of Mexico City and surrounding areas.",
+      "button": "Send Message"
     }
   },
   "header": {
@@ -98,6 +106,7 @@
     }
   },
   "about": {
+    "title-page": "About Us - Axolotl Code",
     "hero": {
       "title": "About <span class='text-primary-200'>Us</span>",
       "description": "At Axolotl Code, our passion for innovation and digital development drives us to build solutions that transform ideas into technological realities. Discover who we are and how we can help you achieve your goals."
@@ -169,6 +178,7 @@
     "plan": "Our Plans"
   },
   "plans": {
+    "title-page": "Plans and Services - Axolotl Code",
     "hero": {
       "title": "Plans and <span class='text-primary-200'>Services</span>",
       "description": "Discover our solutions designed to adapt to your needs. We offer personalized services to take your projects to the next level, with flexible plans and options that adjust to each stage of your growth."
@@ -307,7 +317,11 @@
         "message": "Message",
         "button": "Send Message"
       }
-    }
+    },
+    "email-value": "support@axolotlcode.tech",
+    "phone-value": "+52 (55) 91 65 12 60",
+    "city": "Mexico City",
+    "locality": "Metropolitan Area"
   },
   "footer": {
     "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
