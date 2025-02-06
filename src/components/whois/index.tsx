@@ -35,7 +35,7 @@ export const WhoIs: FC = () => {
   ];
 
   return (
-    <div className="max-w-[1400px] mx-auto px-8 py-16">
+    <div className="max-w-[1400px] min-h-[70vh] mx-auto px-8 py-16 flex flex-col gap-16">
       <div className="w-full flex flex-col-reverse md:flex-row gap-4 xs:justify-center sm:justify-center md:justify-evenly lg:justify-evenly xl:justify-center xl:gap-20">
         {/* First Section - Grid */}
         <div className="flex flex-col items-center gap-4">

@@ -69,8 +69,18 @@ export const FAQs: FC = () => {
   };
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 relative">
-      <div className="fixed right-[-150px] top-20 w-[350px] h-[350px] rounded-full bg-gradient-to-r from-primary-500/50 to-transparent blur-[100px] -z-10" />
+    <div className="max-w-[1400px] min-h-[70vh] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 ">
+      <div
+        className="absolute inset-x-0 top-[calc(100%-30rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-10rem)]"
+        aria-hidden="true"
+      >
+        <div
+          className="relative left-[calc(70%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-primary-500 to-primary-800 opacity-30 sm:left-[calc(75%+25rem)] sm:w-[52.1875rem]"
+          style={{
+            clipPath: 'circle(50% at 50% 50%)',
+          }}
+        ></div>
+      </div>
       <div
         ref={titleRef}
         className="flex flex-col items-center text-center mb-2 sm:mb-4 lg:mb-8 opacity-0"

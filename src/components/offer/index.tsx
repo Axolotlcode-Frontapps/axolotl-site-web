@@ -53,7 +53,7 @@ export const Offer: FC = () => {
   };
 
   return (
-    <div className="max-w-[1400px] min-h-[90vh] mx-auto px-8 py-16 flex flex-col gap-16">
+    <div className="max-w-[1400px] min-h-[70vh] mx-auto px-8 py-16 flex flex-col gap-16">
       <div className="flex flex-col items-center text-center">
         <span className="text-2xl text-primary-500 mb-4">Novedades</span>
         <h2 className="text-5xl font-bold text-black">¿Que ofrecemos?</h2>

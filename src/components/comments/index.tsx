@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import start from '@/assets/icons/startYellow.svg';
 export const Comments: FC = () => {
   return (
-    <div className="max-w-[1400px] min-h-[80vh] flex flex-col justify-center items-center mx-auto px-8 py-16 ">
+    <div className="max-w-[1400px] min-h-[70vh] mx-auto px-8 py-16 flex flex-col gap-16 justify-center items-center ">
       <div className="flex flex-col md:flex-row gap-12 items-center justify-evenly">
         {/* Left Section */}
         <div className="flex flex-col space-y-6 md:w-1/2">
