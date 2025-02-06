@@ -77,7 +77,7 @@ export const Services: FC = () => {
       targets: titleRef.current,
       translateY: [-50, 0],
       opacity: [0, 1],
-      duration: 800,
+      duration: 2500,
       easing: 'easeOutExpo',
       complete: () => {
         // Start showing cards after title animation
@@ -95,7 +95,7 @@ export const Services: FC = () => {
   return (
     <div
       ref={containerRef}
-      className="max-w-[1400px] min-h-[80vh] mx-auto px-8 py-16 flex flex-col gap-16"
+      className="max-w-[1400px] min-h-[70vh] mx-auto px-8 py-16 flex flex-col gap-16"
     >
       <div
         ref={titleRef}

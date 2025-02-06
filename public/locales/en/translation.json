@@ -258,19 +258,6 @@
       }
     }
   },
-  "footer": {
-    "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
-    "menu": {
-      "label": "Menu",
-      "home": "Home",
-      "about-us": "About Us",
-      "services": "Plans and Services",
-      "contact": "Contact"
-    },
-    "contact": {
-      "label": "Contact"
-    }
-  },
   "contact": {
     "title-page": "Contact - Axolotl Code",
     "hero": {
@@ -320,6 +307,19 @@
         "message": "Message",
         "button": "Send Message"
       }
+    }
+  },
+  "footer": {
+    "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
+    "menu": {
+      "label": "Menu",
+      "home": "Home",
+      "about-us": "About Us",
+      "services": "Plans and Services",
+      "contact": "Contact"
+    },
+    "contact": {
+      "label": "Contact"
     }
   }
 }

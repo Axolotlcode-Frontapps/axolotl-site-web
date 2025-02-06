@@ -26,8 +26,8 @@ export const ServiceCard: FC<ServiceCardProps> = ({
       anime({
         targets: cardRef.current,
         opacity: [0, 1],
-        duration: 800,
-        delay: 100,
+        duration: 400,
+        delay: 70,
         easing: 'easeInOutQuad',
         complete: onAnimationComplete,
       });

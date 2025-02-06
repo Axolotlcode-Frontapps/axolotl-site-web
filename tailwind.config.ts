@@ -39,9 +39,6 @@ export default {
         black: '#212529',
       },
     },
-    screens: {
-      xs: '475px',
-    },
   },
   plugins: [],
 } satisfies Config;
