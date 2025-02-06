@@ -1,5 +1,6 @@
 {
   "home": {
+    "title-page": "Axolotl Code - Desarrollo de software y soluciones digitales",
     "title": "Bienvenido a React y react-i18next",
     "description": "Edita <code>src/App.js</code> y guarda para recargar."
   },
@@ -23,6 +24,7 @@
     }
   },
   "about": {
+    "title-page": "Sobre nosotros - Axolotl Code",
     "hero": {
       "title": "Sobre <span class='text-primary-200'>nosotros</span>",
       "description": "En Axolotl Code, nuestra pasión por la innovación y el desarrollo digital nos impulsa a construir soluciones que transforman ideas en realidades tecnológicas. Descubre quiénes somos y cómo podemos ayudarte a alcanzar tus objetivos."
@@ -94,6 +96,7 @@
     "plan": "Nuestros planes"
   },
   "plans": {
+    "title-page": "Planes y servicios - Axolotl Code",
     "hero": {
       "title": "Planes y <span class='text-primary-200'>servicios</span>",
       "description": "Descubre nuestras soluciones diseñadas para adaptarse a tus necesidades. Ofrecemos servicios personalizados para llevar tus proyectos al siguiente nivel, con planes flexibles y opciones que se ajustan a cada etapa de tu crecimiento."

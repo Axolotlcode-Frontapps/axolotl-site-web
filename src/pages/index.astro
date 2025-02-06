@@ -6,10 +6,11 @@ import { Offer } from '@/components/offer';
 import { Comments } from '@/components/comments';
 import { WhoIs } from '@/components/whois';
 import { ContactHome } from '@/components/contactHome';
-changeLanguage('en');
+
+changeLanguage('es');
 ---
 
-<Layout title={t('home.title')}>
+<Layout title={t('home.title-page')}>
   <Home client:load client:only="react" />
   <Offer client:visible />
   <Comments client:visible />
