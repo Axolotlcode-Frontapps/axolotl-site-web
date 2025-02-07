@@ -1,7 +1,7 @@
-import i18n from '@/libs/i18n';
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 
 import AxolotlPink from '@/assets/images/shared/axolotl-pink.png';
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
@@ -11,25 +11,23 @@ import TwitterIcon from '@/assets/icons/twitter.svg';
 
 interface Props {
   menu: { label: string; link: string }[];
-  pathname: string;
-  language: string;
+  isHomePage: boolean;
 }
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }
 
-export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
-  i18n.changeLanguage(language);
-
+export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
+  const { t } = useTranslation();
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [buttonText, setButtonText] = useState(i18n.t('header.open'));
+  const [buttonText, setButtonText] = useState(t('header.open'));
   const [axolotlImage, setAxolotlImage] = useState(
-    isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
+    isOpen || isHomePage ? AxolotlPink.src : AxolotlWhite.src
   );
   const [color, setColor] = useState('text-white');
   const [fillColor, setFillColor] = useState('fill-white');
@@ -37,16 +35,14 @@ export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     setTimeout(() => {
-      setButtonText(isOpen ? i18n.t('header.close') : i18n.t('header.open'));
+      setButtonText(isOpen ? t('header.close') : t('header.open'));
       setAxolotlImage(
-        isOpen || pathname === '/' ? AxolotlPink.src : AxolotlWhite.src
+        isOpen || isHomePage ? AxolotlPink.src : AxolotlWhite.src
       );
-      setColor(isOpen || pathname === '/' ? 'text-body-color' : 'text-white');
-      setFillColor(
-        isOpen || pathname === '/' ? 'fill-body-color' : 'fill-white'
-      );
+      setColor(isOpen || isHomePage ? 'text-body-color' : 'text-white');
+      setFillColor(isOpen || isHomePage ? 'fill-body-color' : 'fill-white');
     }, 1000);
-  }, [isOpen, pathname]);
+  }, [isOpen, isHomePage]);
 
   useEffect(() => {
     const elements = {
@@ -228,7 +224,7 @@ export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
           <HeaderSection />
           <div
             ref={contentRef}
-            className="h-[calc(100%-115px)] pt-[115px] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            className="h-dvh pt-[115px] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
           >
             <nav className="w-full sm:w-auto h-fit py-8 px-4 flex-grow">
               <ol className="flex flex-col gap-y-[30px] lg:gap-y-[70px]">
@@ -251,16 +247,16 @@ export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
             <div className="w-full sm:w-auto py-8 px-4 sm:pl-10 lg:pl-20 flex-grow">
               <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
                 <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
-                  {i18n.t('header.info.city')}
+                  {t('header.info.city')}
                 </span>
                 <span className="text-lg lg:text-xl font-light">
-                  {i18n.t('header.info.locality')}
+                  {t('header.info.locality')}
                 </span>
               </div>
 
               <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[26px]">
                 <span className="text-2xl lg:text-[32px] lg:leading-9 text-primary-500">
-                  {i18n.t('header.contact')}
+                  {t('header.contact')}
                 </span>
                 <ul className="mb-[15px] text-lg lg:text-xl lg:leading-9 font-light">
                   <li>
@@ -268,12 +264,12 @@ export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
                       href="mailto:soporte@axolotlcode.tech"
                       className="hover:underline"
                     >
-                      soporte@axolotlcode.tech
+                      {t('contact.email-value')}
                     </a>
                   </li>
                   <li>
                     <a href="tel:+525591651260" className="hover:underline">
-                      +(55) 91 65 12 60
+                      {t('contact.phone-value')}
                     </a>
                   </li>
                 </ul>
@@ -281,7 +277,7 @@ export const Header: React.FC<Props> = ({ menu, pathname, language }) => {
 
               <div className="flex flex-col gap-y-[8px]">
                 <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
-                  {i18n.t('header.social.label')}
+                  {t('header.social.label')}
                 </span>
                 <ul className="flex gap-x-[15px] text-sm">
                   <li>

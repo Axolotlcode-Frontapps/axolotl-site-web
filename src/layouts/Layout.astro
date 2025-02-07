@@ -3,6 +3,7 @@ import i18next, { t } from 'i18next';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
+import { I18nProvider } from '@/components/shared/i18n-provider';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ interface Props {
 
 const { title } = Astro.props;
 
-const pathname = Astro.url.pathname;
+const isHomePage = Astro.routePattern === '/' || Astro.routePattern === '/en';
 const language = i18next.language;
 
 const menu = [
@@ -50,7 +51,9 @@ const menu = [
     <title>{title}</title>
   </head>
   <body>
-    <Header menu={menu} {pathname} {language} client:load />
+    <I18nProvider client:load initialLang={language}>
+      <Header menu={menu} {isHomePage} client:load />
+    </I18nProvider>
     <main class="min-h-screen">
       <slot />
     </main>

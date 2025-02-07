@@ -2,10 +2,14 @@
 import { t } from 'i18next';
 import { Image } from 'astro:assets';
 import { ContactForm } from '@/components/contact/contactForm';
+import { I18nProvider } from '../shared/i18n-provider';
 
 import LocationIcon from '@/assets/icons/pin.svg';
 import CallIcon from '@/assets/icons/call.svg';
 import EmailIcon from '@/assets/icons/email.svg';
+import i18next from 'i18next';
+
+const language = i18next.language;
 ---
 
 <section class="text-body-color">
@@ -82,7 +86,9 @@ import EmailIcon from '@/assets/icons/email.svg';
       </div>
 
       <div class="w-full col-span-1 sm:col-span-2">
-        <ContactForm client:visible />
+        <I18nProvider client:visible initialLang={language}>
+          <ContactForm client:visible />
+        </I18nProvider>
       </div>
     </div>
     <div

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { useState } from 'react';
-import i18n from '@/libs/i18n';
+import { useTranslation } from 'react-i18next';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
@@ -13,6 +13,7 @@ const contactSchema = z.object({
 type ContactForm = z.infer<typeof contactSchema>;
 
 export const ContactForm: React.FC = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
     lastName: '',
@@ -22,12 +23,12 @@ export const ContactForm: React.FC = () => {
   });
 
   const text = {
-    name: i18n.t('contact.contact.form.name'),
-    lastName: i18n.t('contact.contact.form.lastname'),
-    email: i18n.t('contact.contact.form.email'),
-    phone: i18n.t('contact.contact.form.phone'),
-    message: i18n.t('contact.contact.form.message'),
-    send: i18n.t('contact.contact.form.button'),
+    name: t('contact.contact.form.name'),
+    lastName: t('contact.contact.form.lastname'),
+    email: t('contact.contact.form.email'),
+    phone: t('contact.contact.form.phone'),
+    message: t('contact.contact.form.message'),
+    send: t('contact.contact.form.button'),
   };
 
   const [errors, setErrors] = useState<Partial<ContactForm>>({});
@@ -109,7 +110,7 @@ export const ContactForm: React.FC = () => {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
-            {i18n.t('contact.contact.form.name')} *
+            {t('contact.contact.form.name')} *
           </label>
           <input
             type="text"
