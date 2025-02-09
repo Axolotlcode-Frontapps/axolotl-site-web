@@ -10,7 +10,7 @@
     "astro": "astro",
     "prepare": "husky",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix --ignore-pattern '.astro' --ignore-pattern 'dist'",
     "format": "prettier --write .",
     "i18n-generate": "astro-i18next generate",
     "prepare-message": "czg --hook",

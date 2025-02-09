@@ -14,5 +14,6 @@ export default [
     rules: {
       '@typescript-eslint/triple-slash-reference': 'off',
     },
+    ignores: ['./.astro', './.cache', './dist', './node_modules'],
   },
 ];
