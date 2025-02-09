@@ -24,55 +24,142 @@ const faqs = [
 ];
 ---
 
-<div
-  class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12 lg:py-16"
->
+<section class="overflow-hidden">
   <div
-    class="absolute inset-x-0 top-[calc(100%-30rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-10rem)]"
-    aria-hidden="true"
+    class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12 lg:py-16"
   >
     <div
-      class="relative left-[calc(70%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-primary-500 to-primary-800 opacity-30 sm:left-[calc(75%+25rem)] sm:w-[52.1875rem]"
-      style={{
-        clipPath: 'circle(50% at 50% 50%)',
-      }}
+      class="absolute inset-x-0 top-[calc(100%-30rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-10rem)]"
+      aria-hidden="true"
     >
+      <div
+        class="relative left-[calc(70%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-primary-500 to-primary-800 opacity-30 sm:left-[calc(75%+25rem)] sm:w-[52.1875rem]"
+        style={{
+          clipPath: 'circle(50% at 50% 50%)',
+        }}
+      >
+      </div>
     </div>
-  </div>
 
-  <div class="text-center">
-    <span class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7">
-      {t('contact.faqs.span')}
-    </span>
-    <h2
-      class="mt-4 text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] font-bold"
-      set:html={t('contact.faqs.title')}
-    />
-  </div>
-
-  <div
-    class="flex flex-col sm:flex-row gap-8 lg:gap-12 justify-center items-center"
-  >
-    <div class="w-full h-full">
-      {
-        faqs.map((faq, index) => (
-          <Accordion
-            question={faq.question}
-            answer={faq.answer}
-            {index}
-            client:visible
-          />
-        ))
-      }
-    </div>
-    <div class="w-full">
-      <Image
-        src={faqImage}
-        alt="FAQ illustration"
-        class="w-full h-full object-contain object-center"
-        width={516}
-        height={516}
+    <div class="faqs-info text-center">
+      <span
+        class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
+      >
+        {t('contact.faqs.span')}
+      </span>
+      <h2
+        class="mt-4 text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] font-bold"
+        set:html={t('contact.faqs.title')}
       />
     </div>
+
+    <div
+      class="flex flex-col sm:flex-row gap-8 lg:gap-12 justify-center items-center"
+    >
+      <div class="faqs w-full h-full">
+        {
+          faqs.map((faq, index) => (
+            <Accordion
+              question={faq.question}
+              answer={faq.answer}
+              {index}
+              client:visible
+            />
+          ))
+        }
+      </div>
+      <div class="faqs-image w-full">
+        <Image
+          src={faqImage}
+          alt="FAQ illustration"
+          class="w-full h-full object-contain object-center"
+          width={516}
+          height={516}
+        />
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const faqs = document.querySelector('.faqs');
+  const info = document.querySelector('.faqs-info');
+  const image = document.querySelector('.faqs-image');
+
+  gsap.set([image, faqs], {
+    opacity: 0,
+  });
+
+  gsap.set(info, {
+    opacity: 0,
+    y: -150,
+  });
+
+  ScrollTrigger.create({
+    trigger: faqs,
+    start: 'top 75%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(faqs, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(faqs, {
+        opacity: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: image,
+    start: 'top 60%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(image, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(image, {
+        opacity: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: info,
+    start: 'top 80%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(info, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(info, {
+        opacity: 0,
+        y: -150,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+</script>
