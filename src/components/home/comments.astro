@@ -1,0 +1,63 @@
+---
+import { t } from 'i18next';
+import start from '@/assets/icons/startYellow.svg';
+import { Image } from 'astro:assets';
+---
+
+<section>
+  <div
+    class="max-w-7xl min-h-[70vh] mx-auto flex flex-col md:flex-row px-8 py-16 justify-between items-center gap-y-12 gap-x-7"
+  >
+    <article class="flex flex-col gap-4">
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('home.comments.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('home.comments.title')}
+      />
+      <p class="text-sm sm:text-base text-body-color max-w-2xl">
+        {t('home.comments.description')}
+      </p>
+    </article>
+    <article>
+      <div class="bg-primary-500/10 p-8 rounded-xl">
+        <div class="flex gap-1 mb-4">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <Image src={start} alt="start" class="w-4 h-4" />
+            ))
+          }
+        </div>
+
+        <p
+          class="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl text-gray-700 mb-6 max-w-[400px]"
+        >
+          {t('home.comments.comment.testimonial')}
+        </p>
+
+        <div class="flex items-center gap-4">
+          <Image
+            class="rounded-full"
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+            alt="contenido"
+            width={48}
+            height={48}
+          />
+          <div>
+            <h4
+              class="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg xl:text-lg font-semibold text-gray-900"
+            >
+              {t('home.comments.comment.author')}
+            </h4>
+            <p
+              class="text-xs xs:text-sm sm:text-base md:text-base lg:text-base xl:text-base text-gray-600"
+            >
+              {t('home.comments.comment.job')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
