@@ -7,36 +7,36 @@
       "button": "Conocer más",
       "contact": "Contacto"
     },
-    "news": {
+    "offers": {
       "span": "Novedades",
-      "title": "¿Qué ofrecemos?",
+      "title": "¿Qué <span class='text-secundary-500'>ofrecemos</span>?",
       "items": {
-        "new-1": {
+        "offer-1": {
           "title": "Desarrollo de software",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Desarrollo de software"
         },
-        "new-2": {
+        "offer-2": {
           "title": "Consultorías",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Consultorías"
         },
-        "new-3": {
+        "offer-3": {
           "title": "Profesionales a tu disposición",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Profesionales a tu disposición"
         },
-        "new-4": {
+        "offer-4": {
           "title": "Desarrollo a la medida",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Desarrollo de software"
         },
-        "new-5": {
+        "offer-5": {
           "title": "Soporte técnico",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Consultorías"
         },
-        "new-6": {
+        "offer-6": {
           "title": "Incubadora",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           "alt": "Profesionales a tu disposición"

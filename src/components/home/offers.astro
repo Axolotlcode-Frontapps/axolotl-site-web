@@ -1,0 +1,76 @@
+---
+import { t } from 'i18next';
+import Offer from './offer.astro';
+
+import call from '@/assets/icons/call.svg';
+import person from '@/assets/icons/person.svg';
+import devs from '@/assets/icons/dev.svg';
+import pencil from '@/assets/icons/pencil.svg';
+import star from '@/assets/icons/start.svg';
+import interrogatory from '@/assets/icons/interrogatory.svg';
+
+const offers = [
+  {
+    icon: devs,
+    title: t('home.offers.items.offer-1.title'),
+    description: t('home.offers.items.offer-1.description'),
+    alt: t('home.offers.items.offer-1.alt'),
+  },
+  {
+    icon: pencil,
+    title: t('home.offers.items.offer-2.title'),
+    description: t('home.offers.items.offer-2.description'),
+    alt: t('home.offers.items.offer-2.alt'),
+  },
+  {
+    icon: person,
+    title: t('home.offers.items.offer-3.title'),
+    description: t('home.offers.items.offer-3.description'),
+    alt: t('home.offers.items.offer-3.alt'),
+  },
+  {
+    icon: star,
+    title: t('home.offers.items.offer-4.title'),
+    description: t('home.offers.items.offer-4.description'),
+    alt: t('home.offers.items.offer-4.alt'),
+  },
+  {
+    icon: call,
+    title: t('home.offers.items.offer-5.title'),
+    description: t('home.offers.items.offer-5.description'),
+    alt: t('home.offers.items.offer-5.alt'),
+  },
+  {
+    icon: interrogatory,
+    title: t('home.offers.items.offer-6.title'),
+    description: t('home.offers.items.offer-6.description'),
+    alt: t('home.offers.items.offer-6.alt'),
+  },
+];
+---
+
+<section>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-20">
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('home.offers.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('home.offers.title')}
+      />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        offers.map((offer) => (
+          <Offer
+            icon={offer.icon}
+            title={offer.title}
+            description={offer.description}
+            alt={offer.alt}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
