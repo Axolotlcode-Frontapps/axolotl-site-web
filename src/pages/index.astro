@@ -2,10 +2,10 @@
 import Layout from '@/layouts/Layout.astro';
 import { t, changeLanguage } from 'i18next';
 import { Home } from '@/components/home';
-import { WhoIs } from '@/components/home/whois';
 import { ContactHome } from '@/components/home/contactHome';
 import Offers from '@/components/home/offers.astro';
 import Comments from '@/components/home/comments.astro';
+import WhoIs from '@/components/home/who-is.astro';
 
 changeLanguage('es');
 ---
@@ -14,7 +14,7 @@ changeLanguage('es');
   <Home client:load client:only="react" />
   <Offers />
   <Comments />
+  <WhoIs />
 
-  <WhoIs client:visible />
   <ContactHome client:visible />
 </Layout>

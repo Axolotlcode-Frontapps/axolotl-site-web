@@ -1,0 +1,109 @@
+---
+import { t } from 'i18next';
+import section1 from '@/assets/images/section1.webp';
+import section2 from '@/assets/images/section2.webp';
+import section3 from '@/assets/images/section3.webp';
+import section4 from '@/assets/images/section4.webp';
+import { Image } from 'astro:assets';
+
+const features = [
+  {
+    image: section1,
+    title: 'Desarrollo Web Personalizado',
+  },
+
+  {
+    image: section2,
+    title: 'Soluciones Empresariales',
+  },
+
+  {
+    image: section3,
+    title: 'Diseño UI/UX',
+  },
+
+  {
+    image: section4,
+    title: 'Soporte Técnico 24/7',
+  },
+];
+
+const benefits = [
+  {
+    title: t('home.why.dots.dot-1.title'),
+    description: t('home.why.dots.dot-1.description'),
+  },
+  {
+    title: t('home.why.dots.dot-2.title'),
+    description: t('home.why.dots.dot-2.description'),
+  },
+  {
+    title: t('home.why.dots.dot-3.title'),
+    description: t('home.why.dots.dot-3.description'),
+  },
+];
+---
+
+<section>
+  <div
+    class="max-w-7xl min-h-[70vh] mx-auto flex flex-col sm:flex-row items-center gap-y-[50px] gap-x-5 lg:gap-[50px] px-3 py-16"
+  >
+    <div class="w-full grid grid-cols-1 min-[900px]:grid-cols-2 gap-5">
+      {
+        features.map((feature, index) => (
+          <Image
+            class:list={[
+              'w-full h-full object-cover rounded-[10px] min-[900px]:block',
+              index === 1 ? 'block' : 'hidden',
+            ]}
+            src={feature.image}
+            alt={feature.title}
+          />
+        ))
+      }
+    </div>
+
+    <article class="w-full flex flex-col items-start text-left">
+      <div class="flex flex-col gap-4 mb-3 xs:mb-4">
+        <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+          >{t('home.why.span')}</span
+        >
+        <h2
+          class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+          set:html={t('home.why.title')}
+        />
+        <p class="text-sm sm:text-base text-body-color max-w-2xl">
+          {t('home.why.description')}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-1 w-full">
+        {
+          benefits.map((benefit) => (
+            <div class="flex items-center gap-4 hover:bg-primary-500/10 p-2 md:p-1 xs:p-1 sm:p-1 rounded-lg transition-colors duration-300">
+              <div class="p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 text-secondary-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+
+              <span class="text-[16px] xs:text-xs sm:text-sm md:text-sm lg:text-base xl:text-base text-gray-700">
+                {benefit.title}
+                <span>{benefit.description}</span>
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+  </div>
+</section>

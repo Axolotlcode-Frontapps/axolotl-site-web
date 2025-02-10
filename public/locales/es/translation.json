@@ -43,14 +43,14 @@
         }
       }
     },
-    "testimonials": {
+    "comments": {
       "span": "Testimonios",
       "title": "Los <span clas='text-secundary-500'>clientes</span> han dicho esto acerca de nosotros",
       "description": "Estamos tan seguros de nuestros trabajo y de la calidad que tienen, que compartimos los comentarios de nuestros clientes. A continuación, verás algunos comentarios de nuestros clientes y su calificación a nuestro servicio. ¡Convencete por los comentarios de nuestros clientes!",
-      "testimonial": {
-        "name": "Mario Diaz",
+      "comment": {
+        "author": "Mario Diaz",
         "job": "Director de DGS",
-        "comment": "'Son un personal muy profesional, me ayudaron a crear el sistema que necesitaba, los recomiendo.'"
+        "testimonial": "Son un personal muy profesional, me ayudaron a crear el sistema que necesitaba, los recomiendo."
       }
     },
     "why": {
