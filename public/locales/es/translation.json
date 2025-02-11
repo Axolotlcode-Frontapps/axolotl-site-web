@@ -3,13 +3,13 @@
     "title-page": "Axolotl Code - Desarrollo de software y soluciones digitales",
     "hero": {
       "title": "Desarrollo de soluciones tecnológicas a tu medida",
-      "description": "En Axolotl Code transformamos ideas en realidades digitales. Creamos aplicaciones innovadoras, seguras y personalizadas que impulsan tu negocio hacia el éxito. Con tecnologías de vanguardia y un enfoque en calidad, somos tu aliado estratégico en la transformación digital.",
+      "description": "En <span class='text-primary-500 font-bold'>Axolotl Code</span> transformamos ideas en realidades digitales. Creamos aplicaciones innovadoras, seguras y personalizadas que impulsan tu negocio hacia el éxito. Con tecnologías de vanguardia y un enfoque en calidad, somos tu aliado estratégico en la transformación digital.",
       "button": "Conocer más",
       "contact": "Contacto"
     },
     "offers": {
       "span": "Novedades",
-      "title": "¿Qué <span class='text-secundary-500'>ofrecemos</span>?",
+      "title": "¿Qué ofrecemos?",
       "items": {
         "offer-1": {
           "title": "Desarrollo de software",
@@ -45,7 +45,7 @@
     },
     "comments": {
       "span": "Testimonios",
-      "title": "Los <span clas='text-secundary-500'>clientes</span> han dicho esto acerca de nosotros",
+      "title": "Los <span clas='text-secondary-500'>clientes</span> han dicho esto acerca de nosotros",
       "description": "Estamos tan seguros de nuestros trabajo y de la calidad que tienen, que compartimos los comentarios de nuestros clientes. A continuación, verás algunos comentarios de nuestros clientes y su calificación a nuestro servicio. ¡Convencete por los comentarios de nuestros clientes!",
       "comment": {
         "author": "Mario Diaz",
@@ -55,7 +55,7 @@
     },
     "why": {
       "span": "¿Por qué AxolotlCode?",
-      "title": "En Axolotl Code construimos <span class='text-secundary-500'>más que software</span>",
+      "title": "En Axolotl Code construimos <span class='text-secondary-500'>más que software</span>",
       "description": "Creamos soluciones que impulsan tu negocio hacia el éxito. Nuestro equipo de expertos combina innovación, calidad y compromiso para desarrollar herramientas tecnológicas personalizadas que se adaptan a tus necesidades.",
       "dots": {
         "dot-1": {
@@ -79,7 +79,7 @@
     },
     "contact": {
       "span": "Contáctanos",
-      "title": "¿Tienes algún <span class='text-secundary-500'>proyecto</span> en mente?",
+      "title": "¿Tienes algún <span class='text-secondary-500'>proyecto</span> en mente?",
       "description": "¡Nosotros podemos ayudarte! Abarcamos gran parte de la Ciudad de México y alrededores.",
       "button": "Envíar mensaje"
     }

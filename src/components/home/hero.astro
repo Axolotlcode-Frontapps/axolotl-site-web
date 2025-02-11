@@ -1,0 +1,43 @@
+---
+import { t } from 'i18next';
+import { Image } from 'astro:assets';
+import Button from '@/components/shared/button.astro';
+import HeroImage from '@/assets/images/hero.webp';
+---
+
+<section class="mt-[114px]">
+  <div
+    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 lg:gap-[50px] px-3 pt-12 pb-[155px] lg:pt-[76px] lg:pb-[190px]"
+  >
+    <article
+      class="w-full flex flex-col items-center md:items-start text-center md:text-left gap-6 md:gap-10"
+    >
+      <h2 class="text-5xl leading-[58px] xl:text-7xl font-bold">
+        {t('home.hero.title')}
+      </h2>
+      <p
+        class="text-base leading-7 xl:text-xl xl:leading-9"
+        set:html={t('home.hero.description')}
+      />
+      <div class="flex flex-row gap-4">
+        <Button text={t('home.hero.button')} type="primary" href="/" />
+        <Button
+          text={t('home.hero.contact')}
+          type="secondary"
+          href="/contact"
+          outline
+        />
+      </div>
+    </article>
+    <div class="w-full hidden md:block max-w-[432px] max-h-[432px]">
+      <Image
+        src={HeroImage}
+        class="w-full"
+        alt="AxolotlCode - Hero"
+        width={432}
+        height={432}
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
