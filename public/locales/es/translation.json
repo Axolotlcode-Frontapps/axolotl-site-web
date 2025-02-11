@@ -45,7 +45,7 @@
     },
     "comments": {
       "span": "Testimonios",
-      "title": "Los <span clas='text-secondary-500'>clientes</span> han dicho esto acerca de nosotros",
+      "title": "Los <span class='text-secondary-500'>clientes</span> han dicho esto acerca de nosotros",
       "description": "Estamos tan seguros de nuestros trabajo y de la calidad que tienen, que compartimos los comentarios de nuestros clientes. A continuación, verás algunos comentarios de nuestros clientes y su calificación a nuestro servicio. ¡Convencete por los comentarios de nuestros clientes!",
       "comment": {
         "author": "Mario Diaz",
