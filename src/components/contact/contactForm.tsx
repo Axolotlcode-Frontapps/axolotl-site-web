@@ -34,29 +34,6 @@ export const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<Partial<ContactForm>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         anime({
-  //           targets: titleRef.current,
-  //           translateY: [-50, 0],
-  //           opacity: [0, 1],
-  //           duration: 2500,
-  //           easing: 'easeOutExpo',
-  //         });
-  //       }
-  //     },
-  //     { threshold: 0.1 }
-  //   );
-
-  //   if (containerRef.current) {
-  //     observer.observe(containerRef.current);
-  //   }
-
-  //   return () => observer.disconnect();
-  // }, []);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);

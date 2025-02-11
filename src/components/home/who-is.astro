@@ -53,7 +53,7 @@ const benefits = [
         features.map((feature, index) => (
           <Image
             class:list={[
-              'w-full h-full object-cover rounded-[10px] min-[900px]:block',
+              'w-full h-full object-cover rounded-[10px] min-[900px]:block transition-transform hover:scale-[102%]',
               index === 1 ? 'block' : 'hidden',
             ]}
             src={feature.image}

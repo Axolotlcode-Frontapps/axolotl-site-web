@@ -1,0 +1,84 @@
+---
+import { t } from 'i18next';
+import LocationSvg from '@/assets/icons/contact/location.svg';
+import PhoneSvg from '@/assets/icons/contact/phone.svg';
+import EmailSvg from '@/assets/icons/contact/email.svg';
+import { Image } from 'astro:assets';
+
+const info = [
+  {
+    icon: EmailSvg,
+    title: t('contact.contact.email'),
+    description: t('contact.contact.email-value'),
+  },
+  {
+    icon: PhoneSvg,
+    title: t('contact.contact.phone'),
+    description: t('contact.contact.phone-value'),
+  },
+  {
+    icon: LocationSvg,
+    title: t('contact.contact.location'),
+    description: `${t('contact.contact.city')}, ${t('contact.contact.locality')}`,
+  },
+];
+---
+
+<section class="overflow-hidden">
+  <div
+    class="max-w-7xl mx-auto min-h-[80vh] flex flex-col lg:flex-row gap-5 lg:gap-[50px] px-8 py-16"
+  >
+    <article
+      class="w-full lg:max-w-[540px] flex flex-col gap-5 lg:gap-6 items-center text-center lg:text-left lg:items-start"
+    >
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('home.contact.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('home.contact.title')}
+      />
+      <p class="text-sm sm:text-base text-body-color max-w-2xl">
+        {t('home.contact.description')}
+      </p>
+
+      <a
+        href="/contact"
+        class="w-fit rounded-[5px] bg-primary-500 px-3 py-1.5 text-sm lg:text-base text-white shadow-lg hover:bg-primary-600 transition-colors"
+      >
+        {t('home.contact.button')}
+      </a>
+    </article>
+
+    <article class="w-full">
+      <div class="h-[300px] sm:h-[400px] rounded-xl overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.153810829641!2d-99.01649832478631!3d19.40575918186784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fcccd6785e7f%3A0x3a021142afc0d326!2sC.%20Monedita%20de%20Oro%20105%2C%20Benito%20Ju%C3%A1rez%2C%2057709%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses!2smx!4v1738631302720!5m2!1ses!2smx"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowfullscreen={false}
+          loading="lazy"
+          title="Google maps"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-4 mt-5">
+        {
+          info.map(({ icon, title, description }) => (
+            <div class="w-full flex items-start gap-4">
+              <Image
+                src={icon}
+                alt={title}
+                class="size-8 transition-transform hover:scale-105"
+              />
+              <div>
+                <span class="inline-block font-semibold mb-1">{title}</span>
+                <p class="text-black">{description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+  </div>
+</section>
