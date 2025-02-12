@@ -1,9 +1,13 @@
 ---
-import { t } from 'i18next';
+import { Image } from 'astro:assets';
+
 import LocationSvg from '@/assets/icons/contact/location.svg';
 import PhoneSvg from '@/assets/icons/contact/phone.svg';
 import EmailSvg from '@/assets/icons/contact/email.svg';
-import { Image } from 'astro:assets';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const info = [
   {

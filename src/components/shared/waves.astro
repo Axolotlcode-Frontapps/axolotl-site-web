@@ -89,7 +89,7 @@
 
   document.addEventListener('DOMContentLoaded', createAnimationStyles);
 
-  let resizeTimeout: number | undefined;
+  let resizeTimeout: number | NodeJS.Timeout | undefined;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {

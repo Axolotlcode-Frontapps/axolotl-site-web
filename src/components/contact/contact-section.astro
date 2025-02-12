@@ -1,15 +1,14 @@
 ---
-import { t } from 'i18next';
 import { Image } from 'astro:assets';
 import { ContactForm } from '@/components/contact/contactForm';
-import { I18nProvider } from '../shared/i18n-provider';
 
 import LocationIcon from '@/assets/icons/pin.svg';
 import CallIcon from '@/assets/icons/call.svg';
 import EmailIcon from '@/assets/icons/email.svg';
-import i18next from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 
-const language = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="text-body-color">
@@ -86,9 +85,7 @@ const language = i18next.language;
       </div>
 
       <div class="contact-form w-full col-span-1 sm:col-span-2">
-        <I18nProvider client:visible initialLang={language}>
-          <ContactForm client:visible />
-        </I18nProvider>
+        <ContactForm {lang} client:visible />
       </div>
     </div>
     <div

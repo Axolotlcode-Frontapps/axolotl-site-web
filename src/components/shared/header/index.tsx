@@ -1,25 +1,27 @@
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useTranslation } from 'react-i18next';
 
 import AxolotlPink from '@/assets/images/shared/axolotl-pink.png';
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
 
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
+import { useTranslations } from '@/libs/i18n/utils';
 
 interface Props {
   menu: { label: string; link: string }[];
   isHomePage: boolean;
+  lang: string;
 }
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }
 
-export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
-  const { t } = useTranslation();
+export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
+  const t = useTranslations(lang);
+
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -31,25 +33,6 @@ export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
   );
   const [color, setColor] = useState('text-white');
   const [fillColor, setFillColor] = useState('fill-white');
-
-  useEffect(() => {
-    const handleNavigation = () => {
-      gsap.killTweensOf('*');
-      setIsOpen(false);
-      setTimeout(() => {
-        setButtonText(t('header.open'));
-        setAxolotlImage(isHomePage ? AxolotlPink.src : AxolotlWhite.src);
-        setColor(isHomePage ? 'text-body-color' : 'text-white');
-        setFillColor(isHomePage ? 'fill-body-color' : 'fill-white');
-      }, 0);
-    };
-
-    document.addEventListener('astro:after-navigation', handleNavigation);
-    return () => {
-      document.removeEventListener('astro:after-navigation', handleNavigation);
-      gsap.killTweensOf('*');
-    };
-  }, [isHomePage, t]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
@@ -255,7 +238,6 @@ export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
                     <a
                       className="text-2xl md:text-3xl lg:text-4xl xl:text-7xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
                       href={link}
-                      data-astro-reload
                     >
                       {label}
                     </a>
@@ -284,12 +266,12 @@ export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
                       href="mailto:soporte@axolotlcode.tech"
                       className="hover:underline"
                     >
-                      {t('contact.email-value')}
+                      soporte@axolotlcode.tech
                     </a>
                   </li>
                   <li>
                     <a href="tel:+525591651260" className="hover:underline">
-                      {t('contact.phone-value')}
+                      +(55) 91 65 12 60
                     </a>
                   </li>
                 </ul>

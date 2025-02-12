@@ -1,43 +1,39 @@
 ---
-import i18next, { t } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
-// import { ClientRouter } from 'astro:transitions'; // Importación correcta
-import { buildStaticPaths } from 'astro-react-i18next/utils';
+// import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
 }
 
-export function getStaticPaths() {
-  return buildStaticPaths();
-}
-
 const { title } = Astro.props;
 
 const isHomePage = Astro.routePattern === '/' || Astro.routePattern === '/en';
-const language = i18next.language;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const menu = [
-  { label: t('header.home'), link: language !== 'es' ? `/${language}/` : '/' },
+  { label: t('header.home'), link: `/${lang}` },
   {
     label: t('header.about-us'),
-    link: language !== 'es' ? `/${language}/about` : '/about',
+    link: `/${lang}/about`,
   },
   {
     label: t('header.services'),
-    link: language !== 'es' ? `/${language}/plans` : '/plans',
+    link: `/${lang}/plans`,
   },
   {
     label: t('header.contact'),
-    link: language !== 'es' ? `/${language}/contact` : '/contact',
+    link: `/${lang}/contact`,
   },
 ];
 ---
 
 <!doctype html>
-<html lang={i18next.language}>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -57,7 +53,7 @@ const menu = [
     <!-- <ClientRouter /> -->
   </head>
   <body>
-    <Header menu={menu} {isHomePage} client:load />
+    <Header menu={menu} {lang} {isHomePage} client:load />
     <main class="min-h-screen">
       <slot />
     </main>

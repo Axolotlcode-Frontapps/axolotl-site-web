@@ -1,7 +1,10 @@
 ---
-import { t } from 'i18next';
 import { Image } from 'astro:assets';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import AboutUsImage from '@/assets/images/aboutUs/aboutUs.png';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="bg-foreground overflow-hidden">

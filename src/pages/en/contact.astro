@@ -1,13 +1,13 @@
 ---
-import { t, changeLanguage } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/shared/hero.astro';
 import HeroBg from '@/assets/images/contact-hero.webp';
 import FAQs from '@/components/contact/faqs.astro';
 import ContactSection from '@/components/contact/contact-section.astro';
 
-changeLanguage('en');
-
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const hero = {
   title: t('contact.hero.title'),
   description: t('contact.hero.description'),

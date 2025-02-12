@@ -3,14 +3,17 @@ interface Props {
   menu: Array<{ label: string; link: string }>;
 }
 
-import { t } from 'i18next';
 import { Image } from 'astro:assets';
 
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 
 const { menu } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="bg-[#212529]">

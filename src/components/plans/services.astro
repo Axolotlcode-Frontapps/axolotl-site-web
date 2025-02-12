@@ -1,8 +1,11 @@
 ---
-import { t } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import Service from './service.astro';
 
 type LoadingType = 'lazy' | 'eager';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const services: {
   title: string;

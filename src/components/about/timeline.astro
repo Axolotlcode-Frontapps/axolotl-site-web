@@ -1,11 +1,14 @@
 ---
-import { t } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import First from '@/assets/icons/timestep/first.astro';
 import TimeStep from './time-step.astro';
 import Second from '@/assets/icons/timestep/second.astro';
 import Third from '@/assets/icons/timestep/third.astro';
 import Fourth from '@/assets/icons/timestep/fourth.astro';
 import Fifth from '@/assets/icons/timestep/fifth.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const timeSteps = [
   {

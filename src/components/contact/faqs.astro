@@ -1,8 +1,11 @@
 ---
-import { t } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import faqImage from '@/assets/images/faq-image.webp';
 import { Image } from 'astro:assets';
 import { Accordion } from './accordion';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const faqs = [
   {

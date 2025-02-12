@@ -1,5 +1,5 @@
 ---
-import { t } from 'i18next';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import GradientFirst from '@/assets/icons/next-level/first.astro';
 import GradientSecond from '@/assets/icons/next-level/second.astro';
 import GradientThird from '@/assets/icons/next-level/third.astro';
@@ -7,6 +7,9 @@ import GradientFourth from '@/assets/icons/next-level/fourth.astro';
 import GradientFifth from '@/assets/icons/next-level/fifth.astro';
 
 const currentPathname = Astro.url.pathname;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="relative bg-primary-50">

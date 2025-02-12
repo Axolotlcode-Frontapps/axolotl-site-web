@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from '@/libs/i18n/utils';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
@@ -12,8 +12,8 @@ const contactSchema = z.object({
 
 type ContactForm = z.infer<typeof contactSchema>;
 
-export const ContactForm: React.FC = () => {
-  const { t } = useTranslation();
+export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
+  const t = useTranslations(lang);
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
     lastName: '',
