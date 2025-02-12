@@ -4,10 +4,15 @@ import { Image } from 'astro:assets';
 import LocationSvg from '@/assets/icons/contact/location.svg';
 import PhoneSvg from '@/assets/icons/contact/phone.svg';
 import EmailSvg from '@/assets/icons/contact/email.svg';
-import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/libs/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const info = [
   {
@@ -47,7 +52,7 @@ const info = [
       </p>
 
       <a
-        href="/contact"
+        href={translatePath('/contact')}
         class="w-fit rounded-[5px] bg-primary-500 px-3 py-1.5 text-sm lg:text-base text-white shadow-lg hover:bg-primary-600 transition-colors"
       >
         {t('home.contact.button')}

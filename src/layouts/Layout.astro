@@ -1,9 +1,12 @@
 ---
-import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from '@/libs/i18n/utils';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
-// import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -14,20 +17,21 @@ const { title } = Astro.props;
 const isHomePage = Astro.routePattern === '/' || Astro.routePattern === '/en';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const menu = [
-  { label: t('header.home'), link: `/${lang}` },
+  { label: t('header.home'), link: translatePath('/') },
   {
     label: t('header.about-us'),
-    link: `/${lang}/about`,
+    link: translatePath('/about'),
   },
   {
     label: t('header.services'),
-    link: `/${lang}/plans`,
+    link: translatePath('/plans'),
   },
   {
     label: t('header.contact'),
-    link: `/${lang}/contact`,
+    link: translatePath('/contact'),
   },
 ];
 ---
@@ -50,7 +54,6 @@ const menu = [
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- <ClientRouter /> -->
   </head>
   <body>
     <Header menu={menu} {lang} {isHomePage} client:load />

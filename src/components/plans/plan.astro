@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslatedPath } from '@/libs/i18n/utils';
+
 interface Props {
   span: string;
   title: string;
@@ -9,6 +11,9 @@ interface Props {
 }
 
 const { span, title, subtitle, feature, features, className } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <article
@@ -50,7 +55,7 @@ const { span, title, subtitle, feature, features, className } = Astro.props;
     </ul>
   </div>
   <a
-    href="/contacto"
+    href={translatePath('/contact')}
     class="inline-block w-full text-center border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors rounded-[5px] text-sm lg:text-base leading-6 lg:leading-7"
   >
     ¡Contáctanos!

@@ -3,10 +3,15 @@ import { Image } from 'astro:assets';
 import Button from '@/components/shared/button.astro';
 import HeroImage from '@/assets/images/hero.webp';
 import Waves from '@/components/shared/waves.astro';
-import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from '@/libs/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <section
@@ -26,11 +31,15 @@ const t = useTranslations(lang);
         set:html={t('home.hero.description')}
       />
       <div class="flex flex-row gap-4">
-        <Button text={t('home.hero.button')} type="primary" href="/" />
+        <Button
+          text={t('home.hero.button')}
+          type="primary"
+          href={translatePath('/')}
+        />
         <Button
           text={t('home.hero.contact')}
           type="secondary"
-          href="/contact"
+          href={translatePath('/contact')}
           outline
         />
       </div>

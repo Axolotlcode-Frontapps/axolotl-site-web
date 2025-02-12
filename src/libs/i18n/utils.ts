@@ -1,4 +1,4 @@
-import { ui, defaultLang } from './ui';
+import { ui, defaultLang, showDefaultLang } from './ui';
 
 type NestedObject = {
   [K: string]: string | NestedObject;
@@ -26,5 +26,11 @@ export function useTranslations(lang: string) {
     }
 
     return (current as unknown as string)?.toString() || key;
+  };
+}
+
+export function useTranslatedPath(lang: string) {
+  return function translatePath(path: string, l: string = lang) {
+    return !showDefaultLang && l === defaultLang ? path : `/${l}${path}`;
   };
 }

@@ -7,7 +7,7 @@ import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
 
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
-import { useTranslations } from '@/libs/i18n/utils';
+import { useTranslations, useTranslatedPath } from '@/libs/i18n/utils';
 
 interface Props {
   menu: { label: string; link: string }[];
@@ -21,6 +21,7 @@ if (typeof window !== 'undefined') {
 
 export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
   const t = useTranslations(lang);
+  const translatePath = useTranslatedPath(lang);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -160,7 +161,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
         ref={headerContentRef}
         className="max-w-7xl mx-auto flex items-center justify-between px-3 py-2 text-white"
       >
-        <a href="/" aria-label="Home">
+        <a href={translatePath('/')} aria-label="Home">
           <img
             className="w-[112px]"
             src={axolotlImage}
@@ -266,12 +267,12 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                       href="mailto:soporte@axolotlcode.tech"
                       className="hover:underline"
                     >
-                      soporte@axolotlcode.tech
+                      {t('contact.contact.email-value')}
                     </a>
                   </li>
                   <li>
                     <a href="tel:+525591651260" className="hover:underline">
-                      +(55) 91 65 12 60
+                      {t('contact.contact.phone-value')}
                     </a>
                   </li>
                 </ul>
