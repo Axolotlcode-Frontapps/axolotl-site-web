@@ -3,10 +3,15 @@ import i18next, { t } from 'i18next';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
 import '@/styles/global.css';
-import { I18nProvider } from '@/components/shared/i18n-provider';
+// import { ClientRouter } from 'astro:transitions'; // Importación correcta
+import { buildStaticPaths } from 'astro-react-i18next/utils';
 
 interface Props {
   title: string;
+}
+
+export function getStaticPaths() {
+  return buildStaticPaths();
 }
 
 const { title } = Astro.props;
@@ -49,11 +54,10 @@ const menu = [
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- <ClientRouter /> -->
   </head>
   <body>
-    <I18nProvider client:load initialLang={language}>
-      <Header menu={menu} {isHomePage} client:load />
-    </I18nProvider>
+    <Header menu={menu} {isHomePage} client:load />
     <main class="min-h-screen">
       <slot />
     </main>
