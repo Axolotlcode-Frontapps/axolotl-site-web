@@ -33,6 +33,25 @@ export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
   const [fillColor, setFillColor] = useState('fill-white');
 
   useEffect(() => {
+    const handleNavigation = () => {
+      gsap.killTweensOf('*');
+      setIsOpen(false);
+      setTimeout(() => {
+        setButtonText(t('header.open'));
+        setAxolotlImage(isHomePage ? AxolotlPink.src : AxolotlWhite.src);
+        setColor(isHomePage ? 'text-body-color' : 'text-white');
+        setFillColor(isHomePage ? 'fill-body-color' : 'fill-white');
+      }, 0);
+    };
+
+    document.addEventListener('astro:after-navigation', handleNavigation);
+    return () => {
+      document.removeEventListener('astro:after-navigation', handleNavigation);
+      gsap.killTweensOf('*');
+    };
+  }, [isHomePage, t]);
+
+  useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     setTimeout(() => {
       setButtonText(isOpen ? t('header.close') : t('header.open'));
@@ -236,6 +255,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage }) => {
                     <a
                       className="text-2xl md:text-3xl lg:text-4xl xl:text-7xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
                       href={link}
+                      data-astro-reload
                     >
                       {label}
                     </a>

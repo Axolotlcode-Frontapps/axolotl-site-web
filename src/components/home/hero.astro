@@ -8,7 +8,7 @@ import Waves from '@/components/shared/waves.astro';
 
 <section class="pt-[114px] min-h-dvh relative flex justify-center items-center">
   <div
-    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 lg:gap-[50px] px-3 pt-12 pb-[155px] lg:pt-[76px] lg:pb-[190px]"
+    class="overflow-hidden max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 lg:gap-[50px] px-3 pt-12 pb-[155px] lg:pt-[76px] lg:pb-[190px]"
   >
     <article
       class="hero-text w-full flex flex-col items-center md:items-start text-center md:text-left gap-6 md:gap-10"
@@ -40,8 +40,8 @@ import Waves from '@/components/shared/waves.astro';
         loading="eager"
       />
     </div>
+    <Waves />
   </div>
-  <Waves />
   <div
     class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
     aria-hidden="true"
