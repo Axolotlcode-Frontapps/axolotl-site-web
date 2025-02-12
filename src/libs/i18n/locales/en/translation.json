@@ -331,26 +331,5 @@
     "contact": {
       "label": "Contact"
     }
-  },
-  "contact": {
-    "hero": {
-      "title": "Contact Us",
-      "description": "We're here to help you. Let's talk about your project and how we can make it better."
-    },
-    "form": {
-      "name": "Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "phone": "Phone",
-      "message": "Message"
-    },
-    "button": {
-      "send": "Send Message"
-    },
-    "text": {
-     "title": "Have any questions? We're here to help you.",
-     "subtitle": "Contact Us",
-     "description": "We're here to help you. Let's talk about your project and how we can make it better."
-    }
   }
 }

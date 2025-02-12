@@ -331,52 +331,5 @@
     "contact": {
       "label": "Contacto"
     }
-  },
-  "contact": {
-    "hero": {
-      "title": "Contáctanos",
-      "description": "Hablemos y descubre cómo podemos ayudarte. O explora nuestras opciones y encuentra la solución perfecta para tu negocio."
-    },
-    "form": {
-      "name": "Nombre",
-      "lastName": "Apellido",
-      "email": "Correo electrónico",
-      "phone": "Teléfono",
-      "message": "Mensaje"
-    },
-    "button": {
-      "send": "Enviar mensaje"
-    },
-    "text": {
-      "title": "¿Tienes algún ",
-      "span": "proyecto",
-      "title-2": "en mente?",
-      "subtitle": "Contáctanos",
-      "description": "¡Nosotros podemos ayudarte! Abarcamos gran parte de la Ciudad de México y alrededores."
-    },
-    "location": {
-      "title": "Ubicación",
-      "description": "Monedita de Oro 105 57000 Nezahualcóyotl, Mexico"
-    },
-    "email": {
-      "title": "Correo electrónico",
-      "description": "contacto@axolotlcode.tech"
-    },
-    "phone": {
-      "title": "Teléfono",
-      "description": "+52 56 6007 2998"
-    }
-  },
-  "faqs": {
-    "subtitle": "Preguntas frecuentes",
-    "title": "¿Tienes alguna pregunta?",
-    "question1": "¿Cuánto tiempo tarda en entregar un proyecto?",
-    "answer1": "El tiempo de entrega depende del tamaño del proyecto y de las necesidades del cliente.",
-    "question2": "¿Qué tipo de proyectos realizan?",
-    "answer2": "Realizamos proyectos de desarrollo de software, consultorías, soporte técnico y desarrollo a la medida.",
-    "question3": "¿Qué tipo de proyectos realizan?",
-    "answer3": "Realizamos proyectos de desarrollo de software, consultorías, soporte técnico y desarrollo a la medida.",
-    "question4": "¿Qué tipo de proyectos realizan?",
-    "answer4": "Realizamos proyectos de desarrollo de software, consultorías, soporte técnico y desarrollo a la medida."
   }
 }
