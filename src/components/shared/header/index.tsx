@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import AxolotlPink from '@/assets/images/shared/axolotl-pink.png';
-import AxolotlWhite from '@/assets/images/shared/axolotl-white.png';
+import AxolotlPink from '@/assets/images/shared/axolotl-pink.webp';
+import AxolotlWhite from '@/assets/images/shared/axolotl-white.webp';
 
 import InstagramIcon from '@/assets/icons/instagram.svg';
 import TwitterIcon from '@/assets/icons/twitter.svg';
