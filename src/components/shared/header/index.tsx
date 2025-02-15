@@ -167,7 +167,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
             src={axolotlImage}
             width={284}
             height={249}
-            alt="Axolotl code"
+            alt="AxolotlCode"
           />
         </a>
         <button

@@ -1,5 +1,10 @@
 ---
-import { getLangFromUrl, useTranslatedPath } from '@/libs/i18n/utils';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/libs/i18n/utils';
+import Button from '../shared/button.astro';
 
 interface Props {
   span: string;
@@ -13,6 +18,7 @@ interface Props {
 const { span, title, subtitle, feature, features, className } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
@@ -54,10 +60,10 @@ const translatePath = useTranslatedPath(lang);
       }
     </ul>
   </div>
-  <a
+  <Button
+    text={t('plans.plans.contact')}
+    type="plans"
     href={translatePath('/contact')}
-    class="inline-block w-full text-center border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors rounded-[5px] text-sm lg:text-base leading-6 lg:leading-7"
-  >
-    ¡Contáctanos!
-  </a>
+    outline
+  />
 </article>
