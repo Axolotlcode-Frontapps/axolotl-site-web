@@ -7,9 +7,10 @@ import { Image } from 'astro:assets';
 
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.webp';
 import InstagramIcon from '@/assets/icons/instagram.svg';
-import XTwitterIcon from '@/assets/icons/x-twitter.svg';
+import XTwitterIcon from '@/assets/icons/x.svg';
 import FacebookIcon from '@/assets/icons/facebook.svg';
 import LinkedinIcon from '@/assets/icons/linkedin.svg';
+import TikTokIcon from '@/assets/icons/tiktok.svg';
 
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 
@@ -63,16 +64,31 @@ const t = useTranslations(lang);
       </ul>
       <ul class="flex gap-x-5">
         <li>
-          <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
+          <a href="https://www.instagram.com/axolotl.code/">
+            <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
+          </a>
         </li>
         <li>
-          <Image src={XTwitterIcon} width={29} height={29} alt="X-Twitter" />
+          <a href="https://x.com/AxolotlCode">
+            <Image src={XTwitterIcon} width={29} height={29} alt="X-Twitter" />
+          </a>
         </li>
         <li>
-          <Image src={FacebookIcon} width={29} height={29} alt="Facebook" />
+          <a href="https://www.facebook.com/Axolotlcode">
+            <Image src={FacebookIcon} width={29} height={29} alt="Facebook" />
+          </a>
         </li>
         <li>
-          <Image src={LinkedinIcon} width={29} height={29} alt="Linkedin" />
+          <a
+            href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name"
+          >
+            <Image src={LinkedinIcon} width={29} height={29} alt="Linkedin" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@axolotlcode0">
+            <Image src={TikTokIcon} width={29} height={29} alt="TikTok" />
+          </a>
         </li>
       </ul>
     </div>
