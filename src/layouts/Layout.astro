@@ -40,8 +40,18 @@ const menu = [
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={t('seo.description')} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={t('home.title-page')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.axolotlcode.tech/" />
+    <meta
+      property="og:image"
+      content="https://www.axolotlcode.tech/_astro/axolotl-pink.DwH0Zdpo.webp"
+    />
+    <link rel="canonical" href="https://www.axolotlcode.tech/" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       href="/favicon-light.ico"
       rel="icon"
@@ -52,7 +62,6 @@ const menu = [
       rel="icon"
       media="(prefers-color-scheme: dark)"
     />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>

@@ -1,4 +1,5 @@
 ---
+import { changeLanguage } from 'i18next';
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/shared/hero.astro';
@@ -7,9 +8,10 @@ import PlansComponent from '@/components/plans/plans.astro';
 import NextLevel from '@/components/shared/next-level.astro';
 import HeroBg from '@/assets/images/plans/plans-hero.webp';
 
+changeLanguage('en');
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
 const hero = {
   title: t('plans.hero.title'),
   description: t('plans.hero.description'),

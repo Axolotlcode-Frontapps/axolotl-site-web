@@ -89,10 +89,12 @@
 
   document.addEventListener('DOMContentLoaded', createAnimationStyles);
 
-  let resizeTimeout: number | NodeJS.Timeout | undefined;
+  let resizeTimeout: number; // Cambiado el tipo aquí
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout);
+    }
+    resizeTimeout = window.setTimeout(() => {
       const oldStyles = document.querySelectorAll('style');
       oldStyles.forEach((style) => {
         if (style.textContent?.includes('bounce')) {
