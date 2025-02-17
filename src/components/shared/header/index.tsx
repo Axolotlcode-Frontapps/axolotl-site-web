@@ -6,7 +6,10 @@ import AxolotlPink from '@/assets/images/shared/axolotl-pink.webp';
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.webp';
 
 import InstagramIcon from '@/assets/icons/instagram.svg';
-import TwitterIcon from '@/assets/icons/twitter.svg';
+import XIcon from '@/assets/icons/x.svg';
+import FacebookIcon from '@/assets/icons/facebook.svg';
+import LinkedInIcon from '@/assets/icons/linkedin.svg';
+import TikTokIcon from '@/assets/icons/tiktok.svg';
 import { useTranslations, useTranslatedPath } from '@/libs/i18n/utils';
 
 interface Props {
@@ -167,7 +170,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
             src={axolotlImage}
             width={284}
             height={249}
-            alt="Axolotl code"
+            alt="AxolotlCode"
           />
         </a>
         <button
@@ -284,20 +287,54 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                 </span>
                 <ul className="flex gap-x-[15px] text-sm">
                   <li>
-                    <img
-                      src={InstagramIcon.src}
-                      width={29}
-                      height={29}
-                      alt="Instagram"
-                    />
+                    <a href="https://www.instagram.com/axolotl.code/">
+                      <img
+                        src={InstagramIcon.src}
+                        width={50}
+                        height={50}
+                        alt="Instagram"
+                      />
+                    </a>
                   </li>
                   <li>
-                    <img
-                      src={TwitterIcon.src}
-                      width={32}
-                      height={26}
-                      alt="Instagram"
-                    />
+                    <a href="https://x.com/AxolotlCode">
+                      <img
+                        src={XIcon.src}
+                        width={50}
+                        height={50}
+                        alt="X Twitter"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/Axolotlcode">
+                      <img
+                        src={FacebookIcon.src}
+                        width={50}
+                        height={50}
+                        alt="Facebook"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name">
+                      <img
+                        src={LinkedInIcon.src}
+                        width={50}
+                        height={50}
+                        alt="LinkedIn"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.tiktok.com/@axolotlcode0">
+                      <img
+                        src={TikTokIcon.src}
+                        width={50}
+                        height={50}
+                        alt="LinkedIn"
+                      />
+                    </a>
                   </li>
                 </ul>
               </div>

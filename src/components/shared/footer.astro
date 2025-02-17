@@ -7,7 +7,11 @@ import { Image } from 'astro:assets';
 
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.webp';
 import InstagramIcon from '@/assets/icons/instagram.svg';
-import TwitterIcon from '@/assets/icons/twitter.svg';
+import XTwitterIcon from '@/assets/icons/x.svg';
+import FacebookIcon from '@/assets/icons/facebook.svg';
+import LinkedinIcon from '@/assets/icons/linkedin.svg';
+import TikTokIcon from '@/assets/icons/tiktok.svg';
+
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 
 const { menu } = Astro.props;
@@ -55,15 +59,36 @@ const t = useTranslations(lang);
         >{t('footer.contact.label')}</span
       >
       <ul class="flex flex-col mb-[15px] gap-y-[15px] text-white text-sm">
-        <li>soporte@axolotlcode.tech</li>
-        <li>+(55) 91 65 12 60</li>
+        <li>{t('contact.contact.email-value')}</li>
+        <li>{t('contact.contact.phone-value')}</li>
       </ul>
       <ul class="flex gap-x-5">
         <li>
-          <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
+          <a href="https://www.instagram.com/axolotl.code/">
+            <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
+          </a>
         </li>
         <li>
-          <Image src={TwitterIcon} width={32} height={26} alt="Instagram" />
+          <a href="https://x.com/AxolotlCode">
+            <Image src={XTwitterIcon} width={29} height={29} alt="X-Twitter" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/Axolotlcode">
+            <Image src={FacebookIcon} width={29} height={29} alt="Facebook" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name"
+          >
+            <Image src={LinkedinIcon} width={29} height={29} alt="Linkedin" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@axolotlcode0">
+            <Image src={TikTokIcon} width={29} height={29} alt="TikTok" />
+          </a>
         </li>
       </ul>
     </div>
