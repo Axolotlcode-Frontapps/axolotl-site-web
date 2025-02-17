@@ -116,13 +116,6 @@ const faqs = [
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(faqs, {
-        opacity: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -132,13 +125,6 @@ const faqs = [
     onEnter: () => {
       gsap.to(image, {
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(image, {
-        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });
@@ -153,14 +139,6 @@ const faqs = [
       gsap.to(info, {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(info, {
-        opacity: 0,
-        y: -150,
         duration: 1,
         ease: 'power4.out',
       });

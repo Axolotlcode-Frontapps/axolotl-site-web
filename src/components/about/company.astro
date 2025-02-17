@@ -114,13 +114,6 @@ const company = [
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(image, {
-        opacity: 0,
-        duration: 2,
-        ease: 'power4.out',
-      });
-    },
   });
 
   elements.forEach((card, index) => {
@@ -134,14 +127,6 @@ const company = [
           x: 0,
           duration: 2,
           delay: index * 0.4,
-          ease: 'power4.out',
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(card, {
-          opacity: 0,
-          x: 500,
-          duration: 2,
           ease: 'power4.out',
         });
       },

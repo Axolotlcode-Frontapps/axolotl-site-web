@@ -124,14 +124,6 @@ const info = [
         ease: 'power4.inOut',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(info, {
-        opacity: 0,
-        x: -100,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -143,14 +135,6 @@ const info = [
       gsap.to(map, {
         opacity: 1,
         x: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(map, {
-        opacity: 0,
-        x: 100,
         duration: 1,
         ease: 'power4.inOut',
       });

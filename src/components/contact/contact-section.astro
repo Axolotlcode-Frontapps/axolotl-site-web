@@ -33,8 +33,8 @@ const t = useTranslations(lang);
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
-      <div class="axolotl-info w-full flex flex-col gap-8">
-        <div class="flex flex-col gap-4">
+      <div class="axolotl-info w-full flex flex-col gap-4 lg:gap-8">
+        <div class="flex flex-col gap-2 lg:gap-">
           <Image
             src={LocationIcon}
             alt={`${t('contact.contact.span')} - AxolotlCode`}
@@ -50,7 +50,7 @@ const t = useTranslations(lang);
           </p>
         </div>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2 lg:gap-">
           <Image
             src={EmailIcon}
             alt={`${t('contact.contact.email')} - AxolotlCode`}
@@ -66,7 +66,7 @@ const t = useTranslations(lang);
           </p>
         </div>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2 lg:gap-4">
           <Image
             src={CallIcon}
             alt={`${t('contact.contact.phone')} - AxolotlCode`}
@@ -136,14 +136,6 @@ const t = useTranslations(lang);
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(contact, {
-        opacity: 0,
-        y: -150,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -154,13 +146,6 @@ const t = useTranslations(lang);
     onEnter: () => {
       gsap.to(axolotlInfo, {
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(axolotlInfo, {
-        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });
@@ -179,13 +164,6 @@ const t = useTranslations(lang);
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(form, {
-        opacity: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -196,13 +174,6 @@ const t = useTranslations(lang);
     onEnter: () => {
       gsap.to(map, {
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(map, {
-        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });

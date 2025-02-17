@@ -102,21 +102,5 @@ const translatePath = useTranslatedPath(lang);
         });
       }
     },
-    onLeaveBack: () => {
-      gsap.to(article, {
-        opacity: 0,
-        duration: 2,
-        ease: 'power4.out',
-      });
-
-      if (articleElements) {
-        gsap.to(articleElements, {
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: 'power2.out',
-        });
-      }
-    },
   });
 </script>

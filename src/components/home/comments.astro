@@ -98,14 +98,6 @@ const t = useTranslations(lang);
         ease: 'power4.inOut',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(testimonial, {
-        opacity: 0,
-        y: -200,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -116,14 +108,6 @@ const t = useTranslations(lang);
       gsap.to(comment, {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(comment, {
-        opacity: 0,
-        y: 200,
         duration: 1,
         ease: 'power4.inOut',
       });

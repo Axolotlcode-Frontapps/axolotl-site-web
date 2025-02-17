@@ -126,14 +126,6 @@ const services: {
         ease: 'power2.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(info, {
-        opacity: 0,
-        y: -50,
-        duration: 1,
-        ease: 'power2.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -147,14 +139,6 @@ const services: {
         y: 0,
         duration: 1,
         stagger: 0.35,
-        ease: 'power2.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(serviceItems, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
         ease: 'power2.out',
       });
     },
