@@ -122,20 +122,5 @@ const plans = [
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(planInfo, {
-        opacity: 0,
-        x: -500,
-        duration: 1,
-        ease: 'power4.out',
-      });
-
-      gsap.to(planItems, {
-        opacity: 0,
-        y: 100,
-        duration: 0.8,
-        ease: 'power4.out',
-      });
-    },
   });
 </script>

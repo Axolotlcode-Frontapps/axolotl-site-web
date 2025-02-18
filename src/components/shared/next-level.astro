@@ -9,6 +9,7 @@ import GradientSecond from '@/assets/icons/next-level/second.astro';
 import GradientThird from '@/assets/icons/next-level/third.astro';
 import GradientFourth from '@/assets/icons/next-level/fourth.astro';
 import GradientFifth from '@/assets/icons/next-level/fifth.astro';
+import Button from './button.astro';
 
 const currentPathname = Astro.url.pathname;
 
@@ -34,17 +35,18 @@ const translatePath = useTranslatedPath(lang);
       <div
         class="w-full flex flex-col xs:flex-row items-center justify-center gap-y-2.5 gap-x-6 text-sm xl:text-base"
       >
-        <a
+        <Button
+          text={t('next-level.contact')}
+          type="next-level"
           href={translatePath('/contact')}
-          class="py-1 px-2 rounded-[5px] border border-primary-500 bg-primary-500 text-primary-50 hover:bg-primary-600 transition-colors"
-        >
-          {t('next-level.contact')}
-        </a>
+          outline={false}
+        />
+
         {
           !currentPathname.includes('plans') && (
             <a
               href={translatePath('/plans')}
-              class="py-1 px-2 rounded-[5px] border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors"
+              class="px-6 py-2 rounded-[5px] font-bold border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors"
             >
               {t('next-level.plan')}
             </a>
@@ -98,22 +100,6 @@ const translatePath = useTranslatedPath(lang);
           y: 0,
           duration: 1,
           stagger: 0.2,
-          ease: 'power2.out',
-        });
-      }
-    },
-    onLeaveBack: () => {
-      gsap.to(article, {
-        opacity: 0,
-        duration: 2,
-        ease: 'power4.out',
-      });
-
-      if (articleElements) {
-        gsap.to(articleElements, {
-          opacity: 0,
-          y: 50,
-          duration: 1,
           ease: 'power2.out',
         });
       }

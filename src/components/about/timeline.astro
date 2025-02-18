@@ -155,14 +155,6 @@ const timeSteps = [
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to([span, title], {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -173,13 +165,6 @@ const timeSteps = [
     onEnter: () => {
       gsap.to(line, {
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(line, {
-        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });
@@ -195,14 +180,6 @@ const timeSteps = [
         gsap.to(step, {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: 'power4.out',
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(step, {
-          opacity: 0,
-          y: 50,
           duration: 1,
           ease: 'power4.out',
         });

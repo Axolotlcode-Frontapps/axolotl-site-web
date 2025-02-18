@@ -24,6 +24,22 @@ const faqs = [
     question: t('contact.faqs.questions.question-4.title'),
     answer: t('contact.faqs.questions.question-4.description'),
   },
+  {
+    question: t('contact.faqs.questions.question-5.title'),
+    answer: t('contact.faqs.questions.question-5.description'),
+  },
+  {
+    question: t('contact.faqs.questions.question-6.title'),
+    answer: t('contact.faqs.questions.question-6.description'),
+  },
+  {
+    question: t('contact.faqs.questions.question-7.title'),
+    answer: t('contact.faqs.questions.question-7.description'),
+  },
+  {
+    question: t('contact.faqs.questions.question-8.title'),
+    answer: t('contact.faqs.questions.question-8.description'),
+  },
 ];
 ---
 
@@ -44,7 +60,7 @@ const faqs = [
       </div>
     </div>
 
-    <div class="faqs-info text-center">
+    <div class="faqs-info text-center mb-10">
       <span
         class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
       >
@@ -116,13 +132,6 @@ const faqs = [
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(faqs, {
-        opacity: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -132,13 +141,6 @@ const faqs = [
     onEnter: () => {
       gsap.to(image, {
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(image, {
-        opacity: 0,
         duration: 1,
         ease: 'power4.out',
       });
@@ -153,14 +155,6 @@ const faqs = [
       gsap.to(info, {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(info, {
-        opacity: 0,
-        y: -150,
         duration: 1,
         ease: 'power4.out',
       });

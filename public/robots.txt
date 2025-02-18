@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /about/
+Allow: /plans/
+Allow: /contact/
+
+# Sitemap
+Sitemap: https://axolotlcode.com/sitemap-index.xml

@@ -2,12 +2,13 @@
 import { Image } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 import start from '@/assets/icons/startYellow.svg';
+import WhyBg from '@/assets/images/home/why-bg.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section>
+<section class="bg-foreground relative">
   <div
     class="max-w-7xl min-h-[70vh] mx-auto flex flex-col md:flex-row px-8 py-16 justify-between items-center gap-y-12 gap-x-7"
   >
@@ -48,11 +49,11 @@ const t = useTranslations(lang);
             height={48}
           />
           <div>
-            <h4
+            <span
               class="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg xl:text-lg font-semibold text-gray-900"
             >
               {t('home.comments.comment.author')}
-            </h4>
+            </span>
             <p
               class="text-xs xs:text-sm sm:text-base md:text-base lg:text-base xl:text-base text-gray-600"
             >
@@ -63,6 +64,7 @@ const t = useTranslations(lang);
       </div>
     </article>
   </div>
+  <WhyBg />
 </section>
 
 <script>
@@ -96,14 +98,6 @@ const t = useTranslations(lang);
         ease: 'power4.inOut',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(testimonial, {
-        opacity: 0,
-        y: -200,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -114,14 +108,6 @@ const t = useTranslations(lang);
       gsap.to(comment, {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(comment, {
-        opacity: 0,
-        y: 200,
         duration: 1,
         ease: 'power4.inOut',
       });

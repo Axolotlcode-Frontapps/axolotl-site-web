@@ -193,7 +193,7 @@ export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-fit py-1 px-2 rounded-[5px] border border-primary-500 bg-primary-500 text-primary-50 hover:bg-primary-600 transition-colors disabled:opacity-50"
+        className="w-fit px-6 py-2 rounded-[5px] font-bold border border-primary-500 bg-primary-500 text-primary-50 hover:bg-primary-600 transition-colors disabled:opacity-50"
       >
         {text.send}
       </button>

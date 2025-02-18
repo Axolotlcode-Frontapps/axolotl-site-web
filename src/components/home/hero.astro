@@ -23,9 +23,9 @@ const translatePath = useTranslatedPath(lang);
     <article
       class="hero-text w-full flex flex-col items-center md:items-start text-center md:text-left gap-6 md:gap-10"
     >
-      <h2 class="text-5xl leading-[58px] xl:text-7xl font-bold">
+      <h1 class="text-5xl leading-[58px] xl:text-7xl font-bold">
         {t('home.hero.title')}
-      </h2>
+      </h1>
       <p
         class="text-base leading-7 xl:text-xl xl:leading-9"
         set:html={t('home.hero.description')}
@@ -34,12 +34,12 @@ const translatePath = useTranslatedPath(lang);
         <Button
           text={t('home.hero.button')}
           type="primary"
-          href={translatePath('/')}
+          href={translatePath('/about')}
         />
         <Button
           text={t('home.hero.contact')}
           type="secondary"
-          href={translatePath('/contact')}
+          href={translatePath('/contact#contact')}
           outline
         />
       </div>

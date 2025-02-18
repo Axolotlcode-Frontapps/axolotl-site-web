@@ -67,14 +67,6 @@ const t = useTranslations(lang);
         ease: 'power4.out',
       });
     },
-    onLeaveBack: () => {
-      gsap.to(info, {
-        opacity: 0,
-        x: -500,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
   });
 
   ScrollTrigger.create({
@@ -85,14 +77,6 @@ const t = useTranslations(lang);
       gsap.to(image, {
         opacity: 1,
         x: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to(image, {
-        opacity: 0,
-        x: 500,
         duration: 1,
         ease: 'power4.out',
       });
