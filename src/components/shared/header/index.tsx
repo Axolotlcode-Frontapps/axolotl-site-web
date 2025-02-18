@@ -175,22 +175,16 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
         </a>
         <button
           type="button"
-          className={`font-bold leading-7  flex items-center gap-2 ${color}`}
+          className={`font-bold leading-7 group flex items-center gap-2 ${color} hover:text-primary-500 transition-colors`}
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <svg
-              width="12"
-              height="11"
-              viewBox="0 0 12 11"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="12" height="11" viewBox="0 0 12 11" fill="none">
               <path
                 d="M10.6875 9.3125C11.0938 9.6875 11.0938 10.3438 10.6875 10.7188C10.5 10.9062 10.25 11 10 11C9.71875 11 9.46875 10.9062 9.28125 10.7188L6 7.4375L2.6875 10.7188C2.5 10.9062 2.25 11 2 11C1.71875 11 1.46875 10.9062 1.28125 10.7188C0.875 10.3438 0.875 9.6875 1.28125 9.3125L4.5625 6L1.28125 2.71875C0.875 2.34375 0.875 1.6875 1.28125 1.3125C1.65625 0.90625 2.3125 0.90625 2.6875 1.3125L6 4.59375L9.28125 1.3125C9.65625 0.90625 10.3125 0.90625 10.6875 1.3125C11.0938 1.6875 11.0938 2.34375 10.6875 2.71875L7.40625 6.03125L10.6875 9.3125Z"
-                className={fillColor}
+                className={`${fillColor} group-hover:!fill-primary-500 transition-colors`}
               />
             </svg>
           ) : (
@@ -203,7 +197,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
             >
               <path
                 d="M0 1C0 0.46875 0.4375 0 1 0H13C13.5312 0 14 0.46875 14 1C14 1.5625 13.5312 2 13 2H1C0.4375 2 0 1.5625 0 1ZM0 6C0 5.46875 0.4375 5 1 5H13C13.5312 5 14 5.46875 14 6C14 6.5625 13.5312 7 13 7H1C0.4375 7 0 6.5625 0 6ZM13 12H1C0.4375 12 0 11.5625 0 11C0 10.4688 0.4375 10 1 10H13C13.5312 10 14 10.4688 14 11C14 11.5625 13.5312 12 13 12Z"
-                className={fillColor}
+                className={`${fillColor} group-hover:!fill-primary-500 transition-colors`}
               />
             </svg>
           )}

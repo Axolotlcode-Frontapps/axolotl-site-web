@@ -16,32 +16,32 @@
       "items": {
         "offer-1": {
           "title": "Desarrollo de software",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Creación de aplicaciones y sistemas personalizados, escalables e innovadores para optimizar tu negocio.",
           "alt": "Desarrollo de software"
         },
         "offer-2": {
           "title": "Consultorías",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Asesoría tecnológica estratégica para mejorar procesos, productividad y transformación digital empresarial.",
           "alt": "Consultorías"
         },
         "offer-3": {
           "title": "Profesionales a tu disposición",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Expertos en TI listos para potenciar proyectos con soluciones eficientes y personalizadas.",
           "alt": "Profesionales a tu disposición"
         },
         "offer-4": {
           "title": "Desarrollo a la medida",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Software a medida, adaptado a tus necesidades, con alta calidad y seguridad.",
           "alt": "Desarrollo de software"
         },
         "offer-5": {
           "title": "Soporte técnico",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Servicio técnico especializado en mantenimiento, resolución de problemas y optimización de sistemas informáticos.",
           "alt": "Consultorías"
         },
         "offer-6": {
           "title": "Incubadora",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Mentoría y apoyo para startups, acelerando su crecimiento con estrategias digitales innovadoras.",
           "alt": "Profesionales a tu disposición"
         }
       }
@@ -84,7 +84,7 @@
       "span": "Contáctanos",
       "title": "¿Tienes algún <span class='text-secondary-500'>proyecto</span> en mente?",
       "description": "¡Nosotros podemos ayudarte! Abarcamos gran parte de la Ciudad de México y alrededores.",
-      "button": "Envíar mensaje"
+      "button": "Enviar mensaje"
     }
   },
   "header": {
@@ -110,7 +110,7 @@
     "title-page": "Sobre nosotros - AxolotlCode",
     "hero": {
       "title": "Sobre <span class='text-primary-200'>nosotros</span>",
-      "description": "En AxolotlCode, nuestra pasión por la innovación y el desarrollo digital nos impulsa a construir soluciones que transforman ideas en realidades tecnológicas. Descubre quiénes somos y cómo podemos ayudarte a alcanzar tus objetivos."
+      "description": "En AxolotlCode, nuestra pasión por la innovación y el desarrollo digital nos impulsa a construir soluciones que transforman ideas en realidades tecnológicas."
     },
     "about": {
       "span": "Sobre nosotros",
@@ -123,11 +123,11 @@
       "alt": "Sobre nosotros - Compañía",
       "mision": {
         "title": "Misión",
-        "description": "Desarrollar soluciones tecnológicas innovadoras y personalizadas que optimicen los procesos empresariales de nuestros clientes, garantizando seguridad, eficiencia y calidad en cada proyecto, mientras promovemos el uso de tecnologías modernas para contribuir al éxito de sus negocios."
+        "description": "Crear soluciones digitales innovadoras que potencien al máximo el potencial de las empresas de manera responsable y ética."
       },
       "vision": {
         "title": "Visión",
-        "description": "Ser líderes en el desarrollo de software en México, reconocidos por la excelencia y la innovación de nuestras soluciones tecnológicas, estableciendo relaciones de confianza con nuestros clientes y marcando un impacto significativo en la transformación digital de las empresas."
+        "description": "Integrar a las empresas en la era digital, brindándoles la oportunidad de trabajar inteligentemente y potenciarse con tecnología para aprovechar al máximo su capacidad."
       }
     },
     "timeline": {
@@ -285,20 +285,36 @@
       },
       "questions": {
         "question-1": {
-          "title": "¿Cuál es tu propuesta empresarial?",
-          "description": "Respuesta"
+          "title": "¿Qué tipo de software pueden desarrollar para mi empresa?",
+          "description": "Desarrollamos soluciones de software personalizadas, incluyendo aplicaciones web, móviles y sistemas empresariales. Nuestro enfoque se basa en comprender tus necesidades y crear herramientas innovadoras que optimicen tus procesos, mejoren la eficiencia y aumenten la productividad de tu empresa."
         },
         "question-2": {
-          "title": "¿Que diferencia tu producto o servicio a la competencia?",
-          "description": "Respuesta"
+          "title": "¿Cómo puedo contratar una consultoría tecnológica con ustedes?",
+          "description": "Es muy fácil. Solo contáctanos a través de nuestro sitio web o por teléfono, y programaremos una reunión para entender tus objetivos y desafíos. Nuestro equipo de expertos te brindará asesoría estratégica basada en las mejores prácticas del sector para ayudarte a tomar decisiones tecnológicas acertadas."
         },
         "question-3": {
-          "title": "¿Qué compromiso tienes para hacer lo que hay que hacer?",
-          "description": "Respuesta"
+          "title": "¿Qué beneficios tiene contar con profesionales a disposición?",
+          "description": "Contar con nuestros profesionales en TI te permite disponer de expertos altamente capacitados en diversas áreas de tecnología sin la necesidad de contratar personal adicional. Esto reduce costos operativos, agiliza procesos y garantiza soluciones eficientes adaptadas a las necesidades de tu negocio."
         },
         "question-4": {
-          "title": "¿Qué poder tienen tus clientes?",
-          "description": "Respuesta"
+          "title": "¿Cuál es la diferencia entre software estándar y software a medida?",
+          "description": "El software estándar es genérico y diseñado para un público amplio, lo que puede generar limitaciones en su funcionalidad. En cambio, el software a medida se desarrolla específicamente para tu empresa, permitiéndote automatizar procesos, optimizar recursos y garantizar una mayor eficiencia sin restricciones."
+        },
+        "question-5": {
+          "title": "¿Cuánto tiempo tarda el desarrollo de un software?",
+          "description": "El tiempo de desarrollo depende de la complejidad del proyecto y sus funcionalidades. Antes de iniciar, realizamos un análisis detallado para estimar plazos realistas y garantizar las entregas dentro del tiempo acordado. Nos aseguramos de ofrecer calidad sin comprometer la rapidez."
+        },
+        "question-6": {
+          "title": "¿Ofrecen mantenimiento y actualizaciones para los sistemas desarrollados?",
+          "description": "Ofrecemos soporte continuo para garantizar el óptimo funcionamiento de su software. Nuestras actualizaciones incluyen mejoras de seguridad, compatibilidad con nuevas tecnologías y optimización de rendimiento, asegurando que su sistema esté siempre actualizado y protegido."
+        },
+        "question-7": {
+          "title": "¿Puedo escalar mi software a futuro si mi empresa crece?",
+          "description": "Diseñamos soluciones escalables que pueden evolucionar junto con tu empresa. Ya sea agregando nuevas funcionalidades, optimizando rendimiento o integrando herramientas adicionales, nuestro software se adapta al crecimiento de tu negocio sin necesidad de reemplazarlo."
+        },
+        "question-8": {
+          "title": "¿El software o servicio contratado tiene garantía?",
+          "description": "Ofrecemos garantía en todos nuestros desarrollos y servicios. Mientras el software o sistema se encuentre bajo nuestra administración, corregiremos de forma GRATUITA cualquier error técnico que pueda surgir, siempre que no sea causado por un mal uso por parte del cliente."
         }
       }
     },
@@ -312,9 +328,9 @@
       "phone-value": "+(52) 56 6007 2998",
       "location": "Ubicación",
       "city": "Estado de México",
-      "locality": "Nezahualcoyotl",
+      "locality": "Nezahualcóyotl",
       "form": {
-        "name": "Nombres",
+        "name": "Nombre",
         "lastname": "Apellidos",
         "email": "Correo electrónico",
         "phone": "Número de teléfono",
@@ -334,6 +350,9 @@
     },
     "contact": {
       "label": "Contacto"
+    },
+    "copyright": {
+      "text": "AxolotlCode. Todos los derechos reservados."
     }
   }
 }

@@ -94,6 +94,8 @@ const offers = [
 
   gsap.set(offerItems, {
     opacity: 0,
+    y: 100,
+    force3D: true,
   });
 
   ScrollTrigger.create({
@@ -112,15 +114,16 @@ const offers = [
 
   ScrollTrigger.create({
     trigger: offerItems,
-    start: 'top 80%',
+    start: 'top 90%',
     end: 'bottom 20%',
     toggleActions: 'play none none reverse',
     onEnter: () => {
       gsap.to(offerItems, {
         opacity: 1,
-        duration: 2.1,
-        stagger: 0.35,
-        ease: 'power4.inOut',
+        y: 0,
+        duration: 1,
+        stagger: 0.18,
+        ease: 'power2.out',
       });
     },
   });

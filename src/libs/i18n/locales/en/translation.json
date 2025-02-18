@@ -16,32 +16,32 @@
       "items": {
         "offer-1": {
           "title": "Software Development",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Creation of custom, scalable, and innovative applications and systems to optimize your business.",
           "alt": "Software Development"
         },
         "offer-2": {
           "title": "Consulting",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Strategic technology consulting to improve processes, productivity, and business digital transformation.",
           "alt": "Consulting"
         },
         "offer-3": {
           "title": "Professionals at Your Disposal",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "IT experts ready to enhance projects with efficient and customized solutions.",
           "alt": "Professionals at Your Disposal"
         },
         "offer-4": {
           "title": "Custom Development",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Custom software, adapted to your needs, with high quality and security.",
           "alt": "Software Development"
         },
         "offer-5": {
           "title": "Technical Support",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Specialized technical service in maintenance, troubleshooting, and optimization of computer systems.",
           "alt": "Consulting"
         },
         "offer-6": {
           "title": "Incubator",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Mentoring and support for startups, accelerating their growth with innovative digital strategies.",
           "alt": "Professionals at Your Disposal"
         }
       }
@@ -110,7 +110,7 @@
     "title-page": "About Us - AxolotlCode",
     "hero": {
       "title": "About <span class='text-primary-200'>Us</span>",
-      "description": "At AxolotlCode, our passion for innovation and digital development drives us to build solutions that transform ideas into technological realities. Discover who we are and how we can help you achieve your goals."
+      "description": "At AxolotlCode, our passion for innovation and digital development drives us to build solutions that transform ideas into technological realities."
     },
     "about": {
       "span": "About Us",
@@ -190,32 +190,32 @@
       "items": {
         "service-1": {
           "title": "Software Development",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Custom software solutions that drive business growth and efficiency",
           "alt": "Plans and Services - Software Development"
         },
         "service-2": {
           "title": "Consulting",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Expert guidance for digital transformation and technology implementation",
           "alt": "Plans and Services - Consulting"
         },
         "service-3": {
           "title": "Professionals at Your Disposal",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Skilled IT professionals ready to support your projects",
           "alt": "Plans and Services - Professionals at Your Disposal"
         },
         "service-4": {
           "title": "Custom Development",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Tailored solutions that perfectly match your business needs",
           "alt": "Plans and Services - Custom Development"
         },
         "service-5": {
           "title": "Technical Support",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Reliable maintenance and support for your technological infrastructure",
           "alt": "Plans and Services - Technical Support"
         },
         "service-6": {
           "title": "Incubator",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "description": "Startup support program to accelerate your business growth",
           "alt": "Plans and Services - Incubator"
         }
       }
@@ -285,20 +285,36 @@
       },
       "questions": {
         "question-1": {
-          "title": "What is your business proposal?",
-          "description": "Answer"
+          "title": "What type of software can you develop for my company?",
+          "description": "We develop customized software solutions, including web applications, mobile apps, and enterprise systems. Our approach is based on understanding your needs and creating innovative tools that optimize your processes, improve efficiency, and increase your company's productivity."
         },
         "question-2": {
-          "title": "What differentiates your product or service from the competition?",
-          "description": "Answer"
+          "title": "How can I hire a technology consultancy with you?",
+          "description": "It's very easy. Just contact us through our website or by phone, and we'll schedule a meeting to understand your goals and challenges. Our team of experts will provide strategic advice based on industry best practices to help you make sound technology decisions."
         },
         "question-3": {
-          "title": "What is your commitment to doing what needs to be done?",
-          "description": "Answer"
+          "title": "What are the benefits of having professionals at my disposal?",
+          "description": "Having our IT professionals gives you access to highly trained experts in various technology areas without the need to hire additional staff. This reduces operating costs, streamlines processes, and ensures efficient solutions tailored to your business needs."
         },
         "question-4": {
-          "title": "What power do your clients have?",
-          "description": "Answer"
+          "title": "What's the difference between standard and custom software?",
+          "description": "Standard software is generic and designed for a broad audience, which can create limitations in functionality. In contrast, custom software is developed specifically for your company, allowing you to automate processes, optimize resources, and ensure greater efficiency without restrictions."
+        },
+        "question-5": {
+          "title": "How long does software development take?",
+          "description": "Development time depends on the project's complexity and features. Before starting, we conduct a detailed analysis to estimate realistic timelines and ensure deliveries within the agreed time. We ensure quality without compromising speed."
+        },
+        "question-6": {
+          "title": "Do you offer maintenance and updates for developed systems?",
+          "description": "We offer continuous support to ensure optimal software performance. Our updates include security improvements, compatibility with new technologies, and performance optimization, ensuring your system is always up-to-date and protected."
+        },
+        "question-7": {
+          "title": "Can I scale my software in the future as my company grows?",
+          "description": "We design scalable solutions that can evolve with your company. Whether adding new features, optimizing performance, or integrating additional tools, our software adapts to your business growth without needing replacement."
+        },
+        "question-8": {
+          "title": "Does the contracted software or service have a warranty?",
+          "description": "We offer warranty on all our developments and services. While the software or system is under our management, we will correct any technical errors that may arise FREE OF CHARGE, as long as they are not caused by misuse by the client."
         }
       }
     },
@@ -334,6 +350,9 @@
     },
     "contact": {
       "label": "Contact"
+    },
+    "copyright": {
+      "text": "AxolotlCode. All rights reserved."
     }
   }
 }
