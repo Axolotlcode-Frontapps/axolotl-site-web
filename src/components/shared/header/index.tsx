@@ -212,7 +212,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
       <HeaderSection />
       <div
         ref={overlayRef}
-        className="absolute left-0 right-0 bottom-0 h-full hidden bg-[#EFEFEF]"
+        className="absolute inset-0 hidden bg-[#EFEFEF]"
         style={{ zIndex: 40 }}
       />
       <div
@@ -224,10 +224,10 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
           <HeaderSection />
           <div
             ref={contentRef}
-            className="h-dvh pt-[115px] pb-[115px] max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-between md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            className="h-[calc(100vh-115px)] mt-[115px] pb-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-start md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
           >
-            <nav className="w-full sm:w-auto h-fit py-8 px-4 flex-grow">
-              <ol className="flex flex-col gap-y-[30px] lg:gap-y-[70px]">
+            <nav className="w-full sm:w-auto pt-4 pb-8 md:pt-8 px-4">
+              <ol className="flex flex-col justify-center gap-y-[30px] lg:gap-y-[70px]">
                 {menu?.map(({ label, link }, index) => (
                   <li key={label} className="flex gap-x-2 items-end">
                     <span className="text-primary-100 text-base md:text-xl lg:text-2xl xl:text-3xl inline-block">
@@ -244,7 +244,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
               </ol>
             </nav>
 
-            <div className="w-full sm:w-auto py-8 px-4 sm:pl-10 lg:pl-20 flex-grow">
+            <div className="w-full sm:w-auto pt-8 pb-4 px-4 md:pb-8 sm:pl-10 lg:pl-20">
               <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
                 <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
                   {t('header.info.city')}
@@ -275,7 +275,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                 </ul>
               </div>
 
-              <div className="flex flex-col gap-y-[8px]">
+              <div className="flex flex-col gap-y-2">
                 <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
                   {t('header.social.label')}
                 </span>
