@@ -3,11 +3,32 @@ import { useState } from 'react';
 import { useTranslations } from '@/libs/i18n/utils';
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
-  lastName: z.string().min(2, 'El apellido debe tener al menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
-  phone: z.string().min(10, 'El teléfono debe tener al menos 10 caracteres'),
-  message: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres'),
+  first_name: z.string({
+    required_error: 'El nombre es obligatorio',
+  }),
+  last_name: z.string({
+    required_error: 'El apellido es obligatorio',
+  }),
+  email: z
+    .string({
+      required_error: 'El correo electrónico es obligatorio',
+    })
+    .email({
+      message: 'El correo electrónico debe ser válido',
+    }),
+  phone: z.string().refine(
+    (value) => {
+      return value === '' || /^\+?[1-9]\d{1,14}$/.test(value);
+    },
+    {
+      message: 'El número de teléfono debe ser válido',
+    }
+  ),
+  message: z
+    .string({
+      required_error: 'El mensaje es obligatorio',
+    })
+    .min(10, 'El mensaje debe tener al menos 10 caracteres'),
 });
 
 type ContactForm = z.infer<typeof contactSchema>;
@@ -15,8 +36,8 @@ type ContactForm = z.infer<typeof contactSchema>;
 export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
   const t = useTranslations(lang);
   const [formData, setFormData] = useState<ContactForm>({
-    name: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     phone: '',
     message: '',
@@ -41,21 +62,25 @@ export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
     try {
       const validatedData = contactSchema.parse(formData);
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(validatedData),
-      });
+      const response = await fetch(
+        'https://mail.axolotlcode.tech/mail-hub/email/contact',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer 30c23594b19cd717d82763206346e98f`,
+          },
+          body: JSON.stringify(validatedData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error('Error al enviar el formulario');
       }
 
       setFormData({
-        name: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         email: '',
         phone: '',
         message: '',
@@ -84,43 +109,43 @@ export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label
-            htmlFor="name"
+            htmlFor="first_name"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
             {t('contact.contact.form.name')} *
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="first_name"
+            name="first_name"
+            value={formData.first_name}
             onChange={handleChange}
             placeholder={text.name}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
           />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+          {errors.first_name && (
+            <p className="text-red-500 text-sm mt-1">{errors.first_name}</p>
           )}
         </div>
 
         <div>
           <label
-            htmlFor="lastName"
+            htmlFor="last_name"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
             {text.lastName} *
           </label>
           <input
             type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
+            id="last_name"
+            name="last_name"
+            value={formData.last_name}
             onChange={handleChange}
             placeholder={text.lastName}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
           />
-          {errors.lastName && (
-            <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+          {errors.last_name && (
+            <p className="text-red-500 text-sm mt-1">{errors.last_name}</p>
           )}
         </div>
       </div>
