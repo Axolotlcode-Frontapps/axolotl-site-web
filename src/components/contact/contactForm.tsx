@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { useState } from 'react';
 import { useTranslations } from '@/libs/i18n/utils';
+import { toast } from 'sonner';
 
 const contactSchema = z.object({
   first_name: z.string({
@@ -75,6 +76,7 @@ export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
       );
 
       if (!response.ok) {
+        toast.error(t('contact.contact.error'));
         throw new Error('Error al enviar el formulario');
       }
 
@@ -86,6 +88,8 @@ export const ContactForm: React.FC<{ lang: string }> = ({ lang }) => {
         message: '',
       });
       setErrors({});
+
+      toast.success(t('contact.contact.success'));
     } catch (error) {
       if (error instanceof z.ZodError) {
         setErrors(error.formErrors.fieldErrors);
