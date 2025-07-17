@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article
+  class="flex flex-col gap-4 px-6 py-4 text-light-color text-center md:text-left shadow-[0_4px_10px_0_rgba(148,148,148,0.13)] backdrop-blur-[20px]"
+>
+  <h3 class="text-2xl xl:text-[32px] leading-7 xl:leading-10 font-bold">
+    {title}
+  </h3>
+  <span class="text-sm xl:text-base leading-6 xl:leading-7">{description}</span>
+</article>

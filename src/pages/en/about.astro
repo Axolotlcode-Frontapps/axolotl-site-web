@@ -1,0 +1,26 @@
+---
+import HeroBg from '@/assets/images/aboutUs/about-us-hero.webp';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/shared/hero.astro';
+import AboutUs from '@/components/about/about-us.astro';
+import Company from '@/components/about/company.astro';
+import NextLevel from '@/components/shared/next-level.astro';
+import Timeline from '@/components/about/timeline.astro';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const hero = {
+  title: t('about.hero.title'),
+  description: t('about.hero.description'),
+  image: HeroBg,
+};
+---
+
+<Layout title={t('about.title-page')}>
+  <Hero title={hero.title} description={hero.description} image={hero.image} />
+  <AboutUs />
+  <Company />
+  <Timeline />
+  <NextLevel />
+</Layout>

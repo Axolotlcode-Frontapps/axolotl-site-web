@@ -1,0 +1,358 @@
+{
+  "seo": {
+    "description": "At Axolotl Code, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success. With cutting-edge technologies and a focus on quality, we are your strategic partner in digital transformation."
+  },
+  "home": {
+    "title-page": "AxolotlCode - Software Development and Digital Solutions",
+    "hero": {
+      "title": "Custom Technology Solutions Development",
+      "description": "At <span class='text-primary-500 font-bold'>AxolotlCode</span>, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success. With cutting-edge technologies and a focus on quality, we are your strategic partner in digital transformation.",
+      "button": "Learn More",
+      "contact": "Contact"
+    },
+    "offers": {
+      "span": "News",
+      "title": "What do we offer?",
+      "items": {
+        "offer-1": {
+          "title": "Software Development",
+          "description": "Creation of custom, scalable, and innovative applications and systems to optimize your business.",
+          "alt": "Software Development"
+        },
+        "offer-2": {
+          "title": "Consulting",
+          "description": "Strategic technology consulting to improve processes, productivity, and business digital transformation.",
+          "alt": "Consulting"
+        },
+        "offer-3": {
+          "title": "Professionals at Your Disposal",
+          "description": "IT experts ready to enhance projects with efficient and customized solutions.",
+          "alt": "Professionals at Your Disposal"
+        },
+        "offer-4": {
+          "title": "Custom Development",
+          "description": "Custom software, adapted to your needs, with high quality and security.",
+          "alt": "Software Development"
+        },
+        "offer-5": {
+          "title": "Technical Support",
+          "description": "Specialized technical service in maintenance, troubleshooting, and optimization of computer systems.",
+          "alt": "Consulting"
+        },
+        "offer-6": {
+          "title": "Incubator",
+          "description": "Mentoring and support for startups, accelerating their growth with innovative digital strategies.",
+          "alt": "Professionals at Your Disposal"
+        }
+      }
+    },
+    "comments": {
+      "span": "Testimonials",
+      "title": "What <span class='text-secondary-500'>clients</span> have said about us",
+      "description": "We are so confident in our work and its quality that we share our clients' comments. Below, you'll see some comments from our clients and their rating of our service. Let our clients' comments convince you!",
+      "comment": {
+        "author": "Mario Diaz",
+        "job": "DGS Director",
+        "testimonial": "They are very professional staff, they helped me create the system I needed, I recommend them."
+      }
+    },
+    "why": {
+      "span": "Why AxolotlCode?",
+      "title": "At AxolotlCode we build <span class='text-secondary-500'>more than software</span>",
+      "description": "We create solutions that drive your business towards success. Our expert team combines innovation, quality, and commitment to develop customized technological tools that adapt to your needs.",
+      "dots": {
+        "dot-1": {
+          "title": "Constant Innovation:",
+          "description": "We use cutting-edge technologies"
+        },
+        "dot-2": {
+          "title": "Guaranteed Security:",
+          "description": "We protect your data and projects"
+        },
+        "dot-3": {
+          "title": "Tangible Results:",
+          "description": "We design success-oriented solutions"
+        }
+      },
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "city": "Mexico City",
+      "locality": "Metropolitan Area"
+    },
+    "contact": {
+      "span": "Contact Us",
+      "title": "Do you have a <span class='text-secondary-500'>project</span> in mind?",
+      "description": "We can help you! We cover much of Mexico City and surrounding areas.",
+      "button": "Send Message"
+    }
+  },
+  "header": {
+    "open": "Menu",
+    "close": "Close",
+    "home": "Home",
+    "about-us": "About Us",
+    "services": "Plans and Services",
+    "contact": "Contact",
+    "social": {
+      "label": "Social Media",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "twitter": "X"
+    },
+    "info": {
+      "city": "State of Mexico",
+      "locality": "Nezahualcoyotl"
+    }
+  },
+  "about": {
+    "title-page": "About Us - AxolotlCode",
+    "hero": {
+      "title": "About <span class='text-primary-200'>Us</span>",
+      "description": "At AxolotlCode, our passion for innovation and digital development drives us to build solutions that transform ideas into technological realities."
+    },
+    "about": {
+      "span": "About Us",
+      "title": "Learn about our <span class='text-secondary-500'>history</span>",
+      "text-1": "AxolotlCode was born with the mission of transforming our clients' ideas into high-impact technological solutions. From our beginnings, we have prioritized innovation, quality, and security in every project, working with a committed and passionate team.",
+      "text-2": "Throughout our journey, we have helped companies from various sectors modernize their processes and achieve their objectives in an ever-evolving digital world. We take pride in being strategic allies in our clients' technological transformation.",
+      "alt": "About Us - Get to Know Us"
+    },
+    "company": {
+      "alt": "About Us - Company",
+      "mision": {
+        "title": "Mission",
+        "description": "To develop innovative and customized technological solutions that optimize our clients' business processes, ensuring security, efficiency, and quality in each project, while promoting the use of modern technologies to contribute to their business success."
+      },
+      "vision": {
+        "title": "Vision",
+        "description": "To be leaders in software development in Mexico, recognized for the excellence and innovation of our technological solutions, establishing trusted relationships with our clients and making a significant impact on companies' digital transformation."
+      }
+    },
+    "timeline": {
+      "span": "Our Work Process",
+      "title": "How do we <span class='text-secondary-500'>do it</span>?",
+      "steps": {
+        "step-1": {
+          "title": "Research and Information Gathering",
+          "description": "Let's discover together what you need and how we can achieve it.",
+          "alt": "About Us - Research"
+        },
+        "step-2": {
+          "title": "Planning (sitemap, wireframes, etc.)",
+          "description": "We structure your ideas to bring your project to life.",
+          "alt": "About Us - Planning"
+        },
+        "step-3": {
+          "title": "Website Design and Prototypes",
+          "description": "We create attractive sketches that reflect your vision.",
+          "alt": "About Us - Design"
+        },
+        "step-4": {
+          "title": "Content Creation",
+          "description": "We give voice to your site with impactful texts and images.",
+          "alt": "About Us - Creation"
+        },
+        "step-5": {
+          "title": "Frontend and Backend Development",
+          "description": "We build your site to work perfectly and look amazing.",
+          "alt": "About Us - Development"
+        },
+        "step-6": {
+          "title": "Quality Testing and Deployment",
+          "description": "We adjust the final details for a smooth launch.",
+          "alt": "About Us - Quality Testing"
+        },
+        "step-7": {
+          "title": "Maintenance and Updates",
+          "description": "We ensure your site remains spectacular over time.",
+          "alt": "About Us - Maintenance"
+        }
+      }
+    }
+  },
+  "next-level": {
+    "title": "Are you ready to take your ideas to the next level?",
+    "description": "Let's talk and discover how we can help you. Or explore our options and find the perfect solution for your business.",
+    "contact": "Contact Us",
+    "plan": "Our Plans"
+  },
+  "plans": {
+    "title-page": "Plans and Services - AxolotlCode",
+    "hero": {
+      "title": "Plans and <span class='text-primary-200'>Services</span>",
+      "description": "Discover our solutions designed to adapt to your needs. We offer personalized services to take your projects to the next level, with flexible plans and options that adjust to each stage of your growth."
+    },
+    "services": {
+      "span": "Our Services",
+      "title": "How can we <span class='text-secondary-500'>help you</span>?",
+      "items": {
+        "service-1": {
+          "title": "Software Development",
+          "description": "Custom software solutions that drive business growth and efficiency",
+          "alt": "Plans and Services - Software Development"
+        },
+        "service-2": {
+          "title": "Consulting",
+          "description": "Expert guidance for digital transformation and technology implementation",
+          "alt": "Plans and Services - Consulting"
+        },
+        "service-3": {
+          "title": "Professionals at Your Disposal",
+          "description": "Skilled IT professionals ready to support your projects",
+          "alt": "Plans and Services - Professionals at Your Disposal"
+        },
+        "service-4": {
+          "title": "Custom Development",
+          "description": "Tailored solutions that perfectly match your business needs",
+          "alt": "Plans and Services - Custom Development"
+        },
+        "service-5": {
+          "title": "Technical Support",
+          "description": "Reliable maintenance and support for your technological infrastructure",
+          "alt": "Plans and Services - Technical Support"
+        },
+        "service-6": {
+          "title": "Incubator",
+          "description": "Startup support program to accelerate your business growth",
+          "alt": "Plans and Services - Incubator"
+        }
+      }
+    },
+    "plans": {
+      "span": "Our Plans",
+      "title": "What do we <span class='text-secondary-500'>offer</span>?",
+      "items": {
+        "plan-1": {
+          "span": "Basic Plan",
+          "title": "Initial payment of $2,000 MXN",
+          "subtitle": "Monthly fee of $500 MXN",
+          "features": {
+            "feature-1": "Landing page development (one-page)",
+            "feature-2": "Hosting",
+            "feature-3": "Basic onsite SEO",
+            "feature-4": "Unlimited basic changes (information, images, etc.)"
+          }
+        },
+        "plan-2": {
+          "span": "SME Plan",
+          "title": "Initial payment of $5,000 MXN",
+          "subtitle": "Initial payment of $5,000 MXN",
+          "feature": "Everything in the Basic Plan, plus...",
+          "features": {
+            "feature-1": "Two to three internal page views",
+            "feature-2": "Advanced onsite SEO",
+            "feature-3": "Customer management",
+            "feature-4": "Advanced changes (maximum two per month, functionality changes or adding sections)"
+          }
+        },
+        "plan-3": {
+          "span": "E-commerce Plan",
+          "title": "Initial payment of $10,000 MXN",
+          "subtitle": "Monthly fee of $2,500 MXN",
+          "feature": "Everything in the SME Plan, plus...",
+          "features": {
+            "feature-1": "Website + store",
+            "feature-2": "Customer management",
+            "feature-3": "Product management",
+            "feature-4": "Payment gateway integration"
+          }
+        },
+        "plan-4": {
+          "span": "Custom Plan",
+          "title": "Contact us to discuss a quote!",
+          "features": {
+            "feature-1": "Personalized consulting"
+          }
+        }
+      },
+      "contact": "¡Contact us!"
+    }
+  },
+  "contact": {
+    "title-page": "Contact - AxolotlCode",
+    "hero": {
+      "title": "Contact and Frequently Asked Questions",
+      "description": "Do you have questions or need more information about our services? Contact us or check our FAQ section. We are committed to providing clear and quick answers to ensure you have the best experience with us."
+    },
+    "faqs": {
+      "span": "User Questions",
+      "title": "Most <span class='text-secondary-500'>Frequent</span> Questions",
+      "who-us": {
+        "title": "Who are we?",
+        "description": "We are AxolotlCode, a software development and digital solutions company. Our expert team combines innovation, quality, and commitment to develop customized technological tools that adapt to your needs."
+      },
+      "questions": {
+        "question-1": {
+          "title": "What type of software can you develop for my company?",
+          "description": "We develop customized software solutions, including web applications, mobile apps, and enterprise systems. Our approach is based on understanding your needs and creating innovative tools that optimize your processes, improve efficiency, and increase your company's productivity."
+        },
+        "question-2": {
+          "title": "How can I hire a technology consultancy with you?",
+          "description": "It's very easy. Just contact us through our website or by phone, and we'll schedule a meeting to understand your goals and challenges. Our team of experts will provide strategic advice based on industry best practices to help you make sound technology decisions."
+        },
+        "question-3": {
+          "title": "What are the benefits of having professionals at my disposal?",
+          "description": "Having our IT professionals gives you access to highly trained experts in various technology areas without the need to hire additional staff. This reduces operating costs, streamlines processes, and ensures efficient solutions tailored to your business needs."
+        },
+        "question-4": {
+          "title": "What's the difference between standard and custom software?",
+          "description": "Standard software is generic and designed for a broad audience, which can create limitations in functionality. In contrast, custom software is developed specifically for your company, allowing you to automate processes, optimize resources, and ensure greater efficiency without restrictions."
+        },
+        "question-5": {
+          "title": "How long does software development take?",
+          "description": "Development time depends on the project's complexity and features. Before starting, we conduct a detailed analysis to estimate realistic timelines and ensure deliveries within the agreed time. We ensure quality without compromising speed."
+        },
+        "question-6": {
+          "title": "Do you offer maintenance and updates for developed systems?",
+          "description": "We offer continuous support to ensure optimal software performance. Our updates include security improvements, compatibility with new technologies, and performance optimization, ensuring your system is always up-to-date and protected."
+        },
+        "question-7": {
+          "title": "Can I scale my software in the future as my company grows?",
+          "description": "We design scalable solutions that can evolve with your company. Whether adding new features, optimizing performance, or integrating additional tools, our software adapts to your business growth without needing replacement."
+        },
+        "question-8": {
+          "title": "Does the contracted software or service have a warranty?",
+          "description": "We offer warranty on all our developments and services. While the software or system is under our management, we will correct any technical errors that may arise FREE OF CHARGE, as long as they are not caused by misuse by the client."
+        }
+      }
+    },
+    "contact": {
+      "span": "Contact Us",
+      "title": "Do you have a <span class='text-secondary-500'>project</span> in mind?",
+      "description": "We can help you! We cover much of Mexico City and surrounding areas.",
+      "email": "Email",
+      "email-value": "admin@axolotlcode.tech",
+      "phone": "Phone",
+      "phone-value": "+(52) 56 6007 2998",
+      "location": "Location",
+      "city": "State of Mexico",
+      "locality": "Nezahualcoyotl",
+      "form": {
+        "name": "First Name",
+        "lastname": "Last Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "message": "Message",
+        "button": "Send Message"
+      }
+    }
+  },
+  "footer": {
+    "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
+    "menu": {
+      "label": "Menu",
+      "home": "Home",
+      "about-us": "About Us",
+      "services": "Plans and Services",
+      "contact": "Contact"
+    },
+    "contact": {
+      "label": "Contact"
+    },
+    "copyright": {
+      "text": "AxolotlCode. All rights reserved."
+    }
+  }
+}

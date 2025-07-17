@@ -1,0 +1,36 @@
+---
+interface Props {
+  text: string;
+  type: 'primary' | 'secondary' | 'plans' | 'next-level';
+  outline?: boolean;
+  href: string;
+}
+
+const { text, type, outline, href } = Astro.props;
+---
+
+<a
+  class:list={[
+    'px-6 py-2 rounded-[5px] flex items-center justify-center text-sm lg:text-base border transition-colors',
+    !outline &&
+      type === 'primary' &&
+      'font-extrabold bg-primary-500 text-white hover:bg-primary-600',
+    !outline &&
+      type === 'secondary' &&
+      'bg-secondary-500 text-white hover:bg-secondary-600',
+    !outline &&
+      type === 'next-level' &&
+      ' max-w-[150px] font-extrabold border-2 border-primary-500 bg-primary-500 text-primary-50 hover:bg-primary-600 hover:text-white',
+    outline && 'bg-transparent',
+    outline &&
+      type === 'primary' &&
+      ' !text-primary-500 border-primary-500 hover:bg-primary-500 hover:text-white',
+    outline &&
+      type === 'secondary' &&
+      'font-extrabold border-2 text-secondary-500 border-secondary-500 hover:bg-secondary-500 hover:text-white',
+    outline &&
+      type === 'plans' &&
+      'font-extrabold border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white',
+  ]}
+  href={href}>{text}</a
+>

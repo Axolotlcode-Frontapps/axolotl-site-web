@@ -1,0 +1,146 @@
+---
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import Service from './service.astro';
+
+type LoadingType = 'lazy' | 'eager';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services: {
+  title: string;
+  description: string;
+  icon: () => Promise<typeof import('*.svg')>;
+  alt: string;
+  loading?: LoadingType;
+}[] = [
+  {
+    title: t('home.offers.items.offer-1.title'),
+    description: t('home.offers.items.offer-1.description'),
+    icon: () => import('@/assets/icons/services/software.svg'),
+    alt: t('home.offers.items.offer-1.title'),
+    loading: 'eager',
+  },
+  {
+    title: t('home.offers.items.offer-2.title'),
+    description: t('home.offers.items.offer-2.description'),
+    icon: () => import('@/assets/icons/services/consultory.svg'),
+    alt: t('home.offers.items.offer-2.title'),
+    loading: 'eager',
+  },
+  {
+    title: t('home.offers.items.offer-3.title'),
+    description: t('home.offers.items.offer-3.description'),
+    icon: () => import('@/assets/icons/services/profesional.svg'),
+    alt: t('home.offers.items.offer-3.title'),
+    loading: 'eager',
+  },
+  {
+    title: t('home.offers.items.offer-4.title'),
+    description: t('home.offers.items.offer-4.description'),
+    icon: () => import('@/assets/icons/services/star.svg'),
+    alt: t('home.offers.items.offer-4.title'),
+  },
+  {
+    title: t('home.offers.items.offer-5.title'),
+    description: t('home.offers.items.offer-5.description'),
+    icon: () => import('@/assets/icons/services/support.svg'),
+    alt: t('home.offers.items.offer-5.title'),
+  },
+  {
+    title: t('home.offers.items.offer-6.title'),
+    description: t('home.offers.items.offer-6.description'),
+    icon: () => import('@/assets/icons/services/incubadora.svg'),
+    alt: t('home.offers.items.offer-6.title'),
+  },
+];
+---
+
+<section class="bg-foreground">
+  <div
+    class="services max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
+  >
+    <div class="info">
+      <span
+        class="text-base lg:text-2xl leading-5 lg:leading-7 text-primary-500"
+        >{t('plans.services.span')}</span
+      >
+      <h2
+        class="text-[28px] lg:text-[40px] leading-8 lg:leading-[48px] font-bold mt-4 mb-10"
+        set:html={t('plans.services.title')}
+      />
+    </div>
+    <div
+      class="items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
+    >
+      {
+        services.map(async ({ title, description, icon, alt, loading }) => {
+          const { default: image } = await icon();
+
+          return (
+            <Service
+              {title}
+              {description}
+              {alt}
+              icon={image}
+              loading={loading ? loading : 'lazy'}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const info = document.querySelector('.info');
+  const serviceItems = document.querySelectorAll('.items > *');
+
+  gsap.set(info, {
+    opacity: 0,
+    y: -50,
+    force3D: true,
+  });
+
+  gsap.set(serviceItems, {
+    opacity: 0,
+    y: 100,
+    force3D: true,
+  });
+
+  ScrollTrigger.create({
+    trigger: info,
+    start: 'top 90%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(info, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: serviceItems,
+    start: 'top 90%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(serviceItems, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.35,
+        ease: 'power2.out',
+      });
+    },
+  });
+</script>

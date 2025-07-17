@@ -10,4 +10,10 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...AstroPlugin.configs.recommended,
+  {
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
+    ignores: ['./.astro', './.cache', './dist', './node_modules'],
+  },
 ];

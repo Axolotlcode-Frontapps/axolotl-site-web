@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+
+import CompanyImage from '@/assets/images/aboutUs/company.webp';
+import Card from './card.astro';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const company = [
+  {
+    title: t('about.company.mision.title'),
+    description: t('about.company.mision.description'),
+  },
+  {
+    title: t('about.company.vision.title'),
+    description: t('about.company.vision.description'),
+  },
+];
+---
+
+<section class="relative overflow-hidden">
+  <div
+    class="max-w-7xl mx-auto px-3 sm:px-6 xl:px-[70px] py-10 xl:py-[66px] 2xl:py-[80px] flex flex-col sm:flex-row items-center gap-y-2.5 gap-x-[40px] relative z-20"
+  >
+    <div class="company-image w-full grid place-content-center">
+      <Image
+        src={CompanyImage}
+        alt={t('about.company.alt')}
+        loading="lazy"
+        width={516}
+        height={516}
+      />
+    </div>
+    <div class="company-cards w-full flex flex-col gap-[50px]">
+      {
+        company.map(({ title, description }) => (
+          <Card title={title} description={description} />
+        ))
+      }
+    </div>
+  </div>
+  <svg
+    width="545"
+    height="461"
+    viewBox="0 0 545 461"
+    fill="none"
+    class="hidden sm:block absolute top-0 right-0 z-10"
+  >
+    <g filter="url(#filter0_f_4070_2562)">
+      <ellipse
+        cx="272.479"
+        cy="229.318"
+        rx="72.1361"
+        ry="31.5236"
+        transform="rotate(-0.632184 272.479 229.318)"
+        fill="#85223C"></ellipse>
+    </g>
+    <defs>
+      <filter
+        id="filter0_f_4070_2562"
+        x="0.346954"
+        y="-2.21436"
+        width="544.265"
+        height="463.064"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="BackgroundImageFix"
+          result="shape"></feBlend>
+        <feGaussianBlur
+          stdDeviation="100"
+          result="effect1_foregroundBlur_4070_2562"></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const image = document.querySelector('.company-image');
+  const firstCard = document.querySelector('.company-cards > *:first-child');
+  const secondCard = document.querySelector('.company-cards > *:last-child');
+
+  const elements = [firstCard, secondCard];
+
+  gsap.set(image, {
+    opacity: 0,
+  });
+
+  gsap.set(elements, {
+    opacity: 0,
+    x: 500,
+  });
+
+  ScrollTrigger.create({
+    trigger: image,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(image, {
+        opacity: 1,
+        duration: 2,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  elements.forEach((card, index) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 60%',
+      toggleActions: 'play none none reverse',
+      onEnter: () => {
+        gsap.to(card, {
+          opacity: 1,
+          x: 0,
+          duration: 2,
+          delay: index * 0.4,
+          ease: 'power4.out',
+        });
+      },
+    });
+  });
+</script>

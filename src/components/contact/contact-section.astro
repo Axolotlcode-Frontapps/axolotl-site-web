@@ -1,0 +1,182 @@
+---
+import { Image } from 'astro:assets';
+import { ContactForm } from '@/components/contact/contactForm';
+
+import LocationIcon from '@/assets/icons/pin.svg';
+import CallIcon from '@/assets/icons/call.svg';
+import EmailIcon from '@/assets/icons/email.svg';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="text-body-color" id="contact">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-8 sm:py-12 lg:py-16"
+  >
+    <div
+      class="contact flex flex-col gap-4 mb-[26px] md:mb-20 text-center sm:text-left"
+    >
+      <span
+        class="text-primary-500 text-base leading-5 lg:text-2xl lg:leading-7"
+      >
+        {t('contact.contact.span')}
+      </span>
+      <h2
+        class="text-[28px] lg:text-[40px] leading-[34px] lg:leading-[48px] font-bold"
+        set:html={t('contact.contact.title')}
+      />
+      <p class="text-sm sm:text-base text-body-color max-w-2xl">
+        {t('contact.contact.description')}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+      <div class="axolotl-info w-full flex flex-col gap-4 lg:gap-8">
+        <div class="flex flex-col gap-2 lg:gap-">
+          <Image
+            src={LocationIcon}
+            alt={`${t('contact.contact.span')} - AxolotlCode`}
+            class="w-8 h-8"
+            width={18}
+            height={32}
+          />
+          <h3 class="text-lg sm:text-xl font-bold">
+            {t('contact.contact.email')}
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600">
+            {t('contact.contact.email-value')}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2 lg:gap-">
+          <Image
+            src={EmailIcon}
+            alt={`${t('contact.contact.email')} - AxolotlCode`}
+            class="w-8 h-8"
+            width={18}
+            height={32}
+          />
+          <h3 class="text-lg sm:text-xl font-bold">
+            {t('contact.contact.phone')}
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600">
+            {t('contact.contact.phone-value')}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2 lg:gap-4">
+          <Image
+            src={CallIcon}
+            alt={`${t('contact.contact.phone')} - AxolotlCode`}
+            class="w-8 h-8"
+            width={18}
+            height={32}
+          />
+          <h3 class="text-lg sm:text-xl font-bold">
+            {t('contact.contact.location')}
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600">
+            {t('contact.contact.city')},
+            {t('contact.contact.locality')}
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form w-full col-span-1 sm:col-span-2">
+        <ContactForm {lang} client:load />
+      </div>
+    </div>
+    <div
+      class="contact-map w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-xl overflow-hidden mt-8 sm:mt-12 lg:mt-16"
+    >
+      <iframe
+        title={t('contact.contact.location')}
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=axolotlcode&zoom=17&maptype=roadmap"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen="false"></iframe>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const contact = document.querySelector('.contact');
+  const axolotlInfo = document.querySelector('.axolotl-info');
+  const form = document.querySelector('.contact-form');
+  const map = document.querySelector('.contact-map');
+
+  gsap.set(contact, {
+    opacity: 0,
+    y: -150,
+  });
+
+  gsap.set([axolotlInfo, form, map], {
+    opacity: 0,
+  });
+
+  ScrollTrigger.create({
+    trigger: contact,
+    start: 'top 80%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(contact, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: axolotlInfo,
+    start: 'top 75%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(axolotlInfo, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: form,
+    start: 'top 40%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(form, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: map,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(map, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+</script>

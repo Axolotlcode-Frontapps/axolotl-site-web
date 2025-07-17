@@ -1,0 +1,189 @@
+---
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import First from '@/assets/icons/timestep/first.astro';
+import TimeStep from './time-step.astro';
+import Second from '@/assets/icons/timestep/second.astro';
+import Third from '@/assets/icons/timestep/third.astro';
+import Fourth from '@/assets/icons/timestep/fourth.astro';
+import Fifth from '@/assets/icons/timestep/fifth.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const timeSteps = [
+  {
+    title: t('about.timeline.steps.step-1.title'),
+    description: t('about.timeline.steps.step-1.description'),
+    alt: t('about.timeline.steps.step-1.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-1.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-2.title'),
+    description: t('about.timeline.steps.step-2.description'),
+    alt: t('about.timeline.steps.step-2.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-2.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-3.title'),
+    description: t('about.timeline.steps.step-3.description'),
+    alt: t('about.timeline.steps.step-3.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-3.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-4.title'),
+    description: t('about.timeline.steps.step-4.description'),
+    alt: t('about.timeline.steps.step-4.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-4.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-5.title'),
+    description: t('about.timeline.steps.step-5.description'),
+    alt: t('about.timeline.steps.step-5.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-5.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-6.title'),
+    description: t('about.timeline.steps.step-6.description'),
+    alt: t('about.timeline.steps.step-6.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-6.webp'),
+  },
+  {
+    title: t('about.timeline.steps.step-7.title'),
+    description: t('about.timeline.steps.step-7.description'),
+    alt: t('about.timeline.steps.step-7.alt'),
+    image: () => import('@/assets/images/aboutUs/time-step-7.webp'),
+  },
+];
+---
+
+<section class="bg-foreground relative overflow-hidden">
+  <div class="timeline max-w-7xl mx-auto px-3 py-20 text-center relative z-20">
+    <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+      >{t('about.timeline.span')}</span
+    >
+    <h2
+      class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px] mt-4"
+      set:html={t('about.timeline.title')}
+    />
+
+    <div class="flex flex-col gap-4 mt-10 max-w-[596px] mx-auto relative">
+      <div class="line w-full h-full flex justify-center absolute top-[78px]">
+        <svg
+          class="lg:hidden block w-[356px] lg:h-[1920px] h-[1630px]"
+          viewBox="0 0 274 2238"
+          fill="none"
+        >
+          <path
+            d="M46.5838 1H273V385.981H1V745.054H273V1141.234H1V1464.04H273V1847.34H1V2178"
+            stroke="#212529"
+            stroke-dasharray="16 16"></path>
+        </svg>
+
+        <svg
+          class="hidden lg:block w-[356px] lg:h-[1920px] h-[1630px]"
+          viewBox="0 0 274 2238"
+          fill="none"
+        >
+          <path
+            d="M46.5838 1H273V385.981H1V745.054H273V1141.234H1V1464.04H273V1847.34H1V2178"
+            stroke="#212529"
+            stroke-dasharray="16 16"></path>
+        </svg>
+      </div>
+      <div class="steps w-full flex flex-col gap-4">
+        {
+          timeSteps.map(async (step, index) => {
+            const { default: image } = await step.image();
+            return (
+              <TimeStep
+                title={step.title}
+                description={step.description}
+                index={index + 1}
+                orientation={index % 2 === 0 ? 'left' : 'right'}
+                image={image}
+                alt={step.alt}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+  <First className="hidden lg:block absolute -top-52 right-0 " />
+  <Second className="hidden lg:block absolute top-0 -left-48" />
+  <Third className="hidden lg:block absolute top-48 left-0" />
+  <Fourth className="hidden lg:block absolute right-0 bottom-0" />
+  <Fifth className="hidden lg:block absolute -bottom-56 -left-24" />
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const span = document.querySelector('.timeline > span');
+  const title = document.querySelector('.timeline > h2');
+  const line = document.querySelector('.line');
+  const steps = document.querySelectorAll('.steps > *');
+
+  gsap.set([span, title], {
+    opacity: 0,
+    y: 50,
+  });
+
+  gsap.set(line, {
+    opacity: 0,
+  });
+
+  gsap.set(steps, {
+    opacity: 0,
+    y: 50,
+  });
+
+  ScrollTrigger.create({
+    trigger: '.timeline',
+    start: 'top 80%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to([span, title], {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: line,
+    start: 'top bottom',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(line, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+      });
+    },
+  });
+
+  steps.forEach((step) => {
+    ScrollTrigger.create({
+      trigger: step,
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+      onEnter: () => {
+        gsap.to(step, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power4.out',
+        });
+      },
+    });
+  });
+</script>

@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+
+import LocationSvg from '@/assets/icons/contact/location.svg';
+import PhoneSvg from '@/assets/icons/contact/phone.svg';
+import EmailSvg from '@/assets/icons/contact/email.svg';
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/libs/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const info = [
+  {
+    icon: EmailSvg,
+    title: t('contact.contact.email'),
+    description: t('contact.contact.email-value'),
+  },
+  {
+    icon: PhoneSvg,
+    title: t('contact.contact.phone'),
+    description: t('contact.contact.phone-value'),
+  },
+  {
+    icon: LocationSvg,
+    title: t('contact.contact.location'),
+    description: `${t('contact.contact.city')}, ${t('contact.contact.locality')}`,
+  },
+];
+---
+
+<section class="overflow-hidden bg-foreground">
+  <div
+    class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 lg:gap-[50px] px-8 py-16"
+  >
+    <article
+      class="contact w-full lg:max-w-[540px] flex flex-col gap-5 lg:gap-6 items-center text-center lg:text-left lg:items-start"
+    >
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('home.contact.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('home.contact.title')}
+      />
+      <p class="text-sm sm:text-base text-body-color max-w-2xl">
+        {t('home.contact.description')}
+      </p>
+
+      <a
+        href={translatePath('/contact')}
+        class="w-fit rounded-[5px] bg-primary-500 px-6 py-2 text-sm lg:text-base text-white shadow-lg hover:bg-primary-600 transition-colors"
+      >
+        {t('home.contact.button')}
+      </a>
+    </article>
+
+    <article class="map w-full">
+      <div class="h-[300px] sm:h-[400px] rounded-xl overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=axolotlcode&zoom=17&maptype=roadmap"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowfullscreen={false}
+          loading="lazy"
+          title="Google maps"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-4 mt-5">
+        {
+          info.map(({ icon, title, description }) => (
+            <div class="w-full flex items-start gap-4">
+              <Image
+                src={icon}
+                alt={title}
+                class="size-8 transition-transform hover:scale-105"
+              />
+              <div>
+                <span class="inline-block font-semibold mb-1">{title}</span>
+                <p class="text-black">{description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const info = document.querySelector('.contact');
+  const map = document.querySelector('.map');
+
+  gsap.set(info, {
+    opacity: 0,
+    x: -100,
+  });
+
+  gsap.set(map, {
+    opacity: 0,
+    x: 100,
+  });
+
+  ScrollTrigger.create({
+    trigger: info,
+    start: 'top 80%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(info, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power4.inOut',
+      });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: map,
+    start: 'top 80%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(map, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: 'power4.inOut',
+      });
+    },
+  });
+</script>

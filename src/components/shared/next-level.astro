@@ -1,0 +1,108 @@
+---
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/libs/i18n/utils';
+import GradientFirst from '@/assets/icons/next-level/first.astro';
+import GradientSecond from '@/assets/icons/next-level/second.astro';
+import GradientThird from '@/assets/icons/next-level/third.astro';
+import GradientFourth from '@/assets/icons/next-level/fourth.astro';
+import GradientFifth from '@/assets/icons/next-level/fifth.astro';
+import Button from './button.astro';
+
+const currentPathname = Astro.url.pathname;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<section class="relative bg-primary-50">
+  <div
+    class="max-w-7xl mx-auto px-4 md:px-6 py-10 xl:py-[105px] flex flex-col items-center justify-center text-center gap-6 relative z-20"
+  >
+    <article
+      class="article w-full flex flex-col gap-6 bg-gradient-to-br from-transparent from-20% to-white/70 border border-[#FFFFFF] py-12 px-[34px] rounded-[29px]"
+    >
+      <span
+        class="text-[28px] leading-8 font-bold xl:text-[40px] xl:leading-[48px]"
+        >{t('next-level.title')}
+      </span>
+      <p class="text-sm leading-6 xl:text-base xl:leading-7">
+        {t('next-level.description')}
+      </p>
+      <div
+        class="w-full flex flex-col xs:flex-row items-center justify-center gap-y-2.5 gap-x-6 text-sm xl:text-base"
+      >
+        <Button
+          text={t('next-level.contact')}
+          type="next-level"
+          href={translatePath('/contact')}
+          outline={false}
+        />
+
+        {
+          !currentPathname.includes('plans') && (
+            <a
+              href={translatePath('/plans')}
+              class="px-6 py-2 rounded-[5px] font-bold border-2 border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white transition-colors"
+            >
+              {t('next-level.plan')}
+            </a>
+          )
+        }
+      </div>
+    </article>
+  </div>
+  <GradientFirst className="absolute top-0" />
+  <GradientSecond className="absolute bottom-0 right-0" />
+  <GradientThird className="absolute top-0 right-0" />
+  <GradientFourth className="absolute top-0" />
+  <GradientFifth className="absolute top-0" />
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const article = document.querySelector('.article');
+  const articleElements = article?.querySelectorAll('span, p, div');
+
+  if (article && articleElements?.length) {
+    gsap.set(article, {
+      opacity: 0,
+    });
+
+    gsap.set(articleElements, {
+      opacity: 0,
+      y: 50,
+    });
+  }
+
+  ScrollTrigger.create({
+    trigger: article,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to(article, {
+        opacity: 1,
+        duration: 2,
+        ease: 'power4.out',
+      });
+
+      if (articleElements) {
+        gsap.to(articleElements, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      }
+    },
+  });
+</script>
