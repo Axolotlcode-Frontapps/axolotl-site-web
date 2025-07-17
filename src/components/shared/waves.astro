@@ -1,108 +1,59 @@
-<svg
-  class="wave-top absolute"
-  width="100%"
-  height="100%"
-  viewBox="0 0 800 1200"
->
-  <circle
-    cx="600"
-    cy="400"
-    r="100"
-    fill="#b1e7e8"
-    filter="blur(15px)"
-    class="bounce-circle bounce-circle-1"></circle>
-  <circle
-    cx="600"
-    cy="400"
-    r="100"
-    fill="#ffa7b7"
-    filter="blur(15px)"
-    class="bounce-circle bounce-circle-2"></circle>
-  <circle
-    cx="600"
-    cy="400"
-    r="100"
-    fill="#b1e7e8"
-    filter="blur(15px)"
-    class="bounce-circle bounce-circle-3"></circle>
-  <circle
-    cx="600"
-    cy="400"
-    r="100"
-    fill="#ffa7b7"
-    filter="blur(15px)"
-    class="bounce-circle bounce-circle-4"></circle>
-  <circle
-    cx="600"
-    cy="400"
-    r="100"
-    fill="#fbc3d2"
-    filter="blur(15px)"
-    class="bounce-circle bounce-circle-5"></circle>
-</svg>
+<div class="background">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
 <style>
-  .wave-top {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    z-index: -10;
+  @keyframes move {
+    100% {
+      transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
   }
 
-  .bounce-circle {
-    transform-origin: center;
-    will-change: transform;
+  .background {
+    @apply absolute w-dvw h-dvh top-0 left-0 overflow-hidden z-[-1];
+  }
+
+  .background span {
+    @apply w-[12vmin] h-[12vmin] md:w-[15vmin] md:h-[15vmin] rounded-[20vmin] absolute animate-[move_45s_linear_infinite] blur-lg shadow-2xl opacity-80;
+    backface-visibility: hidden;
+  }
+  .background span:nth-child(0) {
+    @apply bg-[#E45A84] top-[5%] left-[26%] duration-[36s] delay-[-38s] origin-[6vw_-3vh];
+  }
+  .background span:nth-child(1) {
+    @apply bg-[#9a82c4] top-[23%] left-[16%] duration-[35s] delay-[-5s] origin-[7vw_-14vh];
+  }
+  .background span:nth-child(2) {
+    @apply bg-[#9a82c4] top-[95%] left-[43%] duration-[18s] delay-[-26s] origin-[-23vw_-12vh];
+  }
+  .background span:nth-child(3) {
+    @apply bg-[#E45A84] top-[85%] left-[44%] duration-[39s] delay-[-21s] origin-[5vw_-15vh];
+  }
+  .background span:nth-child(4) {
+    @apply bg-[#FFACAC] top-[66%] left-[60%] duration-[50s] delay-[-9s] origin-[17vw_-24vh];
+  }
+  .background span:nth-child(5) {
+    @apply bg-[#FFACAC] top-[30%] left-[63%] duration-[27s] delay-[-4s] origin-[-11vw_22vh];
+  }
+  .background span:nth-child(6) {
+    @apply bg-[#9a82c4] top-[60%] left-[26%] duration-[52s] delay-[-45s] origin-[13vw_18vh];
+  }
+  .background span:nth-child(7) {
+    @apply bg-[#FFACAC] top-[64%] left-[80%] duration-[38s] delay-[-44s] origin-[21vw_-18vh];
+  }
+  .background span:nth-child(8) {
+    @apply bg-[#9a82c4] top-[28%] left-[90%] duration-[14s] delay-[-35s] origin-[10vw_1vh];
+  }
+  .background span:nth-child(9) {
+    @apply bg-[#E45A84] top-[30%] left-[76%] duration-[37s] delay-[-46s] origin-[24vw_-2vh];
   }
 </style>
-
-<script>
-  function generateKeyframes(index: number) {
-    const keyframes = `
-      @keyframes bounce${index} {
-        0% { transform: translate(0, 0) rotate(${Math.random() * 360}deg); }
-        20% { transform: translate(${Math.random() * window.innerWidth}px, ${Math.random() * window.innerHeight}px) rotate(${Math.random() * 360}deg); }
-        40% { transform: translate(${Math.random() * window.innerWidth}px, ${Math.random() * window.innerHeight}px) rotate(${Math.random() * 360}deg); }
-        60% { transform: translate(${Math.random() * window.innerWidth}px, ${Math.random() * window.innerHeight}px) rotate(${Math.random() * 360}deg); }
-        80% { transform: translate(${Math.random() * window.innerWidth}px, ${Math.random() * window.innerHeight}px) rotate(${Math.random() * 360}deg); }
-        100% { transform: translate(0, 0) rotate(${Math.random() * 360}deg); }
-      }
-    `;
-    return keyframes;
-  }
-
-  function createAnimationStyles() {
-    const styleSheet = document.createElement('style');
-    let styles = '';
-
-    for (let i = 1; i <= 5; i++) {
-      styles += generateKeyframes(i);
-      styles += `
-        .bounce-circle-${i} {
-          animation: bounce${i} 15s ease-in-out infinite alternate;
-        }
-      `;
-    }
-
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
-  }
-
-  document.addEventListener('DOMContentLoaded', createAnimationStyles);
-
-  let resizeTimeout: number; // Cambiado el tipo aquí
-  window.addEventListener('resize', () => {
-    if (resizeTimeout) {
-      clearTimeout(resizeTimeout);
-    }
-    resizeTimeout = window.setTimeout(() => {
-      const oldStyles = document.querySelectorAll('style');
-      oldStyles.forEach((style) => {
-        if (style.textContent?.includes('bounce')) {
-          style.remove();
-        }
-      });
-
-      createAnimationStyles();
-    }, 250);
-  });
-</script>
