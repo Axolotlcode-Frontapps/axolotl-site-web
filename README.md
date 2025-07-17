@@ -1,4 +1,4 @@
-# Astro landing pages | Template
+# Axolotlcode | web page
 
 <p align="center">
   <a
