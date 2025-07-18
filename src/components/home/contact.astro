@@ -92,7 +92,7 @@ const info = [
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -139,5 +139,30 @@ const info = [
         ease: 'power4.inOut',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const contact = document.querySelector('.contact');
+    const map = document.querySelector('.map');
+
+    (map as HTMLElement).style.opacity = '0';
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && contact ? contact.classList.add('fadeInFromLeft') : null;
+        isVisible && map
+          ? setTimeout(() => {
+              map.classList.add('fadeInFromRight');
+            }, 400)
+          : null;
+      },
+      { threshold: 0 }
+    );
+    contact && observer.observe(contact);
+    map && observer.observe(map);
   });
 </script>

@@ -78,7 +78,7 @@ const offers = [
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -126,5 +126,45 @@ const offers = [
         ease: 'power2.out',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const offerInfo = document.querySelector('.offer-info');
+    const offerItems = document.querySelectorAll('.items > *');
+
+    offerItems.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    const titleObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && offerInfo
+          ? offerInfo.classList.add('fadeInFromTop')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    offerInfo && titleObserver.observe(offerInfo);
+
+    offerItems.forEach((item, index) => {
+      const itemObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+          if (isVisible) {
+            setTimeout(() => {
+              item.classList.add('fadeInFromBottom');
+            }, index * 180);
+            itemObserver.unobserve(item);
+          }
+        },
+        { threshold: 0 }
+      );
+      itemObserver.observe(item);
+    });
   });
 </script>

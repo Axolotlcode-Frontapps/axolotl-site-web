@@ -104,7 +104,7 @@ const t = useTranslations(lang);
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -178,5 +178,38 @@ const t = useTranslations(lang);
         ease: 'power4.out',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const contact = document.querySelector('.contact');
+    const axolotlInfo = document.querySelectorAll(
+      '.axolotl-info, .contact-form, .contact-map'
+    );
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+
+        isVisible && contact ? contact.classList.add('fadeInFromTop') : null;
+      },
+      { threshold: 0 }
+    );
+    contact ? observer.observe(contact) : null;
+
+    axolotlInfo.forEach((element) => {
+      const infoObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+
+          isVisible ? element.classList.add('fadeIn') : null;
+        },
+        { threshold: 0 }
+      );
+      infoObserver.observe(element);
+    });
   });
 </script>

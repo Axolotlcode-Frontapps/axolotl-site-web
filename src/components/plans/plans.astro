@@ -82,7 +82,7 @@ const plans = [
   <PlansIcon className="hidden lg:block absolute -bottom-40 -left-60 z-10" />
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -122,5 +122,40 @@ const plans = [
         ease: 'power4.out',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const planInfo = document.querySelector('.plan-info');
+    const planItems = document.querySelectorAll('.items > *');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+
+        planInfo && isVisible ? planInfo.classList.add('fadeInFromTop') : null;
+      },
+      { threshold: 0 }
+    );
+    planInfo ? observer.observe(planInfo) : null;
+
+    planItems.forEach((item, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+
+          isVisible
+            ? setTimeout(() => {
+                item.classList.add('fadeInFromBottom');
+              }, index * 100)
+            : null;
+        },
+        { threshold: 0 }
+      );
+      observer.observe(item);
+    });
   });
 </script>
