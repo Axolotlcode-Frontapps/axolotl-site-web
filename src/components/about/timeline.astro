@@ -116,7 +116,7 @@ const timeSteps = [
   <Fifth className="hidden lg:block absolute -bottom-56 -left-24" />
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -184,6 +184,46 @@ const timeSteps = [
           ease: 'power4.out',
         });
       },
+    });
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const span = document.querySelector('.timeline > span');
+    const title = document.querySelector('.timeline > h2');
+    const line = document.querySelector('.line');
+    const steps = document.querySelectorAll('.steps > *');
+
+    steps.forEach((step) => {
+      (step as HTMLElement).style.opacity = '0';
+    });
+
+    const spanObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && span ? span.classList.add('fadeIn') : null;
+        isVisible && title ? title.classList.add('fadeIn') : null;
+        isVisible && line ? line.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    span ? spanObserver.observe(span) : null;
+    title ? spanObserver.observe(title) : null;
+    line ? spanObserver.observe(line) : null;
+
+    steps.forEach((step) => {
+      const stepObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+
+          isVisible && step ? step.classList.add('fadeInFromBottom') : null;
+        },
+        { threshold: 0 }
+      );
+      stepObserver.observe(step);
     });
   });
 </script>

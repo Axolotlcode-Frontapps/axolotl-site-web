@@ -40,7 +40,7 @@ const t = useTranslations(lang);
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -81,5 +81,25 @@ const t = useTranslations(lang);
         ease: 'power4.out',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelector('.about-info');
+    const image = document.querySelector('.about-image');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+
+        isVisible && info ? info.classList.add('fadeInFromLeft') : null;
+        isVisible && image ? image.classList.add('fadeInFromRight') : null;
+      },
+      { threshold: 0 }
+    );
+    info ? observer.observe(info) : null;
+    image ? observer.observe(image) : null;
   });
 </script>

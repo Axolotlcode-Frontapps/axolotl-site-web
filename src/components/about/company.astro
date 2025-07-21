@@ -81,7 +81,7 @@ const company = [
   </svg>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -130,6 +130,41 @@ const company = [
           ease: 'power4.out',
         });
       },
+    });
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const image = document.querySelector('.company-image');
+    const cards = document.querySelectorAll('.company-cards > *');
+
+    cards.forEach((card) => {
+      (card as HTMLElement).style.opacity = '0';
+    });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && image ? image.classList.add('fadeInFromLeft') : null;
+      },
+      { threshold: 0 }
+    );
+    image ? observer.observe(image) : null;
+
+    cards.forEach((card, index) => {
+      const cardObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+          setTimeout(() => {
+            isVisible && card ? card.classList.add('fadeInFromRight') : null;
+          }, index * 200);
+        },
+        { threshold: 0 }
+      );
+      cardObserver.observe(card);
     });
   });
 </script>

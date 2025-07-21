@@ -114,7 +114,7 @@ const benefits = [
   <WhyBg />
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -150,5 +150,40 @@ const benefits = [
         ease: 'power4.inOut',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.images .image');
+    const info = document.querySelector('.info');
+
+    images.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    images.forEach((image, index) => {
+      const itemObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+          setTimeout(() => {
+            isVisible && image ? image.classList.add('fadeIn') : null;
+          }, index * 450);
+        },
+        { threshold: 0 }
+      );
+      itemObserver.observe(image);
+    });
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info ? info.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    info && infoObserver.observe(info);
   });
 </script>
