@@ -213,14 +213,13 @@ const timeSteps = [
     title ? spanObserver.observe(title) : null;
     line ? spanObserver.observe(line) : null;
 
-    steps.forEach((step, index) => {
+    steps.forEach((step) => {
       const stepObserver = new IntersectionObserver(
         ([entry]) => {
           if (!entry) return;
           const isVisible = entry.isIntersecting;
-          setTimeout(() => {
-            isVisible && step ? step.classList.add('fadeInFromBottom') : null;
-          }, index * 100);
+
+          isVisible && step ? step.classList.add('fadeInFromBottom') : null;
         },
         { threshold: 0 }
       );
