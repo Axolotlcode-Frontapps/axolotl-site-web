@@ -65,7 +65,7 @@ const t = useTranslations(lang);
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -110,5 +110,26 @@ const t = useTranslations(lang);
         ease: 'power4.inOut',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const testimonial = document.querySelector('.testimonial');
+    const comment = document.querySelector('.comment');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && testimonial
+          ? testimonial.classList.add('fadeInFromTop')
+          : null;
+        isVisible && comment ? comment.classList.add('fadeInFromBottom') : null;
+      },
+      { threshold: 0 }
+    );
+    testimonial && observer.observe(testimonial);
+    comment && observer.observe(comment);
   });
 </script>

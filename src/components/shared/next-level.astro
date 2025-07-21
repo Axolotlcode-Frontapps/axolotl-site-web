@@ -26,14 +26,16 @@ const translatePath = useTranslatedPath(lang);
       class="article w-full flex flex-col gap-6 bg-gradient-to-br from-transparent from-20% to-white/70 border border-[#FFFFFF] py-12 px-[34px] rounded-[29px]"
     >
       <span
-        class="text-[28px] leading-8 font-bold xl:text-[40px] xl:leading-[48px]"
+        class="article__title text-[28px] leading-8 font-bold xl:text-[40px] xl:leading-[48px]"
         >{t('next-level.title')}
       </span>
-      <p class="text-sm leading-6 xl:text-base xl:leading-7">
+      <p
+        class="article__description text-sm leading-6 xl:text-base xl:leading-7"
+      >
         {t('next-level.description')}
       </p>
       <div
-        class="w-full flex flex-col xs:flex-row items-center justify-center gap-y-2.5 gap-x-6 text-sm xl:text-base"
+        class="article__content w-full flex flex-col xs:flex-row items-center justify-center gap-y-2.5 gap-x-6 text-sm xl:text-base"
       >
         <Button
           text={t('next-level.contact')}
@@ -62,7 +64,7 @@ const translatePath = useTranslatedPath(lang);
   <GradientFifth className="absolute top-0" />
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -104,5 +106,36 @@ const translatePath = useTranslatedPath(lang);
         });
       }
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const article = document.querySelector('.article');
+    const elements = document.querySelectorAll(
+      '.article__title, .article__description, .article__content'
+    );
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        if (isVisible && article) {
+          article.classList.add('fadeIn');
+        }
+        elements.forEach((item) => {
+          if (isVisible) {
+            item.classList.add('fadeInFromBottomSm');
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    article ? observer.observe(article) : null;
+    elements
+      ? elements.forEach((item) => {
+          observer.observe(item);
+        })
+      : null;
   });
 </script>

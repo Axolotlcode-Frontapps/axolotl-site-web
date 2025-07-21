@@ -32,7 +32,7 @@ const { title, description, image } = Astro.props;
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -54,5 +54,21 @@ const { title, description, image } = Astro.props;
       });
     },
     start: 'top 100%',
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const hero = document.querySelector('.hero');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && hero ? hero.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    hero ? observer.observe(hero) : null;
   });
 </script>

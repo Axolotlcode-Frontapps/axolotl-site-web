@@ -13,6 +13,7 @@ export default [
   {
     rules: {
       '@typescript-eslint/triple-slash-reference': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
     },
     ignores: ['./.astro', './.cache', './dist', './node_modules'],
   },

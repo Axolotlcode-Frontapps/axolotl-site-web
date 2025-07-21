@@ -92,7 +92,7 @@ const services: {
   </div>
 </section>
 
-<script>
+<!-- <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -142,5 +142,44 @@ const services: {
         ease: 'power2.out',
       });
     },
+  });
+</script> -->
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelector('.info');
+    const serviceItems = document.querySelectorAll('.items > *');
+
+    serviceItems.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const isVisible = entry.isIntersecting;
+          if (isVisible && info) {
+            info.classList.add('fadeInFromTop');
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+    info ? observer.observe(info) : null;
+
+    serviceItems.forEach((item, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            const isVisible = entry.isIntersecting;
+            setTimeout(() => {
+              isVisible && item.classList.add('fadeInFromBottom');
+            }, index * 150);
+          }
+        },
+        { threshold: 0 }
+      );
+      observer.observe(item);
+    });
   });
 </script>
