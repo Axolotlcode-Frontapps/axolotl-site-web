@@ -1,0 +1,58 @@
+---
+import arrow from '@/assets/icons/arrow.svg';
+import { Image } from 'astro:assets';
+interface Props {
+  id?: string;
+  title: string;
+  description: string;
+}
+
+const { id, title, description } = Astro.props;
+---
+
+<details class="accordion" id={id} data-id={id}>
+  <summary class="accordion__title">
+    {title}
+    <Image class="arrow" src={arrow} alt="Arrow icon" />
+  </summary>
+  <div class="details__content">
+    <p class="accordion__description">
+      {description}
+    </p>
+  </div>
+</details>
+
+<style>
+  .accordion {
+    @apply w-full border border-gray-200 rounded-lg text-left overflow-hidden;
+    interpolate-size: allow-keywords;
+  }
+  .accordion__title {
+    @apply p-4 list-none font-medium flex justify-between items-center cursor-pointer;
+  }
+  details::details-content {
+    block-size: 0;
+    transition:
+      block-size 0.5s,
+      content-visibility 0.5s;
+    transition-behavior: allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+  .accordion__description {
+    @apply p-4 opacity-0 delay-200 transition-opacity duration-500;
+  }
+  .arrow {
+    @apply w-5 h-5 transition-transform duration-200;
+  }
+  details[open] .accordion__title {
+    @apply rounded-t-md text-primary-500 bg-gradient-to-r from-primary-500/10 to-primary-500/10;
+  }
+  details[open] .accordion__description {
+    @apply text-gray-600 p-4 opacity-100;
+  }
+  details[open] .arrow {
+    @apply rotate-180;
+  }
+</style>
