@@ -60,7 +60,11 @@ const t = useTranslations(lang);
       >
       <ul class="flex flex-col mb-[15px] gap-y-[15px] text-white text-sm">
         <li>{t('contact.contact.email-value')}</li>
-        <li>{t('contact.contact.phone-value')}</li>
+        <li>
+          <a href="tel:+525660072998" class="hover:underline">
+            {t('contact.contact.phone-value')}
+          </a>
+        </li>
       </ul>
       <ul class="flex gap-x-5">
         <li>

@@ -75,24 +75,34 @@ const info = [
         {
           info.map(({ icon, title, description }) => (
             <div class="w-full flex items-start gap-4">
-              <Image
-                src={icon}
-                alt={title}
-                class="size-8 transition-transform hover:scale-105"
-              />
-              <div>
-                <span class="inline-block font-semibold mb-1">{title}</span>
-                {title === t('contact.contact.phone') ? (
-                  <a
-                    href="tel:+525660072998"
-                    class="text-black hover:underline"
-                  >
-                    {description}
-                  </a>
-                ) : (
-                  <p class="text-black">{description}</p>
-                )}
-              </div>
+              {title === t('contact.contact.phone') ? (
+                <a
+                  href="tel:+525660072998"
+                  class="flex items-start gap-4 hover:underline"
+                >
+                  <Image
+                    src={icon}
+                    alt={title}
+                    class="size-8 transition-transform hover:scale-105"
+                  />
+                  <div>
+                    <span class="inline-block font-semibold mb-1">{title}</span>
+                    <p class="text-black">{description}</p>
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <Image
+                    src={icon}
+                    alt={title}
+                    class="size-8 transition-transform hover:scale-105"
+                  />
+                  <div>
+                    <span class="inline-block font-semibold mb-1">{title}</span>
+                    <p class="text-black">{description}</p>
+                  </div>
+                </>
+              )}
             </div>
           ))
         }
