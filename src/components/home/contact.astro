@@ -82,7 +82,16 @@ const info = [
               />
               <div>
                 <span class="inline-block font-semibold mb-1">{title}</span>
-                <p class="text-black">{description}</p>
+                {title === t('contact.contact.phone') ? (
+                  <a
+                    href="tel:+525660072998"
+                    class="text-black hover:underline"
+                  >
+                    {description}
+                  </a>
+                ) : (
+                  <p class="text-black">{description}</p>
+                )}
               </div>
             </div>
           ))

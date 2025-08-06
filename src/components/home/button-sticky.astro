@@ -1,0 +1,18 @@
+---
+import Image from 'astro/components/Image.astro';
+import ButtonIcon from '../../assets/icons/whatsapp-sticky.svg';
+---
+
+<a href="https://wa.me/5660072998" class="button-sticky">
+  <Image class="button-sticky-image" src={ButtonIcon} alt="whatsapp icon" />
+</a>
+
+<style>
+  .button-sticky {
+    @apply w-full h-full max-w-[112px] max-h-[112px] fixed flex items-center justify-center leading-[56px] right-14 bottom-14 bg-[#19c750] rounded-full z-10;
+    interpolate-size: allow-keywords;
+  }
+  .button-sticky-image {
+    @apply w-full max-w-14;
+  }
+</style>
