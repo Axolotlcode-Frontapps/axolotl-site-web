@@ -166,7 +166,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                         </a>
                       </li>
                       <li>
-                        <a href="tel:+525591651260" className="hover:underline">
+                        <a
+                          href="tel:+525660072998"
+                          target="_blank"
+                          className="hover:underline"
+                        >
                           {t('contact.contact.phone-value')}
                         </a>
                       </li>
@@ -178,8 +182,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                       {t('header.social.label')}
                     </span>
                     <ul className="flex gap-x-[15px] text-sm">
-                      <li>
-                        <a href="https://www.instagram.com/axolotl.code/">
+                      <li className="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary-100/50 rounded-[5px]">
+                        <a
+                          href="https://www.instagram.com/axolotl.code/"
+                          target="_blank"
+                        >
                           <img
                             src={InstagramIcon.src}
                             width={50}
@@ -188,8 +195,8 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                           />
                         </a>
                       </li>
-                      <li>
-                        <a href="https://x.com/AxolotlCode">
+                      <li className="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary-100/50 rounded-[5px]">
+                        <a href="https://x.com/AxolotlCode" target="_blank">
                           <img
                             src={XIcon.src}
                             width={50}
@@ -198,8 +205,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                           />
                         </a>
                       </li>
-                      <li>
-                        <a href="https://www.facebook.com/Axolotlcode">
+                      <li className="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary-100/50 rounded-[5px]">
+                        <a
+                          href="https://www.facebook.com/Desarrollo.software.axolotlcode"
+                          target="_blank"
+                        >
                           <img
                             src={FacebookIcon.src}
                             width={50}
@@ -208,8 +218,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                           />
                         </a>
                       </li>
-                      <li>
-                        <a href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name">
+                      <li className="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary-100/50 rounded-[5px]">
+                        <a
+                          href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name"
+                          target="_blank"
+                        >
                           <img
                             src={LinkedInIcon.src}
                             width={50}
@@ -218,8 +231,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
                           />
                         </a>
                       </li>
-                      <li>
-                        <a href="https://www.tiktok.com/@axolotlcode0">
+                      <li className="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-primary-100/50 rounded-[5px]">
+                        <a
+                          href="https://www.tiktok.com/@axolotl.code"
+                          target="_blank"
+                        >
                           <img
                             src={TikTokIcon.src}
                             width={50}

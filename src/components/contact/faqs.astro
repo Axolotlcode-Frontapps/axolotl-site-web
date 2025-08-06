@@ -100,67 +100,6 @@ const faqs = [
   </div>
 </section>
 
-<!-- <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const faqs = document.querySelector('.faqs');
-  const info = document.querySelector('.faqs-info');
-  const image = document.querySelector('.faqs-image');
-
-  gsap.set([image, faqs], {
-    opacity: 0,
-  });
-
-  gsap.set(info, {
-    opacity: 0,
-    y: -150,
-  });
-
-  ScrollTrigger.create({
-    trigger: faqs,
-    start: 'top 75%',
-    end: 'bottom 20%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(faqs, {
-        opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: image,
-    start: 'top 60%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(image, {
-        opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: info,
-    start: 'top 80%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(info, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power4.out',
-      });
-    },
-  });
-</script>
-
 <script>
   const acordions =
     document.querySelectorAll<HTMLDetailsElement>('details.accordion');
@@ -173,4 +112,4 @@ const faqs = [
       }
     });
   });
-</script> -->
+</script>

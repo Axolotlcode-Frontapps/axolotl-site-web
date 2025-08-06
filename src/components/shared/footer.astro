@@ -73,36 +73,50 @@ const footerLinks = [
       <ul class="flex flex-col mb-[15px] gap-y-[15px] text-white text-sm">
         <li>{t('contact.contact.email-value')}</li>
         <li>
-          <a href="tel:+525660072998" class="hover:underline">
+          <a href="tel:+525660072998" class="hover:underline" target="_blank">
             {t('contact.contact.phone-value')}
           </a>
         </li>
       </ul>
       <ul class="flex gap-x-5">
-        <li>
-          <a href="https://www.instagram.com/axolotl.code/">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://www.instagram.com/axolotl.code/" target="_blank">
             <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
           </a>
         </li>
-        <li>
-          <a href="https://x.com/AxolotlCode">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://x.com/AxolotlCode" target="_blank">
             <Image src={XTwitterIcon} width={29} height={29} alt="X-Twitter" />
           </a>
         </li>
-        <li>
-          <a href="https://www.facebook.com/Axolotlcode">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a
+            href="https://www.facebook.com/Desarrollo.software.axolotlcode"
+            target="_blank"
+          >
             <Image src={FacebookIcon} width={29} height={29} alt="Facebook" />
           </a>
         </li>
-        <li>
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
           <a
             href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name"
+            target="_blank"
           >
             <Image src={LinkedinIcon} width={29} height={29} alt="Linkedin" />
           </a>
         </li>
-        <li>
-          <a href="https://www.tiktok.com/@axolotlcode0">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://www.tiktok.com/@axolotl.code" target="_blank">
             <Image src={TikTokIcon} width={29} height={29} alt="TikTok" />
           </a>
         </li>
