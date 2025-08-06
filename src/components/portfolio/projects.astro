@@ -1,0 +1,98 @@
+---
+import {
+  getLangFromUrl,
+  useTranslations,
+  // useTranslatedPath
+} from '@/libs/i18n/utils';
+
+import PortFolioCard from '@/components/portfolio/portfolio-card.astro';
+
+import Icon1 from '@/assets/icons/portfolio/icon-1.svg';
+import Icon2 from '@/assets/icons/portfolio/icon-2.jpeg';
+import Icon4 from '@/assets/icons/portfolio/icon-4.png';
+import Icon3 from '@/assets/icons/portfolio/icon-3.png';
+
+import Icon5 from '@/assets/icons/portfolio/icon-5.png';
+import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
+import Icon7 from '@/assets/icons/portfolio/icon-7.jpeg';
+import Icon8 from '@/assets/icons/portfolio/icon-8.jpeg';
+import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+// const translatePath = useTranslatedPath(lang);
+
+const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
+  (item, index) => ({
+    image: [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9][
+      index
+    ],
+    title: t(`portfolio.projects.cards.${item}.title`),
+    description: t(`portfolio.projects.cards.${item}.description`),
+    href: t(`portfolio.projects.cards.${item}.href`),
+  })
+);
+---
+
+<section class="section">
+  <div class="max-w-7xl mx-auto py-20">
+    <div class="text-center mb-20 projects-info">
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('portfolio.projects.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('portfolio.projects.title')}
+      />
+    </div>
+    <div
+      class="items justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16"
+    >
+      {
+        data.map(({ image, title, description, href }) => (
+          <PortFolioCard {image} {title} {description} {href} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const projectsInfo = document.querySelector('.projects-info');
+    const projectsItems = document.querySelectorAll('.items > *');
+
+    projectsItems.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    const titleObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && projectsInfo
+          ? projectsInfo.classList.add('fadeInFromTop')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    projectsInfo && titleObserver.observe(projectsInfo);
+
+    projectsItems.forEach((item, index) => {
+      const itemObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+          if (isVisible) {
+            setTimeout(() => {
+              item.classList.add('fadeInFromBottom');
+            }, index * 180);
+            itemObserver.unobserve(item);
+          }
+        },
+        { threshold: 0 }
+      );
+      itemObserver.observe(item);
+    });
+  });
+</script>

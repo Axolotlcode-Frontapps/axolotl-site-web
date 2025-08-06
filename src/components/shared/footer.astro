@@ -18,13 +18,21 @@ const { menu } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const footerLinks = [
+  ...menu,
+  {
+    label: t('header.privacy'),
+    link: '/Aviso_de_Privacidad_Integral_Axolotlcode.pdf',
+  },
+];
 ---
 
 <footer class="bg-[#212529]">
   <div
-    class="max-w-7xl mx-auto p-3 md:pt-[90px] md:pb-6 lg:pb-[76px] flex flex-col md:flex-row justify-between md:flex-wrap xl:flex-nowrap"
+    class="section mx-auto max-w-7xl md:pt-[90px] md:pb-6 lg:pb-[76px] flex flex-col md:flex-row justify-between md:flex-wrap xl:flex-nowrap"
   >
-    <div class="px-5 py-[23px] md:min-w-[530px] flex-1">
+    <div class="md:min-w-[530px] flex-1">
       <Image
         src={AxolotlWhite}
         class="w-[125px]"
@@ -36,16 +44,20 @@ const t = useTranslations(lang);
         {t('footer.description')}
       </p>
     </div>
-    <div class="px-5 py-[23px] flex-grow">
+    <div class="pt-5 flex-grow">
       <span
         class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
         >{t('footer.menu.label')}</span
       >
       <ul class="flex flex-col gap-y-[15px]">
         {
-          menu.map((item) => (
+          footerLinks.map((item, index) => (
             <li>
-              <a href={item.link} class="text-white text-sm">
+              <a
+                href={item.link}
+                target={index === footerLinks.length - 1 ? '_blank' : ''}
+                class="text-white text-sm"
+              >
                 {item.label}
               </a>
             </li>
@@ -53,7 +65,7 @@ const t = useTranslations(lang);
         }
       </ul>
     </div>
-    <div class="px-5 py-[23px] flex-grow">
+    <div class="pt-5 py-[23px] flex-grow">
       <span
         class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
         >{t('footer.contact.label')}</span
@@ -93,7 +105,7 @@ const t = useTranslations(lang);
       </ul>
     </div>
   </div>
-  <div class="border-t border-[#DADADA]">
+  <div class="section border-t border-[#DADADA]">
     <p class="text-center text-white py-[30px]">
       &copy; {new Date().getFullYear()}
       {t('footer.copyright.text')}

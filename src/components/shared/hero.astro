@@ -20,7 +20,7 @@ const { title, description, image } = Astro.props;
   <div class="absolute inset-0 w-full h-full bg-black/75"></div>
 
   <div
-    class="hero relative max-w-7xl mx-auto w-full px-4 flex flex-col items-center text-center py-[186px] md:py-[135px] xl:py-[276px]"
+    class="hero opacity-0 relative max-w-5xl mx-auto w-full px-4 flex flex-col items-center text-center py-[186px] md:py-[135px] xl:py-[276px]"
   >
     <h1
       class="text-5xl md:text-[64px] font-bold leading-[58px] md:leading-[76px] mb-8"
@@ -31,31 +31,6 @@ const { title, description, image } = Astro.props;
     </p>
   </div>
 </section>
-
-<!-- <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const hero = document.querySelector('.hero');
-
-  gsap.set(hero, {
-    opacity: 0,
-  });
-
-  ScrollTrigger.batch(hero, {
-    onEnter: (elements) => {
-      gsap.to(elements, {
-        opacity: 1,
-        duration: 2,
-        stagger: 0.2,
-        ease: 'power4.out',
-      });
-    },
-    start: 'top 100%',
-  });
-</script> -->
 
 <script>
   addEventListener('DOMContentLoaded', () => {

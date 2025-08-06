@@ -47,9 +47,9 @@
       }
     },
     "comments": {
-      "span": "Testimonios",
-      "title": "Los <span class='text-secondary-500'>clientes</span> han dicho esto acerca de nosotros",
-      "description": "Estamos tan seguros de nuestros trabajo y de la calidad que tienen, que compartimos los comentarios de nuestros clientes. A continuación, verás algunos comentarios de nuestros clientes y su calificación a nuestro servicio. ¡Convéncete por los comentarios de nuestros clientes!",
+      "span": "Clientes satisfechos",
+      "title": "Marcas que <span class='text-secondary-500'>confiaron</span> en nuestro trabajo",
+      "description": "Nos enorgullece haber desarrollado sitios web para empresas que valoran la calidad. Estos son algunos de los clientes que confiaron en nosotros y quedaron satisfechos con los resultados. Sus logotipos representan la confianza y el impacto que generamos en cada proyecto.",
       "comment": {
         "author": "Mario Diaz",
         "job": "Director de DGS",
@@ -94,6 +94,8 @@
     "about-us": "Sobre nosotros",
     "services": "Planes y Servicios",
     "contact": "Contacto",
+    "privacy": "Aviso de privacidad",
+    "portfolio": "Portafolio",
     "social": {
       "label": "Redes sociales",
       "facebook": "Facebook",
@@ -339,6 +341,65 @@
       },
       "success": "¡Mensaje enviado con éxito!",
       "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+    }
+  },
+  "portfolio": {
+   "title-page": "Portafolio - AxolotlCode",
+    "hero": {
+      "title": "<span class='text-primary-200'>Portafolio</span>",
+      "description": "Explora los proyectos que reflejan nuestra pasión por el desarrollo web. Cada trabajo demuestra nuestro compromiso con la calidad, el diseño y la funcionalidad que impulsa resultados reales."
+    },
+    "projects": {
+      "span": "Clientes satisfechos",
+      "title": "Marcas que <span class='text-secondary-500'>confiaron</span> en nuestro trabajo",
+      "button": "Visitar sitio",
+      "cards": {
+        "1": {
+          "title": "Distribuidora Goser",
+          "description": "Con más de dos décadas de excelencia, en Distribuidora Goser lideramos el mercado de artículos...",
+          "href": "https://goser.mx/"
+        },
+        "2": {
+          "title": "Disver Uniformes",
+          "description": "Iniciamos hace ya mas de diez años atrás, un Lunes 14 de Octubre de 2013...",
+          "href": "https://disveruniformes.com/"
+        },
+        "3": {
+          "title": "Lorem Ipsom Dolor",
+          "description": "Lorem ipsum dolor sit amet..",
+          "href": ""
+        },
+        "4": {
+          "title": "Lorem Ipsom Dolor",
+          "description": "Lorem ipsum dolor sit amet..",
+          "href": ""
+        },
+        "5": {
+          "title": "AurumTage",
+          "description": "Haz inversiones online con el bróker minorista más grande del mundo y disfruta ",
+          "href": "https://aurumtage.com/"
+        },
+        "6": {
+          "title": "Utsail",
+          "description": "Entender la realidad más allá de lo que alcanza la vista. Fomentamos la participación ",
+          "href": "https://www.utsail.com/"
+        },
+        "7": {
+           "title": "Sitt y CIA",
+          "description": "No creemos en fórmulas estáticas, todo es transformable y adaptable a las necesidades específicas de cada proyecto. ",
+          "href": "https://sittycia.com/"
+        },
+        "8": {
+          "title": "Nutrition Lab",
+          "description": "Somos un equipo comprometido con tu bienestar. Creemos en una nutrición práctica, cercana y accesible, adaptada a la vida real.",
+          "href": "https://nutrilab-landing.vercel.app/"
+        },
+        "9": {
+          "title": "Maxtec Instalaciones",
+          "description": "Coming soon",
+          "href": "/"
+        }
+      }
     }
   },
   "footer": {

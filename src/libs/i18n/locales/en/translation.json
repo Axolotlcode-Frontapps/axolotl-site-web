@@ -47,9 +47,9 @@
       }
     },
     "comments": {
-      "span": "Testimonials",
-      "title": "What <span class='text-secondary-500'>clients</span> have said about us",
-      "description": "We are so confident in our work and its quality that we share our clients' comments. Below, you'll see some comments from our clients and their rating of our service. Let our clients' comments convince you!",
+      "span": "Satisfied clients",
+      "title": "Brands that <span class='text-secondary-500'>trusted</span> our work",
+      "description": "We are proud to have developed websites for companies that value quality. These are some of the clients who trusted us and were satisfied with the results. Their logos represent the trust and impact we generate in each project.",
       "comment": {
         "author": "Mario Diaz",
         "job": "DGS Director",
@@ -94,6 +94,8 @@
     "about-us": "About Us",
     "services": "Plans and Services",
     "contact": "Contact",
+    "privacy": "Privacy Notice",
+    "portfolio": "Portfolio",
     "social": {
       "label": "Social Media",
       "facebook": "Facebook",
@@ -337,6 +339,13 @@
         "message": "Message",
         "button": "Send Message"
       }
+    }
+  },
+  "portfolio": {
+   "title-page": "Portfolio - AxolotlCode",
+    "hero": {
+      "title": "<span class='text-primary-200'>Portfolio</span>",
+      "description": "Explore the projects that reflect our passion for web development. Each work demonstrates our commitment to quality, design, and functionality that drives real results."
     }
   },
   "footer": {

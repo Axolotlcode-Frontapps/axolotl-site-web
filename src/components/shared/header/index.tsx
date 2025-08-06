@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 
 import AxolotlPink from '@/assets/images/shared/axolotl-pink.webp';
 import AxolotlWhite from '@/assets/images/shared/axolotl-white.webp';
@@ -18,10 +16,6 @@ interface Props {
   lang: string;
 }
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(useGSAP);
-}
-
 export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
@@ -30,6 +24,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
+
   const [isOpen, setIsOpen] = useState(false);
   const [buttonText, setButtonText] = useState(t('header.open'));
   const [axolotlImage, setAxolotlImage] = useState(
@@ -40,123 +35,11 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-    setTimeout(() => {
-      setButtonText(isOpen ? t('header.close') : t('header.open'));
-      setAxolotlImage(
-        isOpen || isHomePage ? AxolotlPink.src : AxolotlWhite.src
-      );
-      setColor(isOpen || isHomePage ? 'text-body-color' : 'text-white');
-      setFillColor(isOpen || isHomePage ? 'fill-body-color' : 'fill-white');
-    }, 1000);
+    setButtonText(isOpen ? t('header.close') : t('header.open'));
+    setAxolotlImage(isOpen || isHomePage ? AxolotlPink.src : AxolotlWhite.src);
+    setColor(isOpen || isHomePage ? 'text-body-color' : 'text-white');
+    setFillColor(isOpen || isHomePage ? 'fill-body-color' : 'fill-white');
   }, [isOpen, isHomePage]);
-
-  useEffect(() => {
-    const elements = {
-      menu: menuRef.current,
-      overlay: overlayRef.current,
-      content: contentRef.current,
-      headerContent: headerContentRef.current,
-    };
-
-    if (!Object.values(elements).every(Boolean)) return;
-
-    const initialState = {
-      bottom: -window.innerHeight,
-      display: 'block',
-    };
-
-    const contentInitialState = {
-      opacity: 0,
-      y: 20,
-    };
-
-    const openAnimation = gsap
-      .timeline({ paused: true })
-      .set([elements.overlay, elements.menu], initialState)
-      .set([elements.content, elements.headerContent], contentInitialState)
-      .to(elements.overlay, {
-        bottom: 0,
-        duration: 0.75,
-        ease: 'power3.out',
-      })
-      .to(
-        elements.menu,
-        {
-          bottom: 0,
-          duration: 0.75,
-          ease: 'power3.out',
-        },
-        '-=0.2'
-      )
-      .to(
-        elements.headerContent,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          ease: 'power2.out',
-        },
-        '-=0.4'
-      )
-      .to(
-        elements.content,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          ease: 'power2.out',
-        },
-        '-=0.3'
-      );
-
-    const closeAnimation = () => {
-      const tl = gsap.timeline();
-
-      tl.to([elements.content, elements.headerContent], {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        ease: 'power2.in',
-      })
-        .to(elements.menu, {
-          bottom: -window.innerHeight,
-          duration: 0.6,
-          ease: 'power2.in',
-        })
-        .to(
-          elements.overlay,
-          {
-            bottom: -window.innerHeight,
-            duration: 0.6,
-            ease: 'power2.in',
-            onComplete: () => {
-              if (elements.menu && elements.overlay) {
-                elements.menu.style.display = 'none';
-                elements.overlay.style.display = 'none';
-              }
-            },
-          },
-          '-=0.1'
-        );
-
-      return tl;
-    };
-
-    if (isOpen) {
-      openAnimation.play();
-    } else {
-      closeAnimation();
-    }
-
-    return () => {
-      gsap.killTweensOf([
-        elements.overlay,
-        elements.menu,
-        elements.content,
-        elements.headerContent,
-      ]);
-    };
-  }, [isOpen]);
 
   const HeaderSection = () => (
     <header className="h-28 text-body-color absolute top-0 left-0 right-0 z-10">
@@ -166,7 +49,7 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
       >
         <a href={translatePath('/')} aria-label="Home">
           <img
-            className="w-[112px]"
+            className="w-[112px] xl:ml-[-16px]"
             src={axolotlImage}
             width={284}
             height={249}
@@ -212,125 +95,142 @@ export const Header: React.FC<Props> = ({ menu, isHomePage, lang }) => {
       <HeaderSection />
       <div
         ref={overlayRef}
-        className="absolute inset-0 hidden bg-[#EFEFEF]"
-        style={{ zIndex: 40 }}
+        className={`fixed inset-0 bg-[#EFEFEF] z-40 transition-opacity duration-700 ease-in-out ${
+          isOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
       />
       <div
         ref={menuRef}
-        className="fixed left-0 right-0 bottom-0 h-full hidden"
-        style={{ zIndex: 50 }}
+        className={`fixed left-0 right-0 bottom-0 h-full z-50 transition-transform duration-700 ease-in-out ${
+          isOpen
+            ? 'translate-y-0 opacity-100 pointer-events-auto'
+            : 'translate-y-full opacity-0 pointer-events-none'
+        }`}
       >
         <div className="bg-white absolute inset-0">
           <HeaderSection />
           <div
             ref={contentRef}
-            className="h-[calc(100vh-115px)] mt-[115px] pb-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-start md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            className={`h-[calc(90vh-50px)] xl:h-[calc(80vh)] overflow-y-scroll md:overflow-y-hidden  mt-[90px] xl:mt-[115px] pb-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center px-4 justify-start md:justify-around divide-y sm:divide-y-0 sm:divide-x divide-body-color transition-all duration-700 ease-in-out ${
+              isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            }`}
           >
-            <nav className="w-full sm:w-auto pt-4 pb-8 md:pt-8 px-4">
-              <ol className="flex flex-col justify-center gap-y-[30px] lg:gap-y-[70px]">
-                {menu?.map(({ label, link }, index) => (
-                  <li key={label} className="flex gap-x-2 items-end">
-                    <span className="text-primary-100 text-base md:text-xl lg:text-2xl xl:text-3xl inline-block">
-                      {(index + 1).toString().padStart(2, '0')}
+            <div
+              ref={contentRef}
+              className="w-full mt-10 md:mt-0 h-[calc(100dvh-20px)] xl:h-[calc(80dvh-50px)] pb-8 flex flex-col sm:flex-row items-center px-4 justify-start md:justify-between divide-y sm:divide-y-0 sm:divide-x divide-body-color"
+            >
+              <div className="w-full">
+                <nav className="w-full md:max-w-[400px] mx-auto p-4">
+                  <ol className="flex flex-col justify-center gap-y-5 lg:gap-y-12">
+                    {menu?.map(({ label, link }, index) => (
+                      <li key={label} className="flex gap-x-2 items-end">
+                        <span className="text-primary-500 text-base md:text-xl lg:text-2xl xl:text-3xl inline-block">
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
+                        <a
+                          className="text-2xl md:text-3xl lg:text-4xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
+                          href={link}
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </div>
+
+              <div className="w-full">
+                <div className="w-full md:max-w-[400px] mx-auto p-4">
+                  <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
+                    <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
+                      {t('header.info.city')}
                     </span>
-                    <a
-                      className="text-2xl md:text-3xl lg:text-4xl xl:text-7xl hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      href={link}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
+                    <span className="text-lg lg:text-xl font-light">
+                      {t('header.info.locality')}
+                    </span>
+                  </div>
 
-            <div className="w-full sm:w-auto pt-8 pb-4 px-4 md:pb-8 sm:pl-10 lg:pl-20">
-              <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[68px]">
-                <span className="text-2xl lg:text-[32px] lg:leading-9 font-bold">
-                  {t('header.info.city')}
-                </span>
-                <span className="text-lg lg:text-xl font-light">
-                  {t('header.info.locality')}
-                </span>
-              </div>
+                  <div className="flex flex-col gap-y-[5px] mb-4 lg:mb-[26px]">
+                    <span className="text-2xl lg:text-[32px] lg:leading-9 text-primary-500">
+                      {t('header.contact')}
+                    </span>
+                    <ul className="mb-[15px] text-lg lg:text-xl lg:leading-9 font-light">
+                      <li>
+                        <a
+                          href="mailto:soporte@axolotlcode.tech"
+                          className="hover:underline"
+                        >
+                          {t('contact.contact.email-value')}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="tel:+525591651260" className="hover:underline">
+                          {t('contact.contact.phone-value')}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
 
-              <div className="flex flex-col gap-y-[5px] mb-8 lg:mb-[26px]">
-                <span className="text-2xl lg:text-[32px] lg:leading-9 text-primary-500">
-                  {t('header.contact')}
-                </span>
-                <ul className="mb-[15px] text-lg lg:text-xl lg:leading-9 font-light">
-                  <li>
-                    <a
-                      href="mailto:soporte@axolotlcode.tech"
-                      className="hover:underline"
-                    >
-                      {t('contact.contact.email-value')}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tel:+525591651260" className="hover:underline">
-                      {t('contact.contact.phone-value')}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex flex-col gap-y-2">
-                <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
-                  {t('header.social.label')}
-                </span>
-                <ul className="flex gap-x-[15px] text-sm">
-                  <li>
-                    <a href="https://www.instagram.com/axolotl.code/">
-                      <img
-                        src={InstagramIcon.src}
-                        width={50}
-                        height={50}
-                        alt="Instagram"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://x.com/AxolotlCode">
-                      <img
-                        src={XIcon.src}
-                        width={50}
-                        height={50}
-                        alt="X Twitter"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/Axolotlcode">
-                      <img
-                        src={FacebookIcon.src}
-                        width={50}
-                        height={50}
-                        alt="Facebook"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name">
-                      <img
-                        src={LinkedInIcon.src}
-                        width={50}
-                        height={50}
-                        alt="LinkedIn"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.tiktok.com/@axolotlcode0">
-                      <img
-                        src={TikTokIcon.src}
-                        width={50}
-                        height={50}
-                        alt="LinkedIn"
-                      />
-                    </a>
-                  </li>
-                </ul>
+                  <div className="flex flex-col gap-y-2">
+                    <span className="text-2xl lg:text-[32px] leading-9 text-primary-500 mb-2">
+                      {t('header.social.label')}
+                    </span>
+                    <ul className="flex gap-x-[15px] text-sm">
+                      <li>
+                        <a href="https://www.instagram.com/axolotl.code/">
+                          <img
+                            src={InstagramIcon.src}
+                            width={50}
+                            height={50}
+                            alt="Instagram"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://x.com/AxolotlCode">
+                          <img
+                            src={XIcon.src}
+                            width={50}
+                            height={50}
+                            alt="X Twitter"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.facebook.com/Axolotlcode">
+                          <img
+                            src={FacebookIcon.src}
+                            width={50}
+                            height={50}
+                            alt="Facebook"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name">
+                          <img
+                            src={LinkedInIcon.src}
+                            width={50}
+                            height={50}
+                            alt="LinkedIn"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.tiktok.com/@axolotlcode0">
+                          <img
+                            src={TikTokIcon.src}
+                            width={50}
+                            height={50}
+                            alt="LinkedIn"
+                          />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

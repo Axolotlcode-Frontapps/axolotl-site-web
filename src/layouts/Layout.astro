@@ -6,8 +6,9 @@ import {
 } from '@/libs/i18n/utils';
 import Footer from '@/components/shared/footer.astro';
 import { Header } from '@/components/shared/header';
-import '@/styles/global.css';
 import { Toaster } from 'sonner';
+import '@fontsource/poppins';
+import '@/styles/global.css';
 
 interface Props {
   title: string;
@@ -21,7 +22,10 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const menu = [
-  { label: t('header.home'), link: translatePath('/') },
+  {
+    label: t('header.home'),
+    link: translatePath('/'),
+  },
   {
     label: t('header.about-us'),
     link: translatePath('/about'),
@@ -29,6 +33,10 @@ const menu = [
   {
     label: t('header.services'),
     link: translatePath('/plans'),
+  },
+  {
+    label: t('header.portfolio'),
+    link: translatePath('/portfolio'),
   },
   {
     label: t('header.contact'),

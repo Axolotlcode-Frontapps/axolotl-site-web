@@ -4,6 +4,9 @@ export default {
   content: ['./src/**/*.{js,jsx,ts,tsx,astro}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       screens: {
         xs: '425px',
       },
@@ -37,6 +40,9 @@ export default {
         'body-color': '#212529',
         foreground: '#F6F6F6',
         black: '#212529',
+      },
+      transitionProperty: {
+        'position-opacity': 'bottom, opacity, transform',
       },
     },
   },

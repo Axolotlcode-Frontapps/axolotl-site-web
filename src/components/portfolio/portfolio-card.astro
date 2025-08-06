@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import AxolotlIcon from '@/assets/images/shared/axolotl-pink.webp';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image?: ImageMetadata;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { image, title, description, href } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const buttonText = t('portfolio.projects.button');
+---
+
+<div class="w-full">
+  <article class="brand-card">
+    <div class="brand-image__container">
+      <Image
+        src={image ? image : AxolotlIcon}
+        alt="brand-image"
+        class="brand-image"
+      />
+    </div>
+    <div class="brand-content">
+      <h4 class="brand-title">{title}</h4>
+      <p class="brand-description">{description}</p>
+    </div>
+    <a {href} target="_blank" class="brand-button">
+      {buttonText}
+    </a>
+  </article>
+</div>
+
+<style>
+  .brand-card {
+    @apply w-full h-full grid grid-cols-1 gap-y-2 p-4 rounded-[20px] hover:scale-105 transition-all duration-500 ease-in-out shadow-lg;
+  }
+  .brand-image__container {
+    @apply w-full h-fit max-h-[250px] bg-white flex justify-center;
+  }
+  .brand-image {
+    @apply w-full max-w-[250px] max-h-[250px] min-h-[250px] object-center object-contain rounded-[20px];
+  }
+  .brand-content {
+    @apply w-full flex flex-col;
+  }
+  .brand-title {
+    @apply text-lg;
+  }
+  .brand-description {
+    @apply text-[#8D8D8D] line-clamp-3;
+  }
+  .brand-button {
+    @apply w-fit h-fit px-4 py-2 bg-primary-500 text-nowrap text-white text-sm;
+    @apply cursor-pointer rounded-full hover:scale-110 transition-all duration-300 ease-in-out;
+  }
+</style>
