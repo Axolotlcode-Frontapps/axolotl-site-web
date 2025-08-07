@@ -1,14 +1,17 @@
 ---
+import '@fontsource/poppins';
+import '@/styles/global.css';
+
 import {
   getLangFromUrl,
   useTranslations,
   useTranslatedPath,
 } from '@/libs/i18n/utils';
+
 import Footer from '@/components/shared/footer.astro';
+import ButtonSticky from '@/components/home/button-sticky.astro';
 import { Header } from '@/components/shared/header';
 import { Toaster } from 'sonner';
-import '@fontsource/poppins';
-import '@/styles/global.css';
 
 interface Props {
   title: string;
@@ -79,6 +82,7 @@ const menu = [
       <slot />
     </main>
     <Footer menu={menu} />
+    <ButtonSticky />
     <Toaster client:load position="top-right" richColors />
   </body>
 </html>
