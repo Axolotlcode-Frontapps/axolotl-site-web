@@ -33,9 +33,9 @@ const info = [
 ];
 ---
 
-<section class="overflow-hidden bg-foreground">
+<section class="section overflow-hidden bg-foreground">
   <div
-    class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 lg:gap-[50px] px-8 py-16"
+    class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 lg:gap-[50px] py-16"
   >
     <article
       class="contact w-full lg:max-w-[540px] flex flex-col gap-5 lg:gap-6 items-center text-center lg:text-left lg:items-start"
@@ -53,7 +53,7 @@ const info = [
 
       <a
         href={translatePath('/contact')}
-        class="w-fit rounded-[5px] bg-primary-500 px-6 py-2 text-sm lg:text-base text-white shadow-lg hover:bg-primary-600 transition-colors"
+        class="w-fit rounded-[5px] bg-primary-500 px-6 py-2 text-sm lg:text-base border border-primary-600 text-white shadow-lg hover:bg-white hover:text-primary-500 hover:scale-105 transition-all duration-300 ease-in-out"
       >
         {t('home.contact.button')}
       </a>
@@ -75,15 +75,34 @@ const info = [
         {
           info.map(({ icon, title, description }) => (
             <div class="w-full flex items-start gap-4">
-              <Image
-                src={icon}
-                alt={title}
-                class="size-8 transition-transform hover:scale-105"
-              />
-              <div>
-                <span class="inline-block font-semibold mb-1">{title}</span>
-                <p class="text-black">{description}</p>
-              </div>
+              {title === t('contact.contact.phone') ? (
+                <a
+                  href="tel:+525660072998"
+                  class="flex items-start gap-4 hover:underline"
+                >
+                  <Image
+                    src={icon}
+                    alt={title}
+                    class="size-8 transition-transform hover:scale-105"
+                  />
+                  <div>
+                    <span class="inline-block font-semibold mb-1">{title}</span>
+                    <p class="text-black">{description}</p>
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <Image
+                    src={icon}
+                    alt={title}
+                    class="size-8 transition-transform hover:scale-105"
+                  />
+                  <div>
+                    <span class="inline-block font-semibold mb-1">{title}</span>
+                    <p class="text-black">{description}</p>
+                  </div>
+                </>
+              )}
             </div>
           ))
         }
@@ -91,56 +110,6 @@ const info = [
     </article>
   </div>
 </section>
-
-<!-- <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const info = document.querySelector('.contact');
-  const map = document.querySelector('.map');
-
-  gsap.set(info, {
-    opacity: 0,
-    x: -100,
-  });
-
-  gsap.set(map, {
-    opacity: 0,
-    x: 100,
-  });
-
-  ScrollTrigger.create({
-    trigger: info,
-    start: 'top 80%',
-    end: 'bottom 20%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(info, {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: map,
-    start: 'top 80%',
-    end: 'bottom 20%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(map, {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-  });
-</script> -->
 
 <script>
   addEventListener('DOMContentLoaded', () => {

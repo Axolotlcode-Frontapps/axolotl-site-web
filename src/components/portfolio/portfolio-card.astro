@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import AxolotlIcon from '@/assets/images/shared/axolotl-pink.webp';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image?: ImageMetadata;
+  title: string;
+  description: string | null;
+  href: string | null;
+}
+
+const { image, title, href, description } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const buttonText = t('portfolio.projects.button');
+---
+
+<article class="brand-card group">
+  <div class="brand-image__container">
+    <Image src={image ? image : AxolotlIcon} alt={title} class="brand-image" />
+  </div>
+  <div class="brand-info">
+    <h4 class="brand-title">{title}</h4>
+    {description && <p class="brand-description">{description}</p>}
+    {
+      href && (
+        <a {href} target="_blank" class="brand-button">
+          {buttonText}
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .brand-card {
+    @apply w-full h-full grid grid-cols-1 gap-y-2 p-4 rounded-[20px] transition-all duration-500 ease-in-out shadow-lg relative overflow-hidden;
+  }
+  .brand-image__container {
+    @apply w-full h-fit max-h-[250px] bg-white flex justify-center;
+  }
+  .brand-image {
+    @apply w-full max-w-[250px] max-h-[250px] min-h-[250px] object-center object-contain rounded-[20px] group-hover:scale-105 transition-transform duration-300 ease-in-out;
+  }
+
+  .brand-info {
+    @apply absolute z-10 w-full h-full p-4 space-y-4 bg-white text-center grid place-content-center invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out;
+  }
+  .brand-title {
+    @apply text-2xl font-bold;
+  }
+  .brand-description {
+    @apply text-[#8D8D8D];
+  }
+  .brand-button {
+    @apply w-fit mx-auto h-fit px-4 py-2 bg-primary-500 text-nowrap text-white text-sm border border-primary-500 rounded-xl;
+    @apply cursor-pointer hover:scale-105 hover:bg-white hover:text-primary-500 transition-all duration-300 ease-in-out;
+  }
+</style>
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const element = document.querySelector('.brand-info');
+
+    element?.addEventListener('touchstart', () => {
+      element.classList.add('visible opacity-100');
+    });
+
+    element?.addEventListener('touchend', () => {
+      element.classList.remove('visible opacity-100');
+    });
+  });
+</script>

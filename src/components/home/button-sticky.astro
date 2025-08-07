@@ -1,0 +1,21 @@
+---
+import WhatsappIcon from '@/assets/icons/whatsapp-icon.astro';
+---
+
+<a
+  href="https://wa.me/5660072998"
+  target="_blank"
+  class="button-sticky"
+  tabindex="-1"
+>
+  <WhatsappIcon />
+</a>
+
+<style>
+  .button-sticky {
+    @apply fixed right-6 bottom-6 inline-grid place-content-center rounded-full z-20 bg-[#19c750] hover:bg-[#17b44a] transition-colors duration-300 p-4;
+  }
+  .button-sticky-image {
+    @apply object-contain size-[48px];
+  }
+</style>

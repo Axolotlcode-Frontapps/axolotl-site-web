@@ -1,0 +1,136 @@
+---
+import {
+  getLangFromUrl,
+  useTranslations,
+  // useTranslatedPath
+} from '@/libs/i18n/utils';
+
+import PortFolioCard from '@/components/portfolio/portfolio-card.astro';
+
+import Icon1 from '@/assets/icons/portfolio/icon-1.svg';
+import Icon2 from '@/assets/icons/portfolio/icon-2.png';
+import Icon4 from '@/assets/icons/portfolio/icon-4.png';
+import Icon3 from '@/assets/icons/portfolio/icon-3.png';
+
+import Icon5 from '@/assets/icons/portfolio/icon-5.png';
+import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
+import Icon7 from '@/assets/icons/portfolio/icon-7.png';
+import Icon8 from '@/assets/icons/portfolio/icon-8.png';
+import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9];
+const descriptions = [
+  'Con más de dos décadas de excelencia, en Distribuidora Goser lideramos el mercado de artículos...',
+  'Iniciamos hace ya mas de diez años atrás, un Lunes 14 de Octubre de 2013...',
+  null,
+  null,
+  'Haz inversiones online con el bróker minorista más grande del mundo y disfruta ',
+  'Entender la realidad más allá de lo que alcanza la vista. Fomentamos la participación ',
+  'No creemos en fórmulas estáticas, todo es transformable y adaptable a las necesidades específicas de cada proyecto. ',
+  'Somos un equipo comprometido con tu bienestar. Creemos en una nutrición práctica, cercana y accesible, adaptada a la vida real.',
+  null,
+];
+const links = [
+  'https://goser.mx/',
+  'https://disveruniformes.com.mx/',
+  null,
+  null,
+  'https://aurumtage.com/',
+  'https://www.utsail.com/',
+  'https://sittycia.com/',
+  'https://nutrilab-landing.vercel.app/',
+  null,
+];
+
+const data = [
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+].map((item, index) => ({
+  image: images[index],
+  title: t(`portfolio.projects.cards.${item}.title`),
+  description: descriptions[index],
+  href: links[index],
+}));
+---
+
+<section class="section">
+  <div class="max-w-7xl mx-auto py-20">
+    <div class="text-center mb-20 projects-info">
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
+        >{t('portfolio.projects.span')}</span
+      >
+      <h2
+        class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
+        set:html={t('portfolio.projects.title')}
+      />
+    </div>
+    <div
+      class="items justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16"
+    >
+      {
+        data.map(({ image, title, description, href }) => (
+          <PortFolioCard {image} {title} {description} {href} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const projectsInfo = document.querySelector('.projects-info');
+    const projectsItems = document.querySelectorAll('.items > *');
+
+    // Set initial opacity for items
+    projectsItems.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    // Single observer for all animations
+    const animationObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const target = entry.target;
+
+          // Handle title animation
+          if (target.classList.contains('projects-info')) {
+            target.classList.add('fadeInFromTop');
+          }
+
+          // Handle project items animation
+          else if (target.parentElement?.classList.contains('items')) {
+            const items = Array.from(projectsItems);
+            const index = items.indexOf(target);
+
+            setTimeout(() => {
+              target.classList.add('fadeInFromBottom');
+            }, index * 100);
+          }
+
+          animationObserver.unobserve(target);
+        });
+      },
+      { threshold: 0 }
+    );
+
+    if (projectsInfo) {
+      animationObserver.observe(projectsInfo);
+    }
+
+    projectsItems.forEach((item) => {
+      animationObserver.observe(item);
+    });
+  });
+</script>

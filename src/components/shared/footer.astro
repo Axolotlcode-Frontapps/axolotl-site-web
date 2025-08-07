@@ -18,13 +18,21 @@ const { menu } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const footerLinks = [
+  ...menu,
+  {
+    label: t('header.privacy'),
+    link: '/Aviso_de_Privacidad_Integral_Axolotlcode.pdf',
+  },
+];
 ---
 
 <footer class="bg-[#212529]">
   <div
-    class="max-w-7xl mx-auto p-3 md:pt-[90px] md:pb-6 lg:pb-[76px] flex flex-col md:flex-row justify-between md:flex-wrap xl:flex-nowrap"
+    class="section mx-auto max-w-7xl md:pt-[90px] md:pb-6 lg:pb-[76px] flex flex-col md:flex-row justify-between md:flex-wrap xl:flex-nowrap"
   >
-    <div class="px-5 py-[23px] md:min-w-[530px] flex-1">
+    <div class="md:min-w-[530px] flex-1">
       <Image
         src={AxolotlWhite}
         class="w-[125px]"
@@ -36,16 +44,20 @@ const t = useTranslations(lang);
         {t('footer.description')}
       </p>
     </div>
-    <div class="px-5 py-[23px] flex-grow">
+    <div class="pt-5 flex-grow">
       <span
         class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
         >{t('footer.menu.label')}</span
       >
       <ul class="flex flex-col gap-y-[15px]">
         {
-          menu.map((item) => (
+          footerLinks.map((item, index) => (
             <li>
-              <a href={item.link} class="text-white text-sm">
+              <a
+                href={item.link}
+                target={index === footerLinks.length - 1 ? '_blank' : ''}
+                class="text-white text-sm"
+              >
                 {item.label}
               </a>
             </li>
@@ -53,47 +65,65 @@ const t = useTranslations(lang);
         }
       </ul>
     </div>
-    <div class="px-5 py-[23px] flex-grow">
+    <div class="pt-5 py-[23px] flex-grow">
       <span
         class="inline-block text-primary-300 font-bold text-xl leading-6 mb-[15px]"
         >{t('footer.contact.label')}</span
       >
       <ul class="flex flex-col mb-[15px] gap-y-[15px] text-white text-sm">
         <li>{t('contact.contact.email-value')}</li>
-        <li>{t('contact.contact.phone-value')}</li>
+        <li>
+          <a href="tel:+525660072998" class="hover:underline" target="_blank">
+            {t('contact.contact.phone-value')}
+          </a>
+        </li>
       </ul>
       <ul class="flex gap-x-5">
-        <li>
-          <a href="https://www.instagram.com/axolotl.code/">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://www.instagram.com/axolotl.code/" target="_blank">
             <Image src={InstagramIcon} width={29} height={29} alt="Instagram" />
           </a>
         </li>
-        <li>
-          <a href="https://x.com/AxolotlCode">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://x.com/AxolotlCode" target="_blank">
             <Image src={XTwitterIcon} width={29} height={29} alt="X-Twitter" />
           </a>
         </li>
-        <li>
-          <a href="https://www.facebook.com/Axolotlcode">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a
+            href="https://www.facebook.com/Desarrollo.software.axolotlcode"
+            target="_blank"
+          >
             <Image src={FacebookIcon} width={29} height={29} alt="Facebook" />
           </a>
         </li>
-        <li>
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
           <a
             href="https://mx.linkedin.com/in/axolotl-code-86b85732a?trk=public_post_feed-actor-name"
+            target="_blank"
           >
             <Image src={LinkedinIcon} width={29} height={29} alt="Linkedin" />
           </a>
         </li>
-        <li>
-          <a href="https://www.tiktok.com/@axolotlcode0">
+        <li
+          class="hover:scale-105 transition-all duration-300 ease-in-out hover:bg-white/20 rounded-[5px]"
+        >
+          <a href="https://www.tiktok.com/@axolotl.code" target="_blank">
             <Image src={TikTokIcon} width={29} height={29} alt="TikTok" />
           </a>
         </li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-[#DADADA]">
+  <div class="section border-t border-[#DADADA]">
     <p class="text-center text-white py-[30px]">
       &copy; {new Date().getFullYear()}
       {t('footer.copyright.text')}

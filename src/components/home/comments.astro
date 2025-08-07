@@ -1,20 +1,59 @@
 ---
-import { Image } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
-import start from '@/assets/icons/startYellow.svg';
+
+import Icon1 from '@/assets/icons/portfolio/icon-1.svg';
+import Icon2 from '@/assets/icons/portfolio/icon-2.png';
+import Icon3 from '@/assets/icons/portfolio/icon-3.png';
+import Icon4 from '@/assets/icons/portfolio/icon-4.png';
+
+import Icon5 from '@/assets/icons/portfolio/icon-5.png';
+import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
+import Icon7 from '@/assets/icons/portfolio/icon-7.png';
+import Icon8 from '@/assets/icons/portfolio/icon-8.png';
+import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const links = [
+  'https://goser.mx/',
+  'https://disveruniformes.com.mx/',
+  null,
+  null,
+  'https://aurumtage.com/',
+  'https://www.utsail.com/',
+  'https://sittycia.com/',
+  'https://nutrilab-landing.vercel.app/',
+  null,
+];
+const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
+  (item, index) => ({
+    position: `--position: ${item}`,
+    icon: [
+      Icon1.src,
+      Icon2.src,
+      Icon3.src,
+      Icon4.src,
+      Icon5.src,
+      Icon6.src,
+      Icon7.src,
+      Icon8.src,
+      Icon9.src,
+    ][index],
+    href: links[index],
+    quantity: index + 1,
+  })
+);
 ---
 
-<section class="bg-foreground relative">
+<section class="section bg-foreground relative">
   <div
-    class="max-w-7xl min-h-[70vh] mx-auto flex flex-col md:flex-row px-8 py-16 justify-between items-center gap-y-12 gap-x-7"
+    class="max-w-7xl min-h-[70vh] mx-auto flex flex-col md:flex-row py-16 justify-between items-center gap-y-12 gap-x-7"
   >
-    <article class="testimonial flex flex-col gap-4">
-      <span class="text-primary-500 leading-5 text-base lg:text-[24px]"
-        >{t('home.comments.span')}</span
-      >
+    <article class="testimonial w-full flex flex-col gap-4">
+      <span class="text-primary-500 leading-5 text-base lg:text-[24px]">
+        {t('home.comments.span')}
+      </span>
       <h2
         class="font-bold text-[28px] leading-8 lg:text-[40px] lg:leading-[48px]"
         set:html={t('home.comments.title')}
@@ -23,95 +62,69 @@ const t = useTranslations(lang);
         {t('home.comments.description')}
       </p>
     </article>
-    <article class="comment">
-      <div class="bg-primary-500/10 p-8 rounded-xl">
-        <div class="flex gap-1 mb-4">
-          {
-            Array.from({ length: 5 }).map(() => (
-              <Image src={start} alt="start" class="w-4 h-4" />
-            ))
-          }
-        </div>
 
-        <p
-          class="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl text-gray-700 mb-6 max-w-[400px]"
-        >
-          {t('home.comments.comment.testimonial')}
-        </p>
+    <article class="slider">
+      <div class="track">
+        {
+          data.concat(data).map(({ icon, href }) => {
+            if (href) {
+              return (
+                <a href={href} class="item cursor-pointer" target="_blank">
+                  <img src={icon} alt="brandIcon" />
+                </a>
+              );
+            }
 
-        <div class="flex items-center gap-4">
-          <Image
-            class="rounded-full"
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
-            alt="contenido"
-            width={48}
-            height={48}
-          />
-          <div>
-            <span
-              class="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg xl:text-lg font-semibold text-gray-900"
-            >
-              {t('home.comments.comment.author')}
-            </span>
-            <p
-              class="text-xs xs:text-sm sm:text-base md:text-base lg:text-base xl:text-base text-gray-600"
-            >
-              {t('home.comments.comment.job')}
-            </p>
-          </div>
-        </div>
+            return (
+              <span class="item">
+                <img src={icon} alt="brandIcon" />
+              </span>
+            );
+          })
+        }
       </div>
     </article>
   </div>
 </section>
 
-<!-- <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+<style>
+  .slider {
+    @apply w-full overflow-hidden relative;
+    --item-width: 250px;
+    --item-height: 200px;
+  }
 
-  gsap.registerPlugin(ScrollTrigger);
+  .track {
+    @apply flex;
+    width: calc(var(--item-width) * 18); /* 9 ítems x2 */
+    animation: scrollTrack 45s linear infinite;
+  }
 
-  const testimonial = document.querySelector('.testimonial');
-  const comment = document.querySelector('.comment');
+  .item {
+    @apply flex-shrink-0 px-5;
+    width: var(--item-width);
+    height: var(--item-height);
+  }
 
-  gsap.set(testimonial, {
-    opacity: 0,
-    y: -200,
-  });
+  .item img {
+    @apply w-full h-full object-contain hover:scale-110 transition-all duration-200 ease-in-out;
+  }
 
-  gsap.set(comment, {
-    opacity: 0,
-    y: 200,
-  });
+  @keyframes scrollTrack {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(
+        calc(-1 * var(--item-width) * 9)
+      ); /* Desplaza solo un grupo */
+    }
+  }
 
-  ScrollTrigger.create({
-    trigger: testimonial,
-    start: 'top 60%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(testimonial, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: comment,
-    start: 'top 90%',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to(comment, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    },
-  });
-</script> -->
+  .slider:hover .track {
+    animation-play-state: paused;
+  }
+</style>
 
 <script>
   addEventListener('DOMContentLoaded', () => {
