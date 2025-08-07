@@ -345,7 +345,7 @@
     }
   },
   "portfolio": {
-   "title-page": "Portafolio - AxolotlCode",
+    "title-page": "Portafolio - AxolotlCode",
     "hero": {
       "title": "<span class='text-primary-200'>Portafolio</span>",
       "description": "Explora los proyectos que reflejan nuestra pasión por el desarrollo web. Cada trabajo demuestra nuestro compromiso con la calidad, el diseño y la funcionalidad que impulsa resultados reales."
@@ -355,50 +355,41 @@
       "title": "Marcas que <span class='text-secondary-500'>confiaron</span> en nuestro trabajo",
       "button": "Visitar sitio",
       "cards": {
-        "1": {
+        "one": {
           "title": "Distribuidora Goser",
-          "description": "Con más de dos décadas de excelencia, en Distribuidora Goser lideramos el mercado de artículos...",
-          "href": "https://goser.mx/"
+          "description": "Con más de dos décadas de excelencia, en Distribuidora Goser lideramos el mercado de artículos..."
         },
-        "2": {
+        "two": {
           "title": "Disver Uniformes",
-          "description": "Iniciamos hace ya mas de diez años atrás, un Lunes 14 de Octubre de 2013...",
-          "href": "https://disveruniformes.com/"
+          "description": "Iniciamos hace ya mas de diez años atrás, un Lunes 14 de Octubre de 2013..."
         },
-        "3": {
-          "title": "Lorem Ipsom Dolor",
-          "description": "Lorem ipsum dolor sit amet..",
-          "href": ""
+        "three": {
+          "title": "Medicina alternativa",
+          "description": ""
         },
-        "4": {
-          "title": "Lorem Ipsom Dolor",
-          "description": "Lorem ipsum dolor sit amet..",
-          "href": ""
+        "four": {
+          "title": "Quimicos, Los reyes",
+          "description": ""
         },
-        "5": {
+        "five": {
           "title": "AurumTage",
-          "description": "Haz inversiones online con el bróker minorista más grande del mundo y disfruta ",
-          "href": "https://aurumtage.com/"
+          "description": "Haz inversiones online con el bróker minorista más grande del mundo y disfruta "
         },
-        "6": {
+        "six": {
           "title": "Utsail",
-          "description": "Entender la realidad más allá de lo que alcanza la vista. Fomentamos la participación ",
-          "href": "https://www.utsail.com/"
+          "description": "Entender la realidad más allá de lo que alcanza la vista. Fomentamos la participación "
         },
-        "7": {
-           "title": "Sitt y CIA",
-          "description": "No creemos en fórmulas estáticas, todo es transformable y adaptable a las necesidades específicas de cada proyecto. ",
-          "href": "https://sittycia.com/"
+        "seven": {
+          "title": "Sitt y CIA",
+          "description": "No creemos en fórmulas estáticas, todo es transformable y adaptable a las necesidades específicas de cada proyecto. "
         },
-        "8": {
+        "eight": {
           "title": "Nutrition Lab",
-          "description": "Somos un equipo comprometido con tu bienestar. Creemos en una nutrición práctica, cercana y accesible, adaptada a la vida real.",
-          "href": "https://nutrilab-landing.vercel.app/"
+          "description": "Somos un equipo comprometido con tu bienestar. Creemos en una nutrición práctica, cercana y accesible, adaptada a la vida real."
         },
-        "9": {
+        "nine": {
           "title": "Maxtec Instalaciones",
-          "description": "Coming soon",
-          "href": "/"
+          "description": ""
         }
       }
     }

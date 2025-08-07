@@ -8,30 +8,59 @@ import {
 import PortFolioCard from '@/components/portfolio/portfolio-card.astro';
 
 import Icon1 from '@/assets/icons/portfolio/icon-1.svg';
-import Icon2 from '@/assets/icons/portfolio/icon-2.jpeg';
+import Icon2 from '@/assets/icons/portfolio/icon-2.png';
 import Icon4 from '@/assets/icons/portfolio/icon-4.png';
 import Icon3 from '@/assets/icons/portfolio/icon-3.png';
 
 import Icon5 from '@/assets/icons/portfolio/icon-5.png';
 import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
-import Icon7 from '@/assets/icons/portfolio/icon-7.jpeg';
-import Icon8 from '@/assets/icons/portfolio/icon-8.jpeg';
+import Icon7 from '@/assets/icons/portfolio/icon-7.png';
+import Icon8 from '@/assets/icons/portfolio/icon-8.png';
 import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-// const translatePath = useTranslatedPath(lang);
 
-const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
-  (item, index) => ({
-    image: [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9][
-      index
-    ],
-    title: t(`portfolio.projects.cards.${item}.title`),
-    description: t(`portfolio.projects.cards.${item}.description`),
-    href: t(`portfolio.projects.cards.${item}.href`),
-  })
-);
+const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9];
+const descriptions = [
+  'Con más de dos décadas de excelencia, en Distribuidora Goser lideramos el mercado de artículos...',
+  'Iniciamos hace ya mas de diez años atrás, un Lunes 14 de Octubre de 2013...',
+  null,
+  null,
+  'Haz inversiones online con el bróker minorista más grande del mundo y disfruta ',
+  'Entender la realidad más allá de lo que alcanza la vista. Fomentamos la participación ',
+  'No creemos en fórmulas estáticas, todo es transformable y adaptable a las necesidades específicas de cada proyecto. ',
+  'Somos un equipo comprometido con tu bienestar. Creemos en una nutrición práctica, cercana y accesible, adaptada a la vida real.',
+  null,
+];
+const links = [
+  'https://goser.mx/',
+  'https://disveruniformes.com.mx/',
+  null,
+  null,
+  'https://aurumtage.com/',
+  'https://www.utsail.com/',
+  'https://sittycia.com/',
+  'https://nutrilab-landing.vercel.app/',
+  null,
+];
+
+const data = [
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+].map((item, index) => ({
+  image: images[index],
+  title: t(`portfolio.projects.cards.${item}.title`),
+  description: descriptions[index],
+  href: links[index],
+}));
 ---
 
 <section class="section">
@@ -62,37 +91,46 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
     const projectsInfo = document.querySelector('.projects-info');
     const projectsItems = document.querySelectorAll('.items > *');
 
+    // Set initial opacity for items
     projectsItems.forEach((item) => {
       (item as HTMLElement).style.opacity = '0';
     });
 
-    const titleObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isVisible = entry.isIntersecting;
-        isVisible && projectsInfo
-          ? projectsInfo.classList.add('fadeInFromTop')
-          : null;
+    // Single observer for all animations
+    const animationObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const target = entry.target;
+
+          // Handle title animation
+          if (target.classList.contains('projects-info')) {
+            target.classList.add('fadeInFromTop');
+          }
+
+          // Handle project items animation
+          else if (target.parentElement?.classList.contains('items')) {
+            const items = Array.from(projectsItems);
+            const index = items.indexOf(target);
+
+            setTimeout(() => {
+              target.classList.add('fadeInFromBottom');
+            }, index * 100);
+          }
+
+          animationObserver.unobserve(target);
+        });
       },
       { threshold: 0 }
     );
-    projectsInfo && titleObserver.observe(projectsInfo);
 
-    projectsItems.forEach((item, index) => {
-      const itemObserver = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry) return;
-          const isVisible = entry.isIntersecting;
-          if (isVisible) {
-            setTimeout(() => {
-              item.classList.add('fadeInFromBottom');
-            }, index * 180);
-            itemObserver.unobserve(item);
-          }
-        },
-        { threshold: 0 }
-      );
-      itemObserver.observe(item);
+    if (projectsInfo) {
+      animationObserver.observe(projectsInfo);
+    }
+
+    projectsItems.forEach((item) => {
+      animationObserver.observe(item);
     });
   });
 </script>

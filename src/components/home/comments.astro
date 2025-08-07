@@ -1,25 +1,31 @@
 ---
-import {
-  getLangFromUrl,
-  useTranslations,
-  useTranslatedPath,
-} from '@/libs/i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
 
 import Icon1 from '@/assets/icons/portfolio/icon-1.svg';
-import Icon2 from '@/assets/icons/portfolio/icon-2.jpeg';
+import Icon2 from '@/assets/icons/portfolio/icon-2.png';
 import Icon3 from '@/assets/icons/portfolio/icon-3.png';
 import Icon4 from '@/assets/icons/portfolio/icon-4.png';
 
 import Icon5 from '@/assets/icons/portfolio/icon-5.png';
 import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
-import Icon7 from '@/assets/icons/portfolio/icon-7.jpeg';
-import Icon8 from '@/assets/icons/portfolio/icon-8.jpeg';
+import Icon7 from '@/assets/icons/portfolio/icon-7.png';
+import Icon8 from '@/assets/icons/portfolio/icon-8.png';
 import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 
+const links = [
+  'https://goser.mx/',
+  'https://disveruniformes.com.mx/',
+  null,
+  null,
+  'https://aurumtage.com/',
+  'https://www.utsail.com/',
+  'https://sittycia.com/',
+  'https://nutrilab-landing.vercel.app/',
+  null,
+];
 const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
   (item, index) => ({
     position: `--position: ${item}`,
@@ -34,6 +40,7 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
       Icon8.src,
       Icon9.src,
     ][index],
+    href: links[index],
     quantity: index + 1,
   })
 );
@@ -59,18 +66,21 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
     <article class="slider">
       <div class="track">
         {
-          data.map(({ icon }) => (
-            <a href={translatePath('/portfolio')} class="item">
-              <img src={icon} alt="brandIcon" />
-            </a>
-          ))
-        }
-        {
-          data.map(({ icon }) => (
-            <a href={translatePath('/portfolio')} class="item">
-              <img src={icon} alt="brandIcon" />
-            </a>
-          ))
+          data.concat(data).map(({ icon, href }) => {
+            if (href) {
+              return (
+                <a href={href} class="item cursor-pointer" target="_blank">
+                  <img src={icon} alt="brandIcon" />
+                </a>
+              );
+            }
+
+            return (
+              <span class="item">
+                <img src={icon} alt="brandIcon" />
+              </span>
+            );
+          })
         }
       </div>
     </article>
@@ -79,7 +89,7 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
 
 <style>
   .slider {
-    @apply w-full overflow-hidden relative bg-white rounded-[20px] shadow-lg;
+    @apply w-full overflow-hidden relative;
     --item-width: 250px;
     --item-height: 200px;
   }
@@ -87,7 +97,7 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
   .track {
     @apply flex;
     width: calc(var(--item-width) * 18); /* 9 ítems x2 */
-    animation: scrollTrack 20s linear infinite;
+    animation: scrollTrack 45s linear infinite;
   }
 
   .item {
@@ -97,7 +107,7 @@ const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
   }
 
   .item img {
-    @apply w-full h-full object-contain cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out;
+    @apply w-full h-full object-contain hover:scale-110 transition-all duration-200 ease-in-out;
   }
 
   @keyframes scrollTrack {

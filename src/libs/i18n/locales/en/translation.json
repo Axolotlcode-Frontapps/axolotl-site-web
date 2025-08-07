@@ -342,7 +342,7 @@
     }
   },
   "portfolio": {
-   "title-page": "Portfolio - AxolotlCode",
+    "title-page": "Portfolio - AxolotlCode",
     "hero": {
       "title": "<span class='text-primary-200'>Portfolio</span>",
       "description": "Explore the projects that reflect our passion for web development. Each work demonstrates our commitment to quality, design, and functionality that drives real results."
