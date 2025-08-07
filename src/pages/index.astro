@@ -6,14 +6,12 @@ import Comments from '@/components/home/comments.astro';
 import WhoIs from '@/components/home/who-is.astro';
 import Contact from '@/components/home/contact.astro';
 import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
-import ButtonSticky from '@/components/home/button-sticky.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <Layout title={t('home.title-page')}>
-  <ButtonSticky />
   <Hero />
   <Offers />
   <Comments />

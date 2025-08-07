@@ -9,10 +9,9 @@ import ButtonIcon from '../../assets/icons/whatsapp-sticky.svg';
 
 <style>
   .button-sticky {
-    @apply w-full h-full max-w-[112px] max-h-[112px] fixed flex items-center justify-center leading-[56px] right-14 bottom-14 bg-[#19c750] rounded-full z-10;
-    interpolate-size: allow-keywords;
+    @apply fixed right-6 bottom-6 inline-grid place-content-center rounded-full z-20 bg-[#19c750] transition-colors duration-300 p-4;
   }
   .button-sticky-image {
-    @apply w-full max-w-14;
+    @apply object-contain size-[48px];
   }
 </style>
