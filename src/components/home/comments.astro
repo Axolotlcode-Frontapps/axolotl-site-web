@@ -7,10 +7,10 @@ import Icon3 from '@/assets/icons/portfolio/icon-3.png';
 import Icon4 from '@/assets/icons/portfolio/icon-4.png';
 
 import Icon5 from '@/assets/icons/portfolio/icon-5.png';
-import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
+// import Icon6 from '@/assets/icons/portfolio/icon-6.webp';
 import Icon7 from '@/assets/icons/portfolio/icon-7.png';
 import Icon8 from '@/assets/icons/portfolio/icon-8.png';
-import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
+// import Icon9 from '@/assets/icons/portfolio/icon-9.jpeg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -21,29 +21,37 @@ const links = [
   null,
   null,
   'https://aurumtage.com/',
-  'https://www.utsail.com/',
+  // 'https://www.utsail.com/',
   'https://sittycia.com/',
   'https://nutrilab-landing.vercel.app/',
-  null,
+  // null,
 ];
-const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(
-  (item, index) => ({
-    position: `--position: ${item}`,
-    icon: [
-      Icon1.src,
-      Icon2.src,
-      Icon3.src,
-      Icon4.src,
-      Icon5.src,
-      Icon6.src,
-      Icon7.src,
-      Icon8.src,
-      Icon9.src,
-    ][index],
-    href: links[index],
-    quantity: index + 1,
-  })
-);
+const data = [
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  // 'six',
+  'seven',
+  'eight',
+  // 'nine'
+].map((item, index) => ({
+  position: `--position: ${item}`,
+  icon: [
+    Icon1.src,
+    Icon2.src,
+    Icon3.src,
+    Icon4.src,
+    Icon5.src,
+    // Icon6.src,
+    Icon7.src,
+    Icon8.src,
+    // Icon9.src,
+  ][index],
+  href: links[index],
+  quantity: index + 1,
+}));
 ---
 
 <section class="section bg-foreground relative">
