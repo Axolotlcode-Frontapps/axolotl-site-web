@@ -394,6 +394,13 @@
       }
     }
   },
+  "legals": {
+    "title-page": "Legales - AxolotlCode",
+    "hero": {
+      "title": "Aviso de privacidad",
+      "description": "AxolotlCode"
+    }
+  },
   "footer": {
     "description": "En AxolotlCode transformamos ideas en realidades digitales. Creamos aplicaciones innovadoras, seguras y personalizadas que impulsan tu negocio hacia el éxito.",
     "menu": {
