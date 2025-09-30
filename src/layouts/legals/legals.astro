@@ -1,0 +1,46 @@
+---
+import Hero from '@/components/shared/hero.astro';
+
+import { getLangFromUrl, useTranslations } from '@/libs/i18n/utils';
+
+import HeroBg from '@/assets/images/aboutUs/about-us-hero.webp';
+import Layout from '../Layout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const hero = {
+  title: t('legals.hero.title'),
+  description: '',
+  image: HeroBg,
+};
+---
+
+<Layout title={t('legals.title-page')}>
+  <Hero title={hero.title} description={hero.description} image={hero.image} />
+  <div class="legals__text">
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  @reference "@styles/global.css";
+  .legals__text {
+    @apply w-full mx-auto max-w-screen-xl my-20;
+    & :is(p, li) {
+      @apply text-sm sm:text-base mb-5;
+    }
+    & ul {
+      @apply ml-5 pl-5 list-disc;
+    }
+    & ul ul {
+      @apply mt-5 pl-5 list-none;
+    }
+    & :is(p, ul):has(+ h2) {
+      @apply mb-12;
+    }
+    & :is(h2, h3, h4) {
+      @apply mb-6 text-sm sm:text-xl md:text-2xl lg:text-[1.75rem] xl:text-[2rem] 2xl:text-5xl 2xl:leading-tight font-bold;
+    }
+  }
+</style>

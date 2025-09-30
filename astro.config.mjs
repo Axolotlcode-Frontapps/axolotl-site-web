@@ -1,8 +1,8 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-
 import sitemap from '@astrojs/sitemap';
+import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://www.axolotlcode.tech/',
@@ -10,6 +10,7 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   integrations: [
+    mdx(),
     react(),
     tailwind({ nesting: true }),
     sitemap({

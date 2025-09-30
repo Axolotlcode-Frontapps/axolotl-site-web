@@ -348,6 +348,13 @@
       "description": "Explore the projects that reflect our passion for web development. Each work demonstrates our commitment to quality, design, and functionality that drives real results."
     }
   },
+  "legals": {
+    "title-page": "Legals - AxolotlCode",
+    "hero": {
+      "title": "Privacy notice",
+      "description": "AxolotlCode"
+    }
+  },
   "footer": {
     "description": "At AxolotlCode, we transform ideas into digital realities. We create innovative, secure, and customized applications that drive your business towards success.",
     "menu": {

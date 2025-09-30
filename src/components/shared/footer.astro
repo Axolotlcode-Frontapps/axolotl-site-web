@@ -23,7 +23,7 @@ const footerLinks = [
   ...menu,
   {
     label: t('header.privacy'),
-    link: '/Aviso_de_Privacidad_Integral_Axolotlcode.pdf',
+    link: '/legals/privacy',
   },
 ];
 ---
@@ -55,7 +55,7 @@ const footerLinks = [
             <li>
               <a
                 href={item.link}
-                target={index === footerLinks.length - 1 ? '_blank' : ''}
+                target={index === footerLinks.length - 1 ? '' : ''}
                 class="text-white text-sm"
               >
                 {item.label}
